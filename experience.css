@@ -232,6 +232,11 @@
     .row h4{
         font-size: 17px!important;
     }
+
+    .TA{
+        border-top: 1px solid rgb(106, 30, 30)!important;
+    }
+    
 }
 
 @media (min-width:852px){
@@ -281,10 +286,11 @@
 }
 
 .TAxp{
-    margin-top: 10px;
+    margin-top: 20px;
     padding-top: 2%;
-    border-top: 1px solid rgb(106, 30, 30);
+  
 }
+
 
 
 
