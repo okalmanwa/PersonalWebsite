@@ -21,7 +21,7 @@ header{
     top: 0;
     align-items: center;
     transition: .4s ease;
-    background-color: rgb(106, 30, 30);
+    background-color: darkgray;
     height: 70px;
     z-index: 2;
     padding: 0 5% 0 5%;
@@ -103,6 +103,7 @@ header{
  /* ....................................START OF JS CSS.................................*/
  .scrolled {
     opacity: 1;
+    background-color: rgb(106, 30, 30);
   
 }
  /* ....................................END OF JS CSS.................................*/
