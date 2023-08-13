@@ -204,8 +204,8 @@
     .row figure{
         display: flex;
         justify-content: center;
-        border-left: .4px  solid rgb(106, 30, 30);
-        border-right: .4px  solid rgb(106, 30, 30);
+        border-left: 1px  solid rgb(106, 30, 30);
+        border-right: 1px  solid rgb(106, 30, 30);
         border-top: none;
         margin-bottom: 10px;
      
@@ -283,7 +283,7 @@
 .TAxp{
     margin-top: 10px;
     padding-top: 2%;
-    border-top: .3px solid rgb(106, 30, 30);
+    border-top: 2px solid rgb(106, 30, 30);
 }
 
 
