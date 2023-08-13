@@ -1,0 +1,929 @@
+*{
+    list-style: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+
+
+body{
+    background-color: #fff;
+}
+
+
+ /* ....................................START OF HEADER.................................. */
+header{
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    align-items: center;
+    transition: .4s ease;
+    background-color: rgb(106, 30, 30);
+    height: 70px;
+    z-index: 2;
+    padding: 0 5% 0 5%;
+    /* opacity: .9; */
+
+}
+
+.linkscontainer, .icons{
+    display: flex;
+    align-items: center;
+}
+.linkscontainer li{
+    transition: 5s;
+}
+
+.linkscontainer li a{
+    text-transform: uppercase;
+    margin-right: 40px;
+    color: #ffffff;
+    font-size: 20px;
+    transition: 1s ease;
+    /* font-family: 'Montserrat', sans-serif; */
+    display: inline-block;
+    position: relative;
+    font-family: 'Handlee', cursive;
+    font-weight: bold;
+    transition: 2s;
+ 
+    
+}
+.NavLink.logo img{
+    height: 60px!important;
+    border-radius: 30%;
+}
+
+  
+  .linkscontainer li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #182126;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .linkscontainer li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+
+.icons li a img{
+    height: 32px;
+    width: 32px;
+    margin-left: 40px;
+    border-radius: 50%;
+    transition: 1s ease;
+    background-color: #f3ecec;
+    
+}
+
+.icons li a img:hover{
+    transform: scale(0.9);
+    background-color: rgb(136, 112, 112);
+
+
+}
+
+
+
+
+
+ /* ....................................END OF HEADER.................................*/
+
+ /* ....................................START OF JS CSS.................................*/
+ .scrolled {
+    opacity: 1;
+  
+}
+ /* ....................................END OF JS CSS.................................*/
+
+
+
+
+ /* ....................................START OF COVER PAGE.................................*/
+main{
+    align-items: center;
+    margin: auto;
+    max-width: 1500px;
+}
+.mainpageContainer{
+    display: flex;
+    justify-content: space-between;
+    text-align: right;
+    padding-left:5%;
+    padding-right: 5%;
+    background-image: url('images/backgroungimg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: fit-content;
+}
+
+.homephoto{
+    margin: 0 3%;
+
+}
+
+.homephoto img{
+    border-radius: 2%;
+    border: 2px solid rgb(106, 30, 30);
+    background-color:rgb(106, 30, 30); 
+    border-radius:51% 49% 88% 12% / 32% 54% 46% 68% ;
+    height: 100%;
+}
+.headertextcontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+.headertext{
+    justify-content: center;
+   
+}
+
+.buble,.buble2{
+    border-radius:51% 49% 88% 12% / 32% 54% 46% 68% ;
+    height: 100px;
+    width: 100px;
+    background-color: rgb(131, 45, 45);
+    position: relative;
+    left: 50%;
+    opacity: .5;
+
+}
+.buble{
+    bottom: 50px;
+}
+
+.buble2{
+    top: 50px;
+
+
+}
+
+
+h3{
+    font-size: 3.5rem;
+    font-weight: normal;
+    font-family: 'Handlee', cursive;
+    display: flex;
+    align-items: center;
+
+}
+
+ /* ....................................END OF COVER PAGE.................................*/
+
+
+
+
+
+
+ /* ....................................START OF ABOUT SECTION.................................*/
+
+.about > h4{
+    padding: 0 25px 25px 25px;
+    width: 200px;
+    /* color: #fff; */
+}
+
+p.aboutText{
+    font-family: 'Rokkitt', serif;
+    font-size: 20px;
+    width: 72%;
+    padding: 0 5% 5% 5%;
+    /* color: #fff; */
+
+}
+
+.about,.initiatives{
+    background-color: rgb(246, 239, 239);
+    display: flex;
+    flex-direction: row;
+    padding: 2% 0 0 0;
+}
+
+
+
+
+h4,.experience_header{
+ padding: 25px 0 25px 0;
+ font-size:22px;
+ color: rgb(106, 30, 30);
+ font-family: 'Montserrat', sans-serif;
+ font-weight: bolder;
+
+}
+
+
+
+ /* ....................................START OF EXPERIENCE SECTION.................................*/
+
+
+#Experiences2{
+    background-color: rgb(240, 236, 236);
+    display: flex;
+    flex-direction: row;
+    padding-top: 5%;
+    padding-bottom: 5%;
+   
+}
+.experience_header,h4 > .initiatives{
+    text-align: center;
+    padding: 23px 0 23px 0;
+
+}
+
+.experience_content.web{
+    background-color: rgb(106, 30, 30);
+    color: #fff;
+    width: 300px;
+    height: 300px;
+
+}
+.experience_content.consulting,.experience_content.teaching{
+    background-color: rgb(252, 250, 250);
+    width: 300px;
+    height: 300px;
+    overflow: auto;
+    
+}
+
+.experience_content.web p,.experience_content.web h5{
+    color: white;
+}
+
+
+.content{
+    font-family: 'Rokkitt', serif;
+    font-size: 15px;
+   
+
+}
+.fa-solid.fa-briefcase,.fa-solid.fa-laptop-code,.fa-solid.fa-person-chalkboard{
+ display: flex;
+ justify-content: center;
+ padding: 5px;
+}
+
+.experience_content{
+    padding: 2% 2% 2%;
+}
+
+
+
+
+    .cons{
+        transition: 1s ease;
+        text-align: center;
+    }
+
+    .cons:hover{
+        transform: translateY(-10px);
+    }
+
+    .NinjaRescue{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        overflow: auto;
+ 
+    }
+
+    #Experiences2{
+
+        display: flex;
+        padding-top: 5%;
+        overflow: auto;
+        width: 100%;
+
+    }
+
+    #Experiences2 h4{
+        margin-right: 10%;
+    }
+
+ /* ....................................START OF INITIATIVE SECTION.................................*/
+
+
+
+
+.initiatives{
+    padding: 5% 0 5% 0;
+    background-color: rgb(234, 232, 232);
+}
+
+.initiatives>h4, #Experiences2 h4{
+    padding: 0 0 25px 25px;   
+}
+
+
+.imagesHolder{
+    display: flex;
+    flex-direction: column;
+    padding-left: 4%;
+    padding-right: 10%;
+    overflow: auto; 
+}
+
+
+.imagesHolder img{
+    width: 100%!important;
+    transition: 1s;
+    /* opacity: .9; */
+    border-radius: 7%;
+}
+
+.imagesHolder figure{
+    margin: 1%; 
+}
+
+
+.topimages{
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    width: 100%;
+    max-width: 1500px; 
+    justify-content: center;
+} 
+
+.topimages IMG{
+    border: 2px rgb(106,30,30) solid;
+}
+
+
+
+.imagesHolder img:hover{
+    cursor: pointer;
+    transform: scale(0.95);
+    border-radius:51% 49% 88% 12% / 32% 54% 46% 68% ;
+    opacity: 1;  
+}
+
+
+
+/* ....................................START OF JS IMAGES STYLING...................... */
+#description,#project,#student_training{
+    font-family: 'Rokkitt', serif;
+    font-size: 19px;
+    background-color: rgb(240, 236, 236);
+    display: flex;
+    justify-content: center!important;
+    align-items: center;
+    border: 1px solid rgb(106, 30, 30) ;
+    border-radius: 2%;
+    margin-left: 0;
+
+}
+
+
+
+
+
+.JStext{
+    padding: 5%;
+    width: 90vpw;
+    height:fit-content;
+    overflow-y: scroll;
+
+}
+
+
+.close{
+    background-color: rgb(106, 30, 30);
+    color: #fff;
+    cursor: pointer;
+    transition: .3s;
+    width: 50px;
+    box-shadow: 10px 5px 5px #131476;
+
+}
+
+#close:hover{
+    transform: scale(.9);
+}
+
+
+.hidden {
+    display:none !important;
+  }
+
+
+  /* ..................................................Contact...................................... */
+#Contact{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:5%;
+    background-color: rgb(106,30,30);
+
+}
+
+#Contact a,span{
+    color: #fff;
+    font-family: 'Rokkitt', serif;
+    font-size: 22px;
+}
+
+
+#Contact h4{
+    padding: 0;
+    color: #fff;
+}
+
+
+
+/* 
+..................................................................Media QUERIES........................ */
+
+#hamburgerMenuContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 7px;
+    background-color: rgb(106, 30, 30);
+
+   
+
+    
+}
+
+
+
+
+.hamburger li {
+     font-family: 'Handlee', cursive;
+     text-transform: uppercase;
+     text-align: center!important;
+}
+
+.hamburger li a{
+    color: #fff;
+}
+.hamburgerPageLogo{
+    display: flex;
+    justify-content: end;
+    height: fit-content;
+}
+
+.hamburgerPageLogo img{
+    text-align: right;
+}
+
+.hamburgerLogo{
+    position: absolute;
+    top: 5px;
+    left: 0;
+}
+
+.hamburgerLogo img{
+    width: 70px;
+}
+
+
+
+
+
+
+
+@media(max-width: 1329px){
+
+    .aboutText{
+
+        font-size: 18px !important;;
+
+
+
+    }
+
+    .homephoto img{
+        width: 400px;
+        height: 100%;
+       }
+    h3{
+        font-size: 3rem;
+        padding-left: 20px;
+    }
+
+    h4{
+        font-size: 21px!important;
+    }
+
+
+    
+  }
+
+  @media (max-width: 1139px){
+    .homephoto img{
+        width: 350px;
+        height: 100%;
+       }
+   
+       h3{
+           font-size: 2.5rem;
+           padding-left: 20px;
+       }
+   
+   
+       h4{
+           font-size: 20px!important;
+       }
+   
+
+  }
+
+
+@media(max-width: 1073px){
+
+    .aboutText{
+        font-size: 18px !important;
+    }
+    .homephoto img{
+     width: 350px;
+     height: 100%;
+    }
+
+    h3{
+        font-size: 2.5rem;
+        padding-left: 20px;
+    }
+
+
+    h4{
+        font-size: 20px!important;
+    }
+
+    .experience_content.consulting,.experience_content.teaching,.experience_content.web{
+        width: 260px;
+        height: 260px;
+        overflow-y: auto;
+    
+        
+    }
+
+
+
+}
+
+
+@media(max-width: 941px){
+
+    #Contact a, span{
+        font-size: 18px;
+    }
+
+}
+
+h4,h5{
+    font-size: 18px!important;
+}
+
+@media(max-width:942px){
+
+    h3{
+        font-size: 2.2rem;
+        padding-left: 20px;
+    }
+    
+}
+
+
+@media(max-width:841px){
+
+    h3{
+        font-size: 1.5rem;
+        padding-left: 20px;
+    }
+
+    .aboutText{
+        font-size: 13px;
+    }
+
+    .linkscontainer li a{
+        font-size: 18px;
+    }
+
+    header{
+        display: none;
+    }
+
+    .homephoto img{
+        width: 320px;
+        height: 100%;
+       }
+
+       .headertext h4{
+        font-size: 10px;
+       }
+
+
+    
+}
+
+@media (max-width:701px){
+    .mainpageContainer{
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        padding-top: 5%;
+        background-image: none;
+        background-color: lightgray;
+        
+    }
+
+
+
+    .buble,.buble2{
+        height: 50px;
+        width: 50px;
+        bottom: 0px;
+        top: 0;
+       
+    }
+    .buble{
+        bottom:100px;
+    }
+
+    .homephoto img{
+        width: 300px;
+        height: 100%;
+       }
+
+       .initiatives{
+        flex-direction: column;
+        margin: 0;
+        padding-top: 5%;
+        justify-content: center;
+        align-items: center;
+       }
+
+       .about{
+        flex-direction: column!important;
+        padding: 0;
+        margin: 0;
+       }
+       .aboutText{
+        margin: 0;
+        padding: 0;
+        display: block;
+        width: 100%!important;
+       }
+
+       .about h4{
+        padding-top: 5%;
+       }
+
+
+
+    #Contact a,span{
+        color: #fff;
+        font-family: 'Rokkitt', serif;
+        font-size: 15px;
+    }
+
+
+.JStext{
+    padding: 2% 5% 2% 5%;
+    height:fit-content;
+    overflow-y: scroll;
+    
+
+}
+#description,#project,#student_training{
+    margin-left: 0;
+}
+
+#Experiences2 h4{
+    text-align: center;
+}
+
+#Experiences2{
+    flex-direction: column;
+    justify-content: center;
+}
+
+.imagesHolder{
+    padding-right: 4%;
+}
+
+}
+@media (max-width:656px){
+
+    .tagline,h4,h5{
+        font-size: 17px!important;
+    }
+
+    h3{
+        font-size: 18px;
+    }
+    .homephoto img{
+        width: 250px;
+        height: 100%;
+       }
+
+
+
+}
+
+@media(max-width:615px){
+    #Contact a,span{
+        color: #fff;
+        font-family: 'Rokkitt', serif;
+        font-size: 12px;
+    }
+
+    #Contact h4{
+        font-size: 15px;
+    }
+}
+
+@media(max-width:546px){
+
+    .tagline,h4,h5{
+        font-size: 13px!important;
+        
+    }
+
+    h3{
+        font-size: 15px;
+    }
+    .homephoto img{
+        width: 220px;
+        height: 100%;
+       }
+
+       h5.experience_header{
+        padding: 3%;
+       }
+
+       #Contact h4{
+        font-size: 12px!important;
+        padding: 0;
+    }
+
+
+
+}
+
+
+@media(max-width:476px){
+
+    .tagline{
+        font-size: 12px!important;
+        
+    }
+
+    h3{
+        font-size: 15px;
+    }
+    .homephoto img{
+        width: 200px;
+        height: 100%;
+    }
+
+    h5.experience_header{
+        padding: 2%;
+    }
+
+    #Contact h4{
+        font-size: 10px!important;
+        padding: 0;
+    }
+
+
+
+}
+
+@media(max-width:438px){
+    .mainpageContainer{
+        flex-direction: column-reverse;
+
+    }
+
+
+    .experience-container {
+        display: flex;
+        flex-direction: column; /* Stack the elements vertically */
+        align-items: center; /* Center horizontally */
+        justify-content: center; /* Center vertically */
+        text-align: center; /* Center text content */
+    }
+    .NinjaRescue {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        margin-top: 20px; 
+    }
+
+    .experience_content{
+        height: fit-content!important;
+        width: 90%!important;
+      
+
+    }
+
+ 
+
+  
+
+ 
+
+
+    .buble,.buble2{
+        display: none;
+    }
+
+    .homephoto img{
+        width: 250px;
+        height: 100%;
+    }
+
+    h3{
+        font-size: 24px;
+        padding-top: 2%;
+    }
+
+    .tagline{
+        font-size:15px!important ;
+    }
+
+       h4{
+        font-size: 20px!important;
+       }
+       span{
+        display: none;
+
+       }
+
+       #MyInitiatives{
+        flex-direction: column;
+       }
+
+       .topimages{
+        flex-direction: column;
+       }
+
+       .topimages img{
+        height: 100%;
+        width: 90%!important;
+   
+    
+
+       }
+
+       .school,.HotelManagement,.Tech{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       }
+
+
+
+ 
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #000; /* Set the default color of the links */
+}
+
+.nav-link.active {
+    text-decoration: underline black 5px;
+    /* color: black; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+  

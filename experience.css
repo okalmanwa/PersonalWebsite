@@ -1,0 +1,296 @@
+.ExpPageContainer{
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+    padding: 0 0 0 0;
+    background-color: #fff;
+}
+.ExpPageContainer button{
+    height: fit-content;
+    width: 70px;
+    font-family: 'Rokkit',serif;
+    color: white;
+    background-color: rgb(106, 30, 30);
+    box-shadow: 5px 5px 5px rgb(106, 30, 30);
+    transition: .5s;
+
+}
+
+.ExpPageContainer button:hover{
+    transform: scale(0.9);
+    cursor: pointer;
+
+}
+
+
+
+.sideBar figure{
+   width: 100%;
+   padding: 20px;
+   display: flex;
+   justify-content: center;
+ 
+   
+  
+
+}
+.sideBar figure img{
+    width: 300px;
+    border: 1px solid rgb(106, 30, 30);
+    border-radius: 5%;
+
+
+}
+
+.titleXP{
+    text-align: center;
+}
+
+.titleXP {
+    font-size: 25px!important;
+    color: #fff; /* You can choose your preferred color */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid rgb(106, 30, 30);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    background-color: rgb(106, 30, 30);
+    font-family: 'Handlee', cursive;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+.title-hide {
+    opacity: 0;
+}
+
+.sideBar h5,.sideBar h6{
+    color: #fff;
+    text-align: center;
+ 
+}
+
+.sideBar h5{
+    color:black;
+     font-family: 'Handlee', cursive;
+     font-weight: bold;
+     font-size:1.5rem!important;
+}
+
+.sideBar h6{
+    color: rgb(106, 30, 30);
+    font-family: 'Handlee', cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+
+.row figure {
+    width: 100%;
+  
+ 
+}
+
+.row figure img{
+    width: 400px;
+}
+
+
+
+.contentHolder{
+    width: 80%;
+    margin: 0 3% 0 3%;
+}
+
+.contentHolder h4{
+    text-transform: uppercase;
+    margin: 0;
+    padding: 2% 0 2% 3%;
+}
+
+
+
+.row{
+    display: flex;
+    border-bottom: .5px solid maroon;
+    font-family: 'Rokkitt', serif;
+    align-items: center;
+    font-size: 19px;
+    padding-bottom: 1%;
+}  
+.last-row{
+    border: none;
+    padding-bottom: 2%;
+}
+.descriptionXP{
+    padding-left: 3%;
+    text-align: justify;
+}
+
+.sideBar {
+    position: sticky!important;
+    top: 70px;
+    background-color: rgb(246, 246, 246);
+    /* height: 100%; */
+}
+
+
+@media(max-width:1367px){
+
+    .row figure img{
+        width: 300px;
+    }
+
+
+    
+
+}
+
+@media(max-width:1064px){
+
+    .sideBar figure img{
+        width: 250px;
+
+    }
+    .row figure img{
+        width: 250px;
+    }
+
+
+}
+
+
+@media(max-width:900px){
+
+    .sideBar figure img{
+        width: 200px;
+
+    }
+    .row figure img{
+        width: 200px;
+    }
+
+    .row{
+        font-size: 16px;
+    }
+
+
+}
+
+@media(max-width:841px){
+
+    .ExpPageContainer{
+        flex-direction: column-reverse;
+        height: 100%;
+        align-items: center;
+    }
+    .sideBar{
+        width: 80%;
+        border: 2px solid rgb(106, 30, 30);
+        
+    }
+
+  
+
+}
+
+@media (max-width: 577px) {
+
+
+    .row{
+        flex-direction: column;
+    }
+
+    .row figure{
+        display: flex;
+        justify-content: center;
+        border-left: .4px  solid rgb(106, 30, 30);
+        border-right: .4px  solid rgb(106, 30, 30);
+        border-top: none;
+        margin-bottom: 10px;
+     
+    }
+
+    .row figure img{
+        width: 100%;
+
+    }
+
+
+  
+   
+
+    .descriptionXP{
+        padding-top: 0;
+        font-size: 16px;
+        text-align: left;
+        border-bottom: 2px maroon solid;
+        padding-bottom: 5%;
+    }
+   
+
+    .row h4{
+        font-size: 17px!important;
+    }
+}
+
+@media (min-width:852px){
+    #HamburgerBtn{
+        display: none!important;
+    }
+
+    #hamburgerMenuContainer{
+        display: none;
+    }
+
+    .logo2{
+        display: none!important;
+    }
+
+}
+
+#HamburgerBtn{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between!important;
+    align-items: center;
+}
+
+.narrow-nav{
+    display: flex;
+    flex-direction: row!important;
+    justify-content: space-between!important;
+    background-color: rgb(106, 30, 30);
+    padding: 0 5%;
+    align-items: center;
+}
+
+.narrow-nav figure{
+    width: 100%;
+    background-color: rgb(106, 30, 30);
+
+}
+.narrow-nav .logo2 img{
+    width: 70px;
+}
+
+#hamburgerMenuContainer{
+    display: block;
+    width: 100%;
+
+}
+
+.TAxp{
+    margin-top: 10px;
+    padding-top: 2%;
+    border-top: .3px solid rgb(106, 30, 30);
+}
+
+
+
+
+
+
+
+
+
