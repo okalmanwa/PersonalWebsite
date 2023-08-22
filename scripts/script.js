@@ -8,7 +8,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Define animation duration in milliseconds (e.g., 1000ms = 1 second)
+
 const animationDuration = 1000;
 const animationDuration2= 2000;
 
@@ -66,18 +66,10 @@ $('#close3').click(function(){
 });
 
 
-// $('.NavLink a').click(function (e) {
-//     e.preventDefault();
-//     const target = $(this).attr('href');
-//     $('html, body').animate({
-//         scrollTop: $(target).offset().top
-//     }, 800); 
-// });
-
 
 
 $(document).ready(function() {
-    var animationDuration = 'slow'; // Adjust animation speed here
+    var animationDuration = 'slow'; 
   
     $("#HamburgerBtn").click(function () {
       if ($("#hamburgerMenuContainer").hasClass("hidden")) {
@@ -93,7 +85,6 @@ $(document).ready(function() {
       $('html, body').animate({
         scrollTop: target.offset().top
       }, 1000, function() {
-        // After scrolling, close the hamburger menu
         $("#hamburgerMenuContainer").addClass("hidden").slideUp(animationDuration);
       });
     });

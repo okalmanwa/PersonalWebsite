@@ -901,7 +901,7 @@ h4,h5{
 }
 
 .nav-link.active {
-    text-decoration: underline black 5px;
+    text-decoration: underline black 3px;
     /* color: black; */
 }
 
