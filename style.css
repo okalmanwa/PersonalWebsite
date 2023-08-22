@@ -905,6 +905,19 @@ h4,h5{
     /* color: black; */
 }
 
+#Contact h4{
+    display: flex;
+    justify-content: center!important;
+    align-items: center!important;
+}
+
+div.email{
+    display: flex;
+    justify-content: center!important;
+    align-items: center!important;
+
+}
+
 
 
 
