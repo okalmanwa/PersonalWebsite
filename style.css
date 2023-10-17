@@ -13,6 +13,8 @@ body{
 }
 
 
+
+
  /* ....................................START OF HEADER.................................. */
 header{
     display: flex;
@@ -393,7 +395,6 @@ h4,.experience_header{
 
 .JStext{
     padding: 5%;
-    width: 90vpw;
     height:fit-content;
     overflow-y: scroll;
 
@@ -631,6 +632,21 @@ h4,h5{
 
     
 }
+@media (min-width:852px){
+    .webxp{
+        border-bottom: none!important;
+    }
+    div.TAxp{
+        border-bottom: none!important;
+    }
+}
+@media (max-width:851px){
+ 
+    div.TAxp{
+        border-bottom: none!important;
+    }
+}
+
 
 @media (max-width:701px){
     .mainpageContainer{
@@ -917,6 +933,13 @@ div.email{
     align-items: center!important;
 
 }
+.row.rmv-border{
+    border-bottom: none;
+}
+
+
+
+
 
 
 

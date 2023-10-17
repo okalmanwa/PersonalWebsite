@@ -113,6 +113,25 @@ $(document).ready(function() {
 
 
 
+$(document).ready(function() {
+    var animationDurationOpen = 800;
+    var animationDurationClose = 500;
+
+    $('#OpenWebsiteManager').click(function() {
+        $('#WebsiteManager').removeClass('hidden').slideDown(animationDurationOpen);
+        $('#OpenWebsiteManager').hide();
+    });
+
+    $('#CloseWebsiteManager').click(function() {
+        $('#WebsiteManager').slideUp(animationDurationClose, function() {
+            $(this).addClass('hidden');
+            $('#OpenWebsiteManager').show();
+        });
+    });
+});
+
+
+
 
 
 
