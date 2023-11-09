@@ -106,3 +106,11 @@ $(document).ready(function () {
         $(this).addClass('active');
     });
 });
+
+
+
+AOS.init({
+    duration: 1400, // Duration of animation
+    once: false, // Animate every time an element is in the viewport
+    mirror: true, // Whether elements should animate out while scrolling past them
+});
