@@ -23,7 +23,7 @@ header{
     top: 0;
     align-items: center;
     transition: .4s ease;
-    background-color: darkgray;
+    background-color: rgb(106, 30, 30);
     height: 70px;
     z-index: 2;
     padding: 0 5% 0 5%;
@@ -639,11 +639,19 @@ h4,h5{
     div.TAxp{
         border-bottom: none!important;
     }
+    nav.narrow-nav{
+        display: none;
+
+    }
+    .web{
+        border-top:none!important;
+    }
+
 }
 @media (max-width:851px){
  
     div.TAxp{
-        border-bottom: none!important;
+        border-bottom: 2px solid rgb(106, 30, 30);
     }
 }
 
@@ -935,6 +943,14 @@ div.email{
 }
 .row.rmv-border{
     border-bottom: none;
+}
+.TAxp.bord{
+    border-bottom: 1px solid rgb(106, 30, 30)!important;
+    
+}
+
+.NO-BORDER{
+    border-bottom: none!important;
 }
 
 

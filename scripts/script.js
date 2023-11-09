@@ -1,12 +1,12 @@
-const header = document.querySelector('#Home');
+// const header = document.querySelector('#Home');
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > .1) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
+// window.addEventListener('scroll', () => {
+//     if (window.scrollY > .1) {
+//         header.classList.add('scrolled');
+//     } else {
+//         header.classList.remove('scrolled');
+//     }
+// });
 
 const animationDuration = 1000;
 const animationDuration2 = 2000;
@@ -90,12 +90,7 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
-    // Fade in each content element
-    $('.ExpPageContainer .contentHolder > div').each(function (index) {
-        $(this).delay(index * 200).animate({ opacity: 1 }, 2000);
-    });
-});
+
 
 $(document).ready(function () {
     $('.nav-link').on('click', function () {
@@ -110,7 +105,7 @@ $(document).ready(function () {
 
 
 AOS.init({
-    duration: 1400, // Duration of animation
+    duration: 1000, // Duration of animation
     once: false, // Animate every time an element is in the viewport
     mirror: true, // Whether elements should animate out while scrolling past them
 });
