@@ -103,13 +103,7 @@ $(document).ready(function() {
 });
 
 
-$(document).ready(function() {
-    // Select all content sections and hide them initially
-    $('.contentHolder .TAxp, .contentHolder .consultingXP, .contentHolder .WebDevXP, .contentHolder .CollegeXP, .contentHolder .ManagerXP').hide();
-    
-    // Animate all content sections to slide down
-    $('.contentHolder .TAxp, .contentHolder .consultingXP, .contentHolder .WebDevXP, .contentHolder .CollegeXP, .contentHolder .ManagerXP').slideDown(800);
-});
+
 
 
 
