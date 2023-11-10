@@ -8,65 +8,52 @@
 //     }
 // });
 
-const animationDuration = 1000;
-const animationDuration2 = 2000;
+// Define a variable for animation speed
+var animationSpeed = 800; // Adjust this value as needed for speed
 
-// SCHOOL JS
+// Function to handle the fading in of a section and sliding out of images
+function openSection(sectionToShow, elementsToHide, clickedElement) {
+    $(sectionToShow).hide().removeClass('hidden').fadeIn(animationSpeed);
+    $(elementsToHide).not(clickedElement).addClass('hidden');
+    $(elementsToHide).animate({ width: 'hide' }, animationSpeed);
+}
+
+// Function to handle the fading out of a section and sliding in of images
+function closeSection(sectionToHide, elementsToShow) {
+    $(sectionToHide).fadeOut(animationSpeed, function () {
+        $(this).addClass('hidden');
+        $(elementsToShow).removeClass('hidden').animate({ width: 'show' }, animationSpeed);
+    });
+}
+
+// School Section
 $('.school').click(function () {
-    $('#description').removeClass('hidden').fadeIn(animationDuration2);
-    $('.school').addClass('hidden');
-
-    $('.HotelManagement').fadeOut(animationDuration);
-    $('.Tech').fadeOut(animationDuration);
+    openSection('#description', '.HotelManagement, .Tech, .school', '.school');
 });
 
 $('#close1').click(function () {
-    $('#description').fadeOut(animationDuration, function () {
-        $('#description').addClass('hidden');
-        $('.school').removeClass('hidden');
-    });
-
-    $('.HotelManagement').fadeIn(animationDuration);
-    $('.Tech').fadeIn(animationDuration);
+    closeSection('#description', '.school, .HotelManagement, .Tech');
 });
 
-// PROJECT JS
+// Hotel Management Section
 $('.HotelManagement').click(function () {
-    $('#project').removeClass('hidden').fadeIn(animationDuration2);
-    $('.HotelManagement').addClass('hidden');
-
-    $('.school').fadeOut(animationDuration);
-    $('.Tech').fadeOut(animationDuration);
+    openSection('#project', '.school, .Tech, .HotelManagement', '.HotelManagement');
 });
 
 $('#close2').click(function () {
-    $('#project').fadeOut(animationDuration, function () {
-        $('#project').addClass('hidden');
-        $('.HotelManagement').removeClass('hidden');
-    });
-
-    $('.school').fadeIn(animationDuration);
-    $('.Tech').fadeIn(animationDuration);
+    closeSection('#project', '.school, .HotelManagement, .Tech');
 });
 
-// STUDENT TRAINING JS
+// Tech Section
 $('.Tech').click(function () {
-    $('#student_training').removeClass('hidden').fadeIn(animationDuration2);
-    $('.Tech').addClass('hidden');
-
-    $('.HotelManagement').fadeOut(animationDuration);
-    $('.school').fadeOut(animationDuration);
+    openSection('#student_training', '.HotelManagement, .school, .Tech', '.Tech');
 });
 
 $('#close3').click(function () {
-    $('#student_training').fadeOut(animationDuration, function () {
-        $('#student_training').addClass('hidden');
-        $('.Tech').removeClass('hidden');
-    });
-
-    $('.HotelManagement').fadeIn(animationDuration);
-    $('.school').fadeIn(animationDuration);
+    closeSection('#student_training', '.school, .HotelManagement, .Tech');
 });
+
+
 
 $(document).ready(function () {
     var animationDuration = 'slow';

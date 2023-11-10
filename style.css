@@ -380,9 +380,9 @@ h4,.experience_header{
     font-family: 'Rokkitt', serif;
     font-size: 19px;
     background-color: rgb(240, 236, 236);
-    display: flex;
+    /* display: flex;
     justify-content: center!important;
-    align-items: center;
+    align-items: center; */
     border: 1px solid rgb(106, 30, 30) ;
     border-radius: 2%;
     margin-left: 0;
@@ -955,7 +955,9 @@ div.email{
 
 
 
-
+.menuRounded{
+    border-radius: 23%!important;
+}
 
 
 
