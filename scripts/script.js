@@ -9,7 +9,7 @@
 // });
 
 // Define a variable for animation speed
-var animationSpeed = 800; // Adjust this value as needed for speed
+var animationSpeed = 1000; // Adjust this value as needed for speed
 
 // Function to handle the fading in of a section and sliding out of images
 function openSection(sectionToShow, elementsToHide, clickedElement) {
@@ -26,7 +26,7 @@ function closeSection(sectionToHide, elementsToShow) {
     });
 }
 
-// School Section
+// School Sectionnn
 $('.school').click(function () {
     openSection('#description', '.HotelManagement, .Tech, .school', '.school');
 });
@@ -92,7 +92,7 @@ $(document).ready(function () {
 
 
 AOS.init({
-    duration: 1200, // Duration of animation
+    duration: 1500, // Duration of animation
     once: false, // Animate every time an element is in the viewport
     mirror: true, // Whether elements should animate out while scrolling past them
 });
