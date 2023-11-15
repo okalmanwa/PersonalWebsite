@@ -92,7 +92,7 @@ $(document).ready(function () {
 
 
 AOS.init({
-    duration: 1500, // Duration of animation
+    duration: 1450, // Duration of animation
     once: false, // Animate every time an element is in the viewport
     mirror: true, // Whether elements should animate out while scrolling past them
 });
