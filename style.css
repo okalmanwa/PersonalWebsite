@@ -647,6 +647,9 @@ h4,h5{
     .web{
         border-top:none!important;
     }
+    .homephoto{
+        padding: 5% 0 5% 0;
+    }
 
 }
 @media (max-width:851px){
