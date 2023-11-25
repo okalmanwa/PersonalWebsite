@@ -838,9 +838,10 @@ h4,h5{
 @media(max-width:438px){
     .mainpageContainer{
         flex-direction: column-reverse;
-
     }
-
+    .exp{
+        flex-direction: column!important;
+    }
 
     .experience-container {
         display: flex;
@@ -849,6 +850,7 @@ h4,h5{
         justify-content: center; /* Center vertically */
         text-align: center; /* Center text content */
     }
+
     .NinjaRescue {
         display: flex;
         flex-direction: column; 
@@ -958,6 +960,10 @@ div.email{
 }
 
 
+.exp{
+    display: flex;
+    flex-direction: row;
+}
 
 
 
