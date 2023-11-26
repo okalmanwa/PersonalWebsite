@@ -96,7 +96,8 @@ main {
     background-repeat: no-repeat;
     background-size: cover;
     height: fit-content;
-    padding-top: 66px !important;
+    padding-top: 90px !important;
+    padding-bottom: 20px;
 }
 
 .homephoto {
@@ -349,7 +350,7 @@ h4, .experience_header {
     opacity: 1;
 }
 
-.NinjaRescue{
+.NinjaRescue {
     padding: 0 5% 0 5%;
 }
 
@@ -1049,11 +1050,11 @@ div.email {
 .menu-items {
     order: 2;
     display: flex;
-    background-color: rgb(106, 30, 30)!important;
+    background-color: rgb(106, 30, 30) !important;
     opacity: .99;
 }
 
-.navbar{
+.navbar {
     margin: 0;
 }
 
@@ -1064,21 +1065,21 @@ div.email {
     font-size: 1.2rem;
 }
 
-.menu-items{
+.menu-items {
     transition: color 0.3s ease-in-out;
 }
 
 .menu-items a {
     text-decoration: none;
-    color: white!important;
+    color: white !important;
     font-weight: 500;
     transition: color 0.3s ease-in-out;
     font-family: 'Handlee', cursive;
 }
 
 .menu-items a:hover {
-    color: black!important;
-    
+    color: black !important;
+
 }
 
 .logo {
@@ -1087,7 +1088,8 @@ div.email {
     margin-bottom: 0.5rem;
     font-family: 'Handlee', cursive;
 }
-.logo a{
+
+.logo a {
     font-family: 'Handlee', cursive;
     color: white;
 
@@ -1120,19 +1122,20 @@ div.email {
 }
 
 /* ......../ media query /.......... */
-@media (min-width: 769px){
-    .navbar-container{
+@media (min-width: 769px) {
+    .navbar-container {
         display: flex;
         justify-content: space-between;
     }
 
 
 }
+
 @media (max-width: 768px) {
     /* .navbar {
         opacity: 0;
     } */
-  
+
 
     .menu-items a {
         color: rgb(106, 30, 30);
@@ -1240,7 +1243,7 @@ div.email {
         transform: rotate(-35deg);
     }
 
- 
+
     .img-container {
         margin: 0;
     }
@@ -1255,7 +1258,7 @@ div.email {
         font-size: 1.6rem;
     }
 
-      
+
     .logo {
         position: absolute;
         top: 06px;
