@@ -1074,6 +1074,8 @@ body {
 .menu-items {
     order: 2;
     display: flex;
+    background-color: rgb(106, 30, 30)!important;
+    opacity: .99;
 }
 
 .navbar{
@@ -1089,7 +1091,7 @@ body {
 
 .menu-items a {
     text-decoration: none;
-    color: white;
+    color: white!important;
     font-weight: 500;
     transition: color 0.3s ease-in-out;
     font-family: 'Handlee', cursive;
@@ -1666,7 +1668,7 @@ body {
 }
 
 .line1, .line2, .line3 {
-    background-color: black !important;
+    background-color: white !important;
 }
 
 .tagline {
