@@ -963,6 +963,8 @@ div.email{
 .exp{
     display: flex;
     flex-direction: row;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 
