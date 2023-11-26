@@ -96,3 +96,10 @@ AOS.init({
     once: false, // Animate every time an element is in the viewport
     mirror: true, // Whether elements should animate out while scrolling past them
 });
+
+$(document).ready(function() {
+    $('.hamburger-lines').click(function() {
+      $(this).toggleClass('hamburger-active');
+    });
+  });
+  
