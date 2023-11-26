@@ -102,4 +102,3 @@ $(document).ready(function() {
       $(this).toggleClass('hamburger-active');
     });
   });
-  
