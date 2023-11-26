@@ -1076,6 +1076,10 @@ body {
     display: flex;
 }
 
+.navbar{
+    margin: 0;
+}
+
 .menu-items li {
     list-style: none;
     margin-left: 1.5rem;
@@ -1088,10 +1092,11 @@ body {
     color: white;
     font-weight: 500;
     transition: color 0.3s ease-in-out;
+    font-family: 'Handlee', cursive;
 }
 
 .menu-items a:hover {
-    color: #117964;
+    color: gray;
     transition: color 0.3s ease-in-out;
 }
 
@@ -1099,6 +1104,7 @@ body {
     order: 1;
     font-size: 2.3rem;
     margin-bottom: 0.5rem;
+    font-family: 'Handlee', cursive;
 }
 
 /* ............//// Showcase styling ////......... */
@@ -1444,11 +1450,19 @@ body {
 }
 
 /* ......../ media query /.......... */
-
-@media (max-width: 768px) {
-    .navbar {
-        opacity: 0.95;
+@media (min-width: 769px){
+    .navbar-container{
+        display: flex;
+        justify-content: space-between;
     }
+
+
+}
+@media (max-width: 768px) {
+    /* .navbar {
+        opacity: 0;
+    } */
+  
 
     .menu-items a {
         color: rgb(106, 30, 30);
