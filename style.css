@@ -1064,6 +1064,10 @@ div.email {
     font-size: 1.2rem;
 }
 
+.menu-items{
+    transition: color 0.3s ease-in-out;
+}
+
 .menu-items a {
     text-decoration: none;
     color: white!important;
@@ -1073,8 +1077,8 @@ div.email {
 }
 
 .menu-items a:hover {
-    color: gray;
-    transition: color 0.3s ease-in-out;
+    color: black!important;
+    
 }
 
 .logo {
