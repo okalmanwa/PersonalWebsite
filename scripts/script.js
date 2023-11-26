@@ -102,3 +102,17 @@ $(document).ready(function() {
       $(this).toggleClass('hamburger-active');
     });
   });
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var menuToggle = document.getElementById('menu-toggle');
+    var menuLinks = document.querySelectorAll('.navbar-container .menu-items a');
+
+    menuLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            // Uncheck the menu toggle checkbox
+            menuToggle.checked = false;
+        });
+    });
+});
+
