@@ -1106,6 +1106,11 @@ body {
     margin-bottom: 0.5rem;
     font-family: 'Handlee', cursive;
 }
+.logo a{
+    font-family: 'Handlee', cursive;
+    color: white;
+
+}
 
 /* ............//// Showcase styling ////......... */
 
