@@ -10,6 +10,7 @@
 body {
     background-color: #fff;
     width: 100%;
+    max-width: 1600px!important;
 }
 
 /* Header Styles */
@@ -83,7 +84,7 @@ header {
 main {
     align-items: center;
     margin: auto;
-    max-width: 1500px;
+  
 }
 
 .mainpageContainer {

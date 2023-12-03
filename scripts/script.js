@@ -55,6 +55,8 @@ $('#close3').click(function () {
 
 
 
+
+
 $(document).ready(function () {
     var animationDuration = 'slow';
 
@@ -95,6 +97,7 @@ AOS.init({
     duration: 1200, // Duration of animation
     once: true, // Animate every time an element is in the viewport
     mirror: true, // Whether elements should animate out while scrolling past them
+
 });
 
 $(document).ready(function() {
