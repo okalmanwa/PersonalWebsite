@@ -11,9 +11,12 @@ body {
     background-color: #fff;
     width: 100%;
     max-width: 1600px!important;
+    overflow-y: auto;
   
 }
-
+body::-webkit-scrollbar {
+    display: none;
+  }
 
 /* Header Styles */
 header {
