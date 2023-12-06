@@ -13,9 +13,7 @@ body {
     max-width: 1600px!important;
   
 }
-body::-webkit-scrollbar {
-    display: none;
-  }
+
 
 /* Header Styles */
 header {
