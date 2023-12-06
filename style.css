@@ -11,6 +11,7 @@ body {
     background-color: #fff;
     width: 100%;
     max-width: 1600px!important;
+    overflow: hidden!important;
 }
 
 /* Header Styles */
