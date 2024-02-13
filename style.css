@@ -205,7 +205,9 @@ h4, .experience_header {
 }
 
 
-
+.top-item{
+    padding-top: 2%;
+}
 /* ....................................START OF EXPERIENCE SECTION.................................*/
 
 .ExpPageContainer {
