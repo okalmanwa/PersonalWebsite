@@ -395,7 +395,7 @@ h4, .experience_header {
     flex-direction: row;
     overflow: auto;
     width: 100%;
-    max-width: 1500px;
+    max-width: 1900px;
     justify-content: center;
 }
 
@@ -977,6 +977,7 @@ div.email {
     .navbar-container {
         display: flex;
         justify-content: space-between;
+        padding-top: 10px;
     }
 }
 
