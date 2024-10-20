@@ -335,7 +335,7 @@ h4, .experience_header {
 
 .cons {
     transition: var(--transition-time) ease;
-    text-align: left;
+    text-align: center;
 }
 
 .cons:hover {
