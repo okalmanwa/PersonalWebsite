@@ -101,7 +101,7 @@
         <div class="project-category" data-aos="fade-up">
           <h5 class="category-title">Web Development</h5>
           <div class="project-grid">
-            <div class="project-card" data-preview="claudnet">
+            <div class="project-card">
               <div class="project-icon">
                 <i class="fa-solid fa-link"></i>
               </div>
@@ -109,15 +109,11 @@
               <p class="project-description">
                 A comprehensive web platform for networking and professional connections. Built with modern web technologies to facilitate meaningful business relationships and career growth opportunities.
               </p>
-              <div class="project-preview-hover">
-                <button class="preview-close-btn">×</button>
-                <iframe src="https://claudnet.com" frameborder="0"></iframe>
-              </div>
               <a href="https://claudnet.com" target="_blank" class="project-link">
                 <i class="fa-solid fa-external-link-alt"></i> Visit Website
               </a>
             </div>
-            <div class="project-card" data-preview="cider">
+            <div class="project-card">
               <div class="project-icon">
                 <i class="fa-solid fa-briefcase"></i>
               </div>
@@ -125,10 +121,6 @@
               <p class="project-description">
                 A job board and opportunities platform for development economics research positions. Features filtering, application tracking, and connects researchers with academic and professional opportunities.
               </p>
-              <div class="project-preview-hover">
-                <button class="preview-close-btn">×</button>
-                <iframe src="https://cideropportunities.github.io/cider/" frameborder="0"></iframe>
-              </div>
               <a href="https://cideropportunities.github.io/cider/" target="_blank" class="project-link">
                 <i class="fa-solid fa-external-link-alt"></i> Visit Platform
               </a>
@@ -152,7 +144,7 @@
         <div class="project-category" data-aos="fade-up">
           <h5 class="category-title">Data Science</h5>
           <div class="project-grid">
-            <div class="project-card" data-preview="killings">
+            <div class="project-card">
               <div class="project-icon">
                 <i class="fa-solid fa-chart-bar"></i>
               </div>
@@ -160,10 +152,6 @@
               <p class="project-description">
                 An interactive data visualization analyzing police killings in Kenya. Uses D3.js and modern web technologies to present complex data in an accessible, thought-provoking format.
               </p>
-              <div class="project-preview-hover">
-                <button class="preview-close-btn">×</button>
-                <iframe src="https://okalmanwa.github.io/killingsKE/" frameborder="0"></iframe>
-              </div>
               <a href="https://okalmanwa.github.io/killingsKE/" target="_blank" class="project-link">
                 <i class="fa-solid fa-external-link-alt"></i> View Visualization
               </a>
@@ -199,7 +187,7 @@
         <div class="project-category" data-aos="fade-up">
           <h5 class="category-title">Full Stack Applications</h5>
           <div class="project-grid">
-            <div class="project-card" data-preview="adhd">
+            <div class="project-card">
               <div class="project-icon">
                 <i class="fa-solid fa-brain"></i>
               </div>
@@ -207,15 +195,11 @@
               <p class="project-description">
                 A comprehensive mobile and web application designed to help individuals with ADHD manage their daily tasks, focus, and productivity. Features task tracking, focus timers, and progress monitoring.
               </p>
-              <div class="project-preview-hover">
-                <button class="preview-close-btn">×</button>
-                <iframe src="https://adhd-app-uzqz.vercel.app/login" frameborder="0"></iframe>
-              </div>
               <a href="https://adhd-app-uzqz.vercel.app/login" target="_blank" class="project-link">
                 <i class="fa-solid fa-external-link-alt"></i> Visit App
               </a>
             </div>
-            <div class="project-card" data-preview="udder">
+            <div class="project-card">
               <div class="project-icon">
                 <i class="fa-solid fa-shield-halved"></i>
               </div>
@@ -223,10 +207,6 @@
               <p class="project-description">
                 A specialized monitoring application for dairy farm management, focusing on udder cleanliness tracking and hygiene compliance. Helps ensure optimal milk quality and animal health standards.
               </p>
-              <div class="project-preview-hover">
-                <button class="preview-close-btn">×</button>
-                <iframe src="https://udder-cleanliness-monitor.vercel.app/login?redirectedFrom=%2F" frameborder="0"></iframe>
-              </div>
               <a href="https://udder-cleanliness-monitor.vercel.app/login?redirectedFrom=%2F" target="_blank" class="project-link">
                 <i class="fa-solid fa-external-link-alt"></i> Visit App
               </a>
@@ -475,61 +455,6 @@
         });
       }, 1000);
 
-      // Handle close button clicks
-      document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('preview-close-btn')) {
-          e.preventDefault();
-          e.stopPropagation();
-          const preview = e.target.closest('.project-preview-hover');
-          preview.style.opacity = '0';
-          preview.style.visibility = 'hidden';
-          return;
-        }
-        
-        // Close any open previews when clicking outside
-        if (!e.target.closest('.project-preview-hover') && !e.target.closest('.project-card')) {
-          const openPreviews = document.querySelectorAll('.project-preview-hover');
-          openPreviews.forEach(preview => {
-            preview.style.opacity = '0';
-            preview.style.visibility = 'hidden';
-          });
-        }
-      });
-
-      // Handle touch events for mobile devices
-      let touchStartTime = 0;
-      document.addEventListener('touchstart', function(e) {
-        if (e.target.closest('.project-card')) {
-          touchStartTime = Date.now();
-        }
-      });
-
-      document.addEventListener('touchend', function(e) {
-        if (e.target.closest('.project-card')) {
-          const touchDuration = Date.now() - touchStartTime;
-          // Long press (500ms+) to show preview on mobile
-          if (touchDuration > 500) {
-            e.preventDefault();
-            const projectCard = e.target.closest('.project-card');
-            const preview = projectCard.querySelector('.project-preview-hover');
-            if (preview) {
-              preview.style.opacity = '1';
-              preview.style.visibility = 'visible';
-            }
-          }
-        }
-      });
-
-      // Handle escape key to close previews
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          const openPreviews = document.querySelectorAll('.project-preview-hover');
-          openPreviews.forEach(preview => {
-            preview.style.opacity = '0';
-            preview.style.visibility = 'hidden';
-          });
-        }
-      });
     });
   </script>
 </body>
