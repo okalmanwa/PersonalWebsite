@@ -838,6 +838,25 @@ h4, .experience_header {
     .project-preview {
         height: 200px;
     }
+    
+    .hero-intro {
+        margin-top: 1rem;
+        max-width: 100%;
+    }
+    
+    .hero-greeting {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .hero-background {
+        font-size: 0.9rem;
+    }
+    
+    .concentrations {
+        font-size: 0.85rem;
+        margin-top: 0.4rem;
+    }
 }
 
 .NinjaRescue {
@@ -1582,6 +1601,37 @@ div.email {
 
 .tagline {
     text-align: center;
+}
+
+.hero-intro {
+    margin-top: 1.5rem;
+    max-width: 500px;
+    text-align: left;
+}
+
+.hero-greeting {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    font-family: var(--font-family-primary);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.hero-background {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    font-family: var(--font-family-secondary);
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.concentrations {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-family: var(--font-family-secondary);
+    margin-top: 0.5rem;
+    opacity: 0.8;
+    font-style: italic;
 }
 
 figure {
