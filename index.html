@@ -24,6 +24,29 @@
   <link rel="stylesheet" href="experience.css" />
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
+  <!-- Preload external project sites for better performance -->
+  <link rel="preconnect" href="https://claudnet.com" />
+  <link rel="preconnect" href="https://adhd-app-uzqz.vercel.app" />
+  <link rel="preconnect" href="https://udder-cleanliness-monitor.vercel.app" />
+  <link rel="preconnect" href="https://cideropportunities.github.io" />
+  <link rel="preconnect" href="https://github.com" />
+  <link rel="preconnect" href="https://drive.google.com" />
+  
+  <!-- Preload key images -->
+  <link rel="preload" href="images/homephoto-scaled.png" as="image" />
+  <link rel="preload" href="images/backgroungimg.png" as="image" />
+  
+  <!-- Prefetch project pages -->
+  <link rel="prefetch" href="https://claudnet.com" />
+  <link rel="prefetch" href="https://adhd-app-uzqz.vercel.app/login" />
+  <link rel="prefetch" href="https://udder-cleanliness-monitor.vercel.app/login?redirectedFrom=%2F" />
+  <link rel="prefetch" href="https://cideropportunities.github.io/cider/" />
+  <link rel="prefetch" href="https://github.com/okalmanwa/WorldCupAnalysis" />
+  <link rel="prefetch" href="https://github.com/okalmanwa/PhotographyPortfolio" />
+  <link rel="prefetch" href="https://drive.google.com/file/d/14_dOSQ4tJ9_F5pIdMeczM-R7y0BtbqQB/view?usp=sharing" />
+  <link rel="prefetch" href="https://okalmanwa.github.io/killingsKE/" />
+  
   <title>Carey</title>
 </head>
 
@@ -41,11 +64,8 @@
         </div>
         <ul class="menu-items">
           <li><a href="#intro">INTRODUCTION</a></li>
-          <li><a href="#MyInitiatives">INITIATIVES</a></li>
+          <li><a href="#projects">PROJECTS</a></li>
           <li><a href="#Experiences2">BLOG</a></li>
-          <li><a href="https://github.com/okalmanwa">PROJECTS</a></li>
-          <li><a href="./experience.html">EXPERIENCE</a></li>
-
         </ul>
         <h1 class="logo"><a href="./index.html">CO</a></h1>
       </div>
@@ -54,7 +74,7 @@
 
     <div class="mainpageContainer" id="Top">
       <figure class="homephoto" data-aos="fade-right">
-        <img src="images/homephoto-scaled.png" alt="" />
+        <img src="images/homePhoto-removebg-preview.png" alt="" />
       </figure>
 
       <div class="headertextcontainer">
@@ -94,75 +114,149 @@
       </p>
     </div>
 
-    <div id="MyInitiatives" class="initiatives">
-      <h4 class="initiativehead" data-aos="fade-right">INITIATIVES</h4>
-      <div class="imagesHolder">
-        <div class="topimages">
-          <figure class="school" data-aos="fade-up">
-            <img src="images/volunteer.png" alt="Volunteering" />
-          </figure>
-          <div id="description" class="hidden">
-            <p class="JStext">
-              As I neared the end of my high school years and began preparing
-              for the future, I noticed a significant issue at Darajambili
-              Primary school, where I had studied earlier. They were facing a
-              shortage of math tutors due to budget constraints, which was
-              creating a noticeable gap in the students' education. Driven by
-              a strong desire to contribute, I decided to take action. Instead
-              of being idle, I dedicated my weekends to volunteer as a math
-              tutor for these students. My approach was patient and
-              passionate. <br /><br />
-              I focused on making math concepts more accessible and
-              understandable. The results were evident after each session. The
-              students' comprehension of math visibly improved, and their
-              grades began to rise. For me, this experience was more than just
-              teaching mathematics; it was about instilling confidence and a
-              love for learning in these young minds.
-              <button id="close1" class="close">Close</button>
-            </p>
-          </div>
-
-          <figure class="HotelManagement" data-aos="fade-down">
-            <img src="./images/hotel2.png" alt="an image of hotel management system" />
-          </figure>
-          <div id="project" class="hidden">
-            <p class="JStext">
-              I created a hotel management system using Visual Basic for
-              Applications for Ufanisi Resort in Kisii. This system
-              streamlines guest bookings, report generation, and inventory
-              management for the hotel. In addition, I added advanced data
-              analysis capabilities to help Ufanisi Resort make smarter
-              decisions. The system also features a user-friendly interface I
-              designed for easy navigation and efficient use of its functions.
-              You can check out an unlicensed version of the system here
-              <a href="https://drive.google.com/drive/folders/1IgnwzFb3Xuzntn3LhpXAi1cwU-OLWDWw?usp=sharing"
-                target="_blank" target="_blank"><i class="fa-solid fa-link"></i>.</a><button id="close2"
-                class="close">Close</button>
-            </p>
-          </div>
-
-          <figure class="Tech" data-aos="fade-up">
-            <img src="images/web.png" alt="an image of vijana na computer" />
-          </figure>
-          <div id="student_training" class="hidden">
-            <p class="JStext">
-              In response to our community's struggles with insecurity and
-              unemployment, I started "Vijana na Computer." Our goal is simple
-              but vital: give local youth a boost by teaching them how to
-              code. As the founder and lead instructor, my job was to steer a
-              small, eager group of 10 students into the exciting realm of web
-              development. <br /><br />This adventure meant diving into CSS,
-              HTML5, and the ever-changing world of JavaScript. But it wasn't
-              just about coding. I also shared handy tips on tools like
-              Twitter Bootstrap, how to showcase projects on GitHub, and the
-              tricks to make a website more noticeable on search engines
-              (that's SEO for you!). Teaching these skills was part of a
-              bigger picture – to give a comprehensive education. It's been an
-              amazing journey guiding these incredible young minds.
-              <button id="close3" class="close">Close</button>
-            </p>
+    <div id="projects" class="projects">
+      <h4 class="projects-head" data-aos="fade-right">PROJECTS</h4>
+      <div class="projects-container">
+        
+        <!-- Web Development Section -->
+        <div class="project-category" data-aos="fade-up">
+          <h5 class="category-title">Web Development</h5>
+          <div class="project-grid">
+            <div class="project-card" data-preview="claudnet">
+              <div class="project-icon">
+                <i class="fa-solid fa-link"></i>
+              </div>
+              <h6 class="project-title">Claudnet</h6>
+              <p class="project-description">
+                A comprehensive web platform for networking and professional connections. Built with modern web technologies to facilitate meaningful business relationships and career growth opportunities.
+              </p>
+              <div class="project-preview-hover">
+                <button class="preview-close-btn">×</button>
+                <iframe src="https://claudnet.com" frameborder="0"></iframe>
+              </div>
+              <a href="https://claudnet.com" target="_blank" class="project-link">
+                <i class="fa-solid fa-external-link-alt"></i> Visit Website
+              </a>
+            </div>
+            <div class="project-card" data-preview="cider">
+              <div class="project-icon">
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+              <h6 class="project-title">CIDER Opportunities</h6>
+              <p class="project-description">
+                A job board and opportunities platform for development economics research positions. Features filtering, application tracking, and connects researchers with academic and professional opportunities.
+              </p>
+              <div class="project-preview-hover">
+                <button class="preview-close-btn">×</button>
+                <iframe src="https://cideropportunities.github.io/cider/" frameborder="0"></iframe>
+              </div>
+              <a href="https://cideropportunities.github.io/cider/" target="_blank" class="project-link">
+                <i class="fa-solid fa-external-link-alt"></i> Visit Platform
+              </a>
+            </div>
+            <div class="project-card">
+              <div class="project-icon">
+                <i class="fa-solid fa-camera"></i>
+              </div>
+              <h6 class="project-title">Photography Portfolio</h6>
+              <p class="project-description">
+                A responsive photography portfolio website showcasing professional work. Built with HTML, CSS, and JavaScript, featuring a clean gallery layout and smooth navigation.
+              </p>
+              <a href="https://github.com/okalmanwa/PhotographyPortfolio" target="_blank" class="project-link">
+                <i class="fa-brands fa-github"></i> View Repository
+              </a>
+            </div>
           </div>
         </div>
+
+        <!-- Data Science Section -->
+        <div class="project-category" data-aos="fade-up">
+          <h5 class="category-title">Data Science</h5>
+          <div class="project-grid">
+            <div class="project-card" data-preview="killings">
+              <div class="project-icon">
+                <i class="fa-solid fa-chart-bar"></i>
+              </div>
+              <h6 class="project-title">Police Killings Visualization</h6>
+              <p class="project-description">
+                An interactive data visualization analyzing police killings in Kenya. Uses D3.js and modern web technologies to present complex data in an accessible, thought-provoking format.
+              </p>
+              <div class="project-preview-hover">
+                <button class="preview-close-btn">×</button>
+                <iframe src="https://okalmanwa.github.io/killingsKE/" frameborder="0"></iframe>
+              </div>
+              <a href="https://okalmanwa.github.io/killingsKE/" target="_blank" class="project-link">
+                <i class="fa-solid fa-external-link-alt"></i> View Visualization
+              </a>
+            </div>
+            <div class="project-card">
+              <div class="project-icon">
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <h6 class="project-title">Retail Sales Analysis</h6>
+              <p class="project-description">
+                Comprehensive analysis of retail sales data using Python, Pandas, and visualization libraries. Includes statistical analysis, trend identification, and actionable business insights.
+              </p>
+              <a href="https://drive.google.com/file/d/14_dOSQ4tJ9_F5pIdMeczM-R7y0BtbqQB/view?usp=sharing" target="_blank" class="project-link">
+                <i class="fa-solid fa-external-link-alt"></i> View Report
+              </a>
+            </div>
+            <div class="project-card">
+              <div class="project-icon">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <h6 class="project-title">World Cup Analysis</h6>
+              <p class="project-description">
+                Comprehensive analysis of World Cup data using Jupyter Notebook, Python, and data visualization libraries. Explores team performance, player statistics, and tournament trends.
+              </p>
+              <a href="https://github.com/okalmanwa/WorldCupAnalysis" target="_blank" class="project-link">
+                <i class="fa-brands fa-github"></i> View Repository
+              </a>
+            </div>
+          </div>
+          </div>
+
+        <!-- Full Stack Applications Section -->
+        <div class="project-category" data-aos="fade-up">
+          <h5 class="category-title">Full Stack Applications</h5>
+          <div class="project-grid">
+            <div class="project-card" data-preview="adhd">
+              <div class="project-icon">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <h6 class="project-title">ADHD App</h6>
+              <p class="project-description">
+                A comprehensive mobile and web application designed to help individuals with ADHD manage their daily tasks, focus, and productivity. Features task tracking, focus timers, and progress monitoring.
+              </p>
+              <div class="project-preview-hover">
+                <button class="preview-close-btn">×</button>
+                <iframe src="https://adhd-app-uzqz.vercel.app/login" frameborder="0"></iframe>
+              </div>
+              <a href="https://adhd-app-uzqz.vercel.app/login" target="_blank" class="project-link">
+                <i class="fa-solid fa-external-link-alt"></i> Visit App
+              </a>
+            </div>
+            <div class="project-card" data-preview="udder">
+              <div class="project-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h6 class="project-title">Udder Cleanliness Monitor</h6>
+              <p class="project-description">
+                A specialized monitoring application for dairy farm management, focusing on udder cleanliness tracking and hygiene compliance. Helps ensure optimal milk quality and animal health standards.
+              </p>
+              <div class="project-preview-hover">
+                <button class="preview-close-btn">×</button>
+                <iframe src="https://udder-cleanliness-monitor.vercel.app/login?redirectedFrom=%2F" frameborder="0"></iframe>
+              </div>
+              <a href="https://udder-cleanliness-monitor.vercel.app/login?redirectedFrom=%2F" target="_blank" class="project-link">
+                <i class="fa-solid fa-external-link-alt"></i> Visit App
+              </a>
+            </div>
+          </div>
+          </div>
+
+
+
       </div>
     </div>
 
@@ -238,6 +332,89 @@
   <script src="scripts/jquery-3.6.1.js"></script>
   <script src="scripts/script.js"></script>
   <script src="https://kit.fontawesome.com/1b8203cc44.js" crossorigin="anonymous"></script>
+  
+  <script>
+    // Enhanced preloading for better performance
+    document.addEventListener('DOMContentLoaded', function() {
+      // Preload all project links immediately after page load
+      const projectLinks = [
+        'https://claudnet.com',
+        'https://adhd-app-uzqz.vercel.app/login',
+        'https://udder-cleanliness-monitor.vercel.app/login?redirectedFrom=%2F',
+        'https://cideropportunities.github.io/cider/',
+        'https://github.com/okalmanwa/WorldCupAnalysis',
+        'https://github.com/okalmanwa/PhotographyPortfolio',
+        'https://drive.google.com/file/d/14_dOSQ4tJ9_F5pIdMeczM-R7y0BtbqQB/view?usp=sharing',
+        'https://okalmanwa.github.io/killingsKE/'
+      ];
+      
+      // Preload all project pages after a short delay
+      setTimeout(() => {
+        projectLinks.forEach(url => {
+          const link = document.createElement('link');
+          link.rel = 'prefetch';
+          link.href = url;
+          document.head.appendChild(link);
+        });
+      }, 1000);
+
+      // Handle close button clicks
+      document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('preview-close-btn')) {
+          e.preventDefault();
+          e.stopPropagation();
+          const preview = e.target.closest('.project-preview-hover');
+          preview.style.opacity = '0';
+          preview.style.visibility = 'hidden';
+          return;
+        }
+        
+        // Close any open previews when clicking outside
+        if (!e.target.closest('.project-preview-hover') && !e.target.closest('.project-card')) {
+          const openPreviews = document.querySelectorAll('.project-preview-hover');
+          openPreviews.forEach(preview => {
+            preview.style.opacity = '0';
+            preview.style.visibility = 'hidden';
+          });
+        }
+      });
+
+      // Handle touch events for mobile devices
+      let touchStartTime = 0;
+      document.addEventListener('touchstart', function(e) {
+        if (e.target.closest('.project-card')) {
+          touchStartTime = Date.now();
+        }
+      });
+
+      document.addEventListener('touchend', function(e) {
+        if (e.target.closest('.project-card')) {
+          const touchDuration = Date.now() - touchStartTime;
+          // Long press (500ms+) to show preview on mobile
+          if (touchDuration > 500) {
+            e.preventDefault();
+            const projectCard = e.target.closest('.project-card');
+            const preview = projectCard.querySelector('.project-preview-hover');
+            if (preview) {
+              preview.style.opacity = '1';
+              preview.style.visibility = 'visible';
+            }
+          }
+        }
+      });
+
+      // Handle escape key to close previews
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          const openPreviews = document.querySelectorAll('.project-preview-hover');
+          openPreviews.forEach(preview => {
+            preview.style.opacity = '0';
+            preview.style.visibility = 'hidden';
+          });
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
