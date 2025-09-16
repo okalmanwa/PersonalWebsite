@@ -857,6 +857,23 @@ h4, .experience_header {
         font-size: 0.85rem;
         margin-top: 0.4rem;
     }
+    
+    .class-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .class-card {
+        padding: 1.5rem;
+    }
+    
+    .class-title {
+        font-size: 1.2rem;
+    }
+    
+    .class-description {
+        font-size: 13px;
+    }
 }
 
 .NinjaRescue {
@@ -1626,12 +1643,101 @@ div.email {
 }
 
 .concentrations {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-color);
+    font-family: var(--font-family-tertiary);
+    margin-top: 0.8rem;
+    opacity: 0.95;
+    font-weight: 500;
+    text-align: center;
+    background: linear-gradient(135deg, var(--main-bg-color), var(--highlight-bg-color));
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 4px 15px rgba(106, 30, 30, 0.3);
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Classes Section Styles */
+.classes {
+    padding: 5% 0 5% 0;
+    background-color: rgb(234, 232, 232);
+}
+
+.classes-container {
+    padding: 0 5% 0 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.class-category {
+    margin-bottom: 3rem;
+}
+
+.class-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.class-card {
+    background-color: var(--secondary-bg-color);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-time) ease;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.class-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--main-bg-color), var(--highlight-bg-color));
+    transform: scaleX(0);
+    transition: transform var(--transition-time) ease;
+}
+
+.class-card:hover::before {
+    transform: scaleX(1);
+}
+
+.class-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: var(--main-bg-color);
+}
+
+.class-icon {
+    font-size: 2.5rem;
+    color: var(--main-bg-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.class-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--main-bg-color);
+    margin-bottom: 1rem;
+    font-family: var(--font-family-tertiary);
+    text-align: center;
+}
+
+.class-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
     font-family: var(--font-family-secondary);
-    margin-top: 0.5rem;
-    opacity: 0.8;
-    font-style: italic;
+    text-align: left;
+    font-size: 14px;
 }
 
 figure {
