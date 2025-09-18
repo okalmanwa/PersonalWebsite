@@ -47,7 +47,7 @@
 }
 
 .titleXP {
-    font-size: 25px!important;
+    font-size: 1.8rem!important;
     color: #fff; /* You can choose your preferred color */
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -73,13 +73,13 @@
     color:black;
      font-family: 'Handlee', cursive;
      font-weight: bold;
-     font-size:1.5rem!important;
+     font-size:1.2rem!important;
 }
 
 .sideBar h6{
     color: rgb(106, 30, 30);
     font-family: 'Handlee', cursive;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: bold;
 
 
@@ -115,7 +115,7 @@
     border-bottom: .5px solid maroon;
     font-family: 'Rokkitt', serif;
     align-items: center;
-    font-size: 19px;
+    font-size: 1rem;
     padding-bottom: 1%;
 }  
 .last-row{
@@ -171,7 +171,7 @@
     }
 
     .row{
-        font-size: 16px;
+        font-size: 1rem;
     }
 
 
@@ -222,7 +222,7 @@
 
     .descriptionXP{
         padding-top: 0;
-        font-size: 16px;
+        font-size: 1rem;
         text-align: left;
     }
 
@@ -240,7 +240,7 @@
    
 
     .row h4{
-        font-size: 17px!important;
+        font-size: 1.1rem!important;
     }
 
     .TA{
