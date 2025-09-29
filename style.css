@@ -1257,9 +1257,6 @@ h4, .experience_header {
         font-size: 1.1rem;
     }
 
-    .project-description {
-        font-size: 0.9rem;
-    }
 }
 
 
@@ -1471,7 +1468,7 @@ div.email {
 
 @media (max-width: 500px) {
     html {
-        font-size: 65%;
+        font-size: 80%;
     }
 
     .navbar .menu-items li {
