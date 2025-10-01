@@ -1310,18 +1310,14 @@ div.email {
     margin: 0;
 }
 
-.html {
-    font-size: 62.5%;
-}
 
-/* Utility classes */
 .container {
     max-width: 1200px;
     width: 90%;
     margin: auto;
 }
 
-/* Showcase styling */
+
 .showcase-area {
     height: 50vh;
     background: linear-gradient(rgba(240, 240, 240, 0.144), rgba(255, 255, 255, 0.336)), url("https://i.postimg.cc/wT3TQS3V/header-image2.jpg");
@@ -1353,10 +1349,6 @@ div.email {
 }
 
 @media (max-width: 768px) {
-    /* .navbar {
-        opacity: 0;
-    } */
-
     .menu-items a {
         color: var(--main-bg-color);
     }
@@ -1553,7 +1545,6 @@ div.email {
     display: none;
 }
 
-/* Classes Section Styles */
 .classes {
     padding: 5% 0 5% 0;
     background-color: #f5f3f3;
