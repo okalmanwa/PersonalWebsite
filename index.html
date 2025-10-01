@@ -315,34 +315,6 @@
   <script src="scripts/jquery-3.6.1.js"></script>
   <script src="scripts/script.js"></script>
   <script src="https://kit.fontawesome.com/1b8203cc44.js" crossorigin="anonymous"></script>
-
-  <script>
-    // Enhanced preloading for better performance
-    document.addEventListener('DOMContentLoaded', function () {
-      // Preload all project links immediately after page load
-      const projectLinks = [
-        'https://claudnet.com',
-        'https://adhd-app-uzqz.vercel.app/login',
-        'https://udder-cleanliness-monitor.vercel.app/login?redirectedFrom=%2F',
-        'https://cideropportunities.github.io/cider/',
-        'https://github.com/okalmanwa/WorldCupAnalysis',
-        'https://github.com/okalmanwa/PhotographyPortfolio',
-        'https://drive.google.com/file/d/14_dOSQ4tJ9_F5pIdMeczM-R7y0BtbqQB/view?usp=sharing',
-        'https://okalmanwa.github.io/killingsKE/'
-      ];
-
-      // Preload all project pages after a short delay
-      setTimeout(() => {
-        projectLinks.forEach(url => {
-          const link = document.createElement('link');
-          link.rel = 'prefetch';
-          link.href = url;
-          document.head.appendChild(link);
-        });
-      }, 1000);
-
-    });
-  </script>
 </body>
 
 </html>
