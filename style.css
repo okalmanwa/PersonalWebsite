@@ -320,7 +320,7 @@ h4, .experience_header {
 
 .content {
     font-family: var(--font-family-secondary);
-    font-size: 1rem;
+    font-size: 1.2rem;
     
 }
 
@@ -506,7 +506,7 @@ h4, .experience_header {
     margin-bottom: 1.5rem;
     font-family: var(--font-family-secondary);
     text-align: left;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 
@@ -1126,7 +1126,7 @@ h4, .experience_header {
 
 @media(max-width:546px) {
     .tagline, h4, h5 {
-        font-size: 1rem !important;
+        font-size: 1.3rem !important;
     }
 
     h3 {
@@ -1631,7 +1631,7 @@ div.email {
     margin-bottom: 1.5rem;
     font-family: var(--font-family-secondary);
     text-align: left;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 figure {
