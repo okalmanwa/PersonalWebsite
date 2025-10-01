@@ -1677,3 +1677,12 @@ figure {
         font-size: 0.9rem;
     }
 }
+.blog-read{
+    color: #2c2c3e;
+}
+.blog-read-b{
+    color: #8c93ab;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
