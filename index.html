@@ -8,314 +8,274 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="description" content=" 
-    I'm a first-generation undergraduate from Kisii, Kenya,
-     studying Information Science at Cornell University, with concentrations
-     in Data Science and Behavioral Science." />
+  <meta name="description" content="Website under renovation - Coming back soon!" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Cookie&family=Great+Vibes&family=Handlee&family=Pinyon+Script&family=Poiret+One&family=Raleway:wght@500&family=Roboto+Flex:opsz,wght@8..144,100&display=swap"
-    rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@200&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <title>Under Renovation - Okal</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <link href="style.css" rel="stylesheet" />
-  <link rel="stylesheet" href="experience.css" />
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #800000 0%, #A52A2A 50%, #722F37 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
 
-  <!-- Preload key images -->
-  <link rel="preload" href="images/homephoto-scaled.png" as="image" />
-  <link rel="preload" href="images/backgroungimg.png" as="image" />
+    /* Animated background particles */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
 
-  <title>Okal</title>
+    .particle {
+      position: absolute;
+      background: rgba(255, 218, 185, 0.4);
+      border-radius: 50%;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0.3;
+      }
+      50% {
+        transform: translateY(-100px) translateX(50px) rotate(180deg);
+        opacity: 0.8;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 40px;
+      max-width: 800px;
+      width: 90%;
+    }
+
+    .construction-icon {
+      font-size: 120px;
+      margin-bottom: 30px;
+      animation: bounce 2s infinite;
+      color: #FFDAB9;
+      text-shadow: 0 0 30px rgba(255, 218, 185, 0.6);
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .subtitle {
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 40px;
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+
+    .message {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.8;
+      margin-bottom: 40px;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 30px 0;
+      animation: fadeInUp 1s ease-out 0.9s both;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #FFDAB9, rgba(255, 218, 185, 0.8));
+      border-radius: 10px;
+      animation: progress 3s ease-in-out infinite;
+      box-shadow: 0 0 20px rgba(255, 218, 185, 0.6);
+    }
+
+    @keyframes progress {
+      0% {
+        width: 0%;
+      }
+      50% {
+        width: 70%;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+
+    .contact-info {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      animation: fadeInUp 1s ease-out 1.2s both;
+    }
+
+    .contact-info a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin: 10px 20px;
+    }
+
+    .contact-info a:hover {
+      transform: scale(1.1);
+      text-shadow: 0 0 10px rgba(255, 218, 185, 0.9);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .subtitle {
+        font-size: 1.4rem;
+      }
+      
+      .message {
+        font-size: 1rem;
+      }
+      
+      .construction-icon {
+        font-size: 80px;
+      }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #FFDAB9;
+      border-radius: 50%;
+      animation: sparkle 2s infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <main>
+  <div class="particles" id="particles"></div>
+  
+  <div class="container">
+    <div class="construction-icon">🚧</div>
+    <h1>Under Renovation</h1>
+    <p class="subtitle">I'm making something amazing!</p>
+    <p class="message">
+      My personal website is currently undergoing renovations to bring you an even better experience. 
+      I'll be back online soon with exciting new features and improvements.
+    </p>
+    
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
 
-
-    <nav class="navbar">
-      <div class="navbar-container container">
-        <input type="checkbox" name="" id="menu-toggle">
-        <div class="hamburger-lines">
-          <span class="line line1"></span>
-          <span class="line line2"></span>
-          <span class="line line3"></span>
-        </div>
-        <ul class="menu-items">
-          <li><a href="#projects">PROJECTS</a></li>
-          <li><a href="#classes">COURSES</a></li>
-          <li><a href="#Experiences2">BLOG</a></li>
-        </ul>
-        <h1 class="logo"><a href="./index.html">CO</a></h1>
-      </div>
-    </nav>
-
-
-    <div class="mainpageContainer" id="Top">
-      <figure class="homephoto" data-aos="fade-right">
-        <img src="images/homePhoto-removebg-preview.png" alt="" />
-        <p class="concentrations-mobile" data-aos="fade-up" data-aos-delay="100">
-          Data Science and Behavioral Science
-        </p>
-      </figure>
-
-      <div class="headertextcontainer">
-        <div class="headertext">
-          <p class="buble" data-aos="fade-right"></p>
-          <h3 data-aos="fade-up">CAREY OKAL MANWA</h3>
-          <h4 class="tagline" data-aos="fade-up">
-            Information Science at Cornell University
-          </h4>
-          <p class="concentrations" data-aos="fade-up" data-aos-delay="100">
-            Data Science and Behavioral Science
-          </p>
-          <p class="buble2" data-aos="fade-right"></p>
-        </div>
+    <div class="contact-info">
+      <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 15px;">In the meantime, feel free to reach out:</p>
+      <a href="mailto:careyokal@gmail.com">📧 careyokal@gmail.com</a>
+      <p style="color: rgba(255, 255, 255, 0.8); margin-top: 20px; font-size: 0.9rem;">- Carey Okal Manwa</p>
       </div>
     </div>
 
+  <script>
+    // Create floating particles
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 20;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.width = Math.random() * 10 + 5 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
 
-    <div id="projects" class="projects">
-      <h4 class="projects-head" data-aos="fade-right">PROJECTS</h4>
-      <div class="projects-container">
+    // Create sparkles
+    function createSparkles() {
+      const container = document.querySelector('.container');
+      setInterval(() => {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.animationDelay = Math.random() * 2 + 's';
+        container.appendChild(sparkle);
+        
+        setTimeout(() => {
+          sparkle.remove();
+        }, 2000);
+      }, 500);
+    }
 
-        <!-- Web Development Section -->
-        <div class="project-category" data-aos="fade-up">
-          <h5 class="category-title">Web Development</h5>
-          <div class="project-grid">
-            <div class="project-card">
-              <div class="project-icon">
-                <i class="fa-solid fa-link"></i>
-              </div>
-              <h6 class="project-title">Claudnet</h6>
-              <p class="project-description">
-                A responsive business website built with HTML5, CSS3, and JavaScript for a telecommunications company.
-                Features modern design, mobile optimization, interactive pricing packages, and contact forms. SEO optimized. Handed over to client.
-             
-              </p>
-              <a href="https://claudnet.com" target="_blank" class="project-link">
-                <i class="fa-solid fa-external-link-alt"></i> Visit Website
-              </a>
-            </div>
-            <div class="project-card">
-              <div class="project-icon">
-                <i class="fa-solid fa-briefcase"></i>
-              </div>
-              <h6 class="project-title">CIDER Opportunities</h6>
-              <p class="project-description">
-                A job board and opportunities platform for development economics research positions. Features filtering,
-                application tracking, and connects researchers with academic and professional opportunities.
-              </p>
-              <a href="https://cideropportunities.github.io/cider/" target="_blank" class="project-link">
-                <i class="fa-solid fa-external-link-alt"></i> Visit Platform
-              </a>
-            </div>
-            <div class="project-card">
-              <div class="project-icon">
-                <i class="fa-solid fa-camera"></i>
-              </div>
-              <h6 class="project-title">Photography Portfolio</h6>
-              <p class="project-description">
-                A dynamic photography portfolio website built with PHP, MySQL, and Twitter Bootstrap. Features separate
-                admin and client portals with full CRUD operations, image gallery management, user authentication, and
-                database-driven content. Includes comprehensive admin panel for portfolio management.
-              </p>
-              <a href="https://github.com/okalmanwa/PhotographyPortfolio" target="_blank" class="project-link">
-                <i class="fa-brands fa-github"></i> View Repository
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Data Science Section -->
-        <div class="project-category" data-aos="fade-up">
-          <h5 class="category-title">Data Science</h5>
-          <div class="project-grid">
-            <div class="project-card">
-              <div class="project-icon">
-                <i class="fa-solid fa-chart-bar"></i>
-              </div>
-              <h6 class="project-title">Police Killings Visualization</h6>
-              <p class="project-description">
-                An interactive data visualization analyzing police killings in Kenya and forced disappearences. Uses D3.js. Final personal project after taking Visual Data Analytics for Web class. 
-              </p>
-              <a href="https://okalmanwa.github.io/killingsKE/" target="_blank" class="project-link">
-                <i class="fa-solid fa-external-link-alt"></i> View Visualization
-              </a>
-            </div>
-            <div class="project-card">
-              <div class="project-icon">
-                <i class="fa-solid fa-store"></i>
-              </div>
-              <h6 class="project-title">Retail Sales Analysis</h6>
-              <p class="project-description">
-                Comprehensive analysis of retail sales data using Python, Pandas, and visualization libraries. Includes
-                statistical analysis, trend identification, and actionable business insights.
-              </p>
-              <a href="https://drive.google.com/file/d/14_dOSQ4tJ9_F5pIdMeczM-R7y0BtbqQB/view?usp=sharing"
-                target="_blank" class="project-link">
-                <i class="fa-solid fa-external-link-alt"></i> View Report
-              </a>
-            </div>
-            <div class="project-card">
-              <div class="project-icon">
-                <i class="fa-solid fa-chart-line"></i>
-              </div>
-              <h6 class="project-title">World Cup Analysis</h6>
-              <p class="project-description">
-                Comprehensive analysis of World Cup data using Jupyter Notebook, Python, and data visualization
-                libraries. Explores team performance, player statistics, and tournament trends.
-              </p>
-              <a href="https://github.com/okalmanwa/WorldCupAnalysis" target="_blank" class="project-link">
-                <i class="fa-brands fa-github"></i> View Repository
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Full Stack Applications Section -->
-        <div class="project-category" data-aos="fade-up">
-          <h5 class="category-title">Full Stack Applications</h5>
-          <div class="project-grid">
-            <div class="project-card">
-              <div class="project-icon">
-                <i class="fa-solid fa-brain"></i>
-              </div>
-              <h6 class="project-title">ADHD App</h6>
-              <p class="project-description">
-                A comprehensive mobile and web application designed to help individuals with ADHD manage their daily
-                tasks, focus, and productivity. Features task tracking, focus timers, and progress monitoring.
-              </p>
-              <a href="https://adhd-app-uzqz.vercel.app/login" target="_blank" class="project-link">
-                <i class="fa-solid fa-external-link-alt"></i> Visit App
-              </a>
-            </div>
-            <div class="project-card">
-              <div class="project-icon">
-                <i class="fa-solid fa-shield-halved"></i>
-              </div>
-              <h6 class="project-title">Udder Cleanliness Monitor</h6>
-              <p class="project-description">
-                A specialized monitoring application for dairy farm management, focusing on udder cleanliness tracking
-                and hygiene compliance. Helps ensure optimal milk quality and animal health standards.
-              </p>
-              <a href="https://udder-cleanliness-monitor.vercel.app/login?redirectedFrom=%2F" target="_blank"
-                class="project-link">
-                <i class="fa-solid fa-external-link-alt"></i> Visit App
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Relevant Classes Section -->
-    <div id="classes" class="classes">
-      <h4 class="projects-head" data-aos="fade-right">RELEVANT COURSEWORK</h4>
-      <div class="classes-container">
-        <div class="class-category" data-aos="fade-up">
-          <div class="class-list">
-            <div class="class-column">
-              <div class="class-item">AI in Organizations</div>
-              <div class="class-item">Applied Regression Analysis</div>
-              <div class="class-item">Calculus I & II</div>
-              <div class="class-item">Design Technology for Social Impact</div>
-              <div class="class-item">Information Ethics, Law and Policy</div>
-              <div class="class-item">Introduction to Computing with Python</div>
-              <div class="class-item">Introduction to Data Science</div>
-              <div class="class-item">Introduction to Psychology</div>
-              <div class="class-item">Linear Algebra for Data Science</div>
-              <div class="class-item">Networks</div>
-            </div>
-            <div class="class-column">
-              <div class="class-item">Object-Oriented Programming in Java</div>
-              <div class="class-item">Persuasion and Social Influence</div>
-              <div class="class-item">Practical Tools for OR, Machine Learning & Data Science</div>
-              <div class="class-item">Risk Communication</div>
-              <div class="class-item">Server-Side Web Application Development</div>
-              <div class="class-item">Statistical Theory & Application</div>
-              <div class="class-item">Text Mining History & Literature</div>
-              <div class="class-item">Unix Tools and Scripting</div>
-              <div class="class-item">Visual Data Analytics for Web</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="Experiences2" class="experienceContainer">
-      <h4 class="projects-head" data-aos="fade-right">BLOGS</h4>
-      <div class="NinjaRescue ">
-        <div class="experience_content consulting lightgray-bg">
-          <div class="cons ">
-            <i class="fa-solid fa-blog"></i>
-            <h5 class="experience_header" data-aos="fade-left">
-              GAME THEORY
-            </h5>
-            <p class="content" data-aos="fade-up">
-              As I delved deeper into the objectives and provisions of the
-              Organization of the Petroleum Exporting Countries (OPEC), I
-              couldn’t ...
-              <a href="https://blogs.cornell.edu/info2040/2022/10/05/game-theory-as-a-model-for-the-organization-of-the-petroleum-exporting-countries-opec/"
-                target="_blank">Read more</a>
-            </p>
-          </div>
-        </div>
-
-        <div class="experience_content web">
-          <div class="cons">
-            <i class="fa-solid fa-laptop-code"></i>
-            <h5 class="experience_header" data-aos="fade-left">
-              INFORMATION CASCADES
-            </h5>
-            <p class="content" data-aos="fade-up">
-              Kenya just ended a closely contested presidential election on
-              August 8th, in which H.E William Ruto defeated Hon Raila Odinga
-              to...
-              <a href="https://blogs.cornell.edu/info2040/2022/11/16/information-cascades-in-pre-election-disinformation-in-kenya/"
-                target="_blank" class="blog-read-b">Read more</a>
-            </p>
-          </div>
-        </div>
-
-        <div class="experience_content teaching lightgray-bg">
-          <div class="cons">
-            <i class="fa-regular fa-face-smile" style="text-align: center;"></i>
-            <h5 class="experience_header" data-aos="fade-left">
-              FALSE DAWN OF ACCOUNTABILITY
-            </h5>
-            <p class="content " data-aos="fade-up">
-              The Kenya National Assembly has today impeached the sitting deputy
-              president, Hon. Rigathi Gachagua with a decisive 281/326 Members of 
-              ...
-              <a href="https://medium.com/@careymanwa12/false-dawn-of-accountability-in-kenya-ba4e14da2b5c"
-                target="_blank">.... Read more</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div id="Contact">
-      <h4>CONTACT</h4>
-      <div class="email">
-        <a href="mailto:careyokal@gmail.com">careyokal@gmail.com</a>
-      </div>
-      <div class="location">
-        <a href="https://goo.gl/maps/1XS71bs7gL95n1dH8" target="_blank">New York <i
-            class="fa-solid fa-location-dot"></i></a>
-      </div>
-      <div><span>&copy; Copyright 2025</span></div>
-    </div>
-  </main>
-  <script src="scripts/jquery-3.6.1.js"></script>
-  <script src="scripts/script.js"></script>
-  <script src="https://kit.fontawesome.com/1b8203cc44.js" crossorigin="anonymous"></script>
+    // Initialize on load
+    window.addEventListener('load', () => {
+      createParticles();
+      createSparkles();
+    });
+  </script>
 </body>
-
 </html>
