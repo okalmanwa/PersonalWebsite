@@ -777,18 +777,6 @@ html:not(.dark) .icon-sun { display: none; }
   padding-top: var(--space-5);
 }
 
-.contact-block .big-link {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 2px solid var(--accent);
-  transition: color 0.15s ease;
-}
-
-.contact-block .big-link:hover {
-  color: var(--accent);
-}
 
 /* ---------- 404 ---------- */
 .lost {
@@ -884,25 +872,6 @@ html.dark .hero::before {
   );
 }
 
-.hero-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3) var(--space-5);
-  margin-top: var(--space-5);
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.hero-stats b {
-  color: var(--accent);
-  font-weight: 600;
-  font-size: 1.05rem;
-  margin-right: 0.35em;
-  letter-spacing: 0;
-}
 
 .scroll-cue {
   position: absolute;
@@ -1000,13 +969,34 @@ html.dark .hero::before {
   border-top-color: var(--accent);
 }
 
-/* contact: ink-swap on hover */
-.contact-block .big-link {
-  padding: 0 0.12em;
-  transition: background-color 0.18s ease, color 0.18s ease;
+
+/* ---------- pill button ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.65em 1.4em;
+  transition: background-color 0.18s ease, color 0.18s ease,
+    border-color 0.18s ease;
 }
 
-.contact-block .big-link:hover {
+.btn .arrow {
+  transition: transform 0.18s cubic-bezier(0.2, 0.6, 0.3, 1);
+}
+
+.btn:hover {
   background: var(--accent);
-  color: var(--paper);
+  border-color: var(--accent);
+  color: #fafaf8;
+}
+
+.btn:hover .arrow {
+  transform: translateX(3px);
 }
