@@ -1,0 +1,277 @@
+---
+/**
+ * The signature element: a live, lightweight multi-agent simulation.
+ * Agents wander, drift toward emergent cluster points, form connection
+ * lines, and occasionally exchange message glyphs: Carey's research
+ * rendered as ambient art. Canvas 2D, no dependencies, pauses
+ * off-screen, fully disabled under prefers-reduced-motion.
+ */
+---
+
+<div class="hero">
+  <canvas class="hero-canvas" id="sim" aria-hidden="true"></canvas>
+  <div class="hero-fade" aria-hidden="true"></div>
+  <div class="hero-content">
+    <span class="eyebrow rise">Cornell University<span class="dot">·</span>Computational Social Science</span>
+    <h1 class="rise">Carey Manwa</h1>
+    <p class="tagline rise">
+      I build computational systems to study how humans, and now AI agents,
+      behave, persuade, and organize.
+    </p>
+    <p class="meta-line rise">
+      LLM AGENTS · NLP · DEVELOPMENT ECONOMICS
+    </p>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const canvas = document.getElementById('sim') as HTMLCanvasElement | null;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+
+    // --- palette, read from the live token system ---
+    let ink = '#16161a';
+    let accent = '#b31b1b';
+    function readPalette() {
+      const s = getComputedStyle(document.documentElement);
+      ink = s.getPropertyValue('--ink').trim() || ink;
+      accent = s.getPropertyValue('--accent').trim() || accent;
+    }
+    readPalette();
+    window.addEventListener('themechange', () => {
+      readPalette();
+      if (reduced.matches) drawFrame(); // refresh static frame
+    });
+
+    // --- sizing ---
+    let W = 0;
+    let H = 0;
+    let dpr = 1;
+    function resize() {
+      const r = canvas.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = r.width;
+      H = r.height;
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    let resizeT: ReturnType<typeof setTimeout>;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeT);
+      resizeT = setTimeout(() => {
+        resize();
+        if (reduced.matches) drawFrame();
+      }, 120);
+    });
+
+    // --- world ---
+    const N = Math.min(56, Math.max(28, Math.floor((W * H) / 26000)));
+    const LINK_D = Math.min(150, Math.max(95, W / 9));
+
+    interface Agent {
+      x: number; y: number; vx: number; vy: number;
+      seed: number; r: number; hub: boolean;
+    }
+    interface Msg {
+      a: Agent; b: Agent; t: number; speed: number;
+    }
+
+    const agents: Agent[] = [];
+    for (let i = 0; i < N; i++) {
+      agents.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: 0,
+        vy: 0,
+        seed: Math.random() * 1000,
+        r: 1.4 + Math.random() * 1.3,
+        hub: Math.random() < 0.12, // a few accent-colored "influencer" agents
+      });
+    }
+
+    // slow-drifting attractor points → emergent clustering
+    const clusters = Array.from({ length: 3 }, (_, i) => ({
+      phase: (i * Math.PI * 2) / 3 + Math.random(),
+      speed: 0.00006 + Math.random() * 0.00004,
+    }));
+
+    const msgs: Msg[] = [];
+
+    function step(t: number) {
+      const cpts = clusters.map((c) => ({
+        x: W * (0.5 + 0.36 * Math.cos(t * c.speed + c.phase)),
+        y: H * (0.5 + 0.32 * Math.sin(t * c.speed * 1.3 + c.phase * 1.7)),
+      }));
+
+      for (const a of agents) {
+        // wander: smooth pseudo-noise heading
+        const ang =
+          Math.sin(t * 0.00022 + a.seed) * 2.2 +
+          Math.cos(t * 0.00013 + a.seed * 1.6) * 1.8;
+        a.vx += Math.cos(ang) * 0.006;
+        a.vy += Math.sin(ang) * 0.006;
+
+        // gentle pull to nearest attractor
+        let best = cpts[0];
+        let bd = Infinity;
+        for (const c of cpts) {
+          const d = (c.x - a.x) ** 2 + (c.y - a.y) ** 2;
+          if (d < bd) { bd = d; best = c; }
+        }
+        a.vx += (best.x - a.x) * 0.0000115;
+        a.vy += (best.y - a.y) * 0.0000115;
+
+        // mild separation so clusters don't collapse
+        for (const b of agents) {
+          if (b === a) continue;
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 < 650 && d2 > 0.01) {
+            const f = 0.018 / d2;
+            a.vx += dx * f;
+            a.vy += dy * f;
+          }
+        }
+
+        // damping + speed cap
+        a.vx *= 0.985;
+        a.vy *= 0.985;
+        const sp = Math.hypot(a.vx, a.vy);
+        if (sp > 0.45) {
+          a.vx = (a.vx / sp) * 0.45;
+          a.vy = (a.vy / sp) * 0.45;
+        }
+        a.x += a.vx;
+        a.y += a.vy;
+
+        // soft wrap
+        if (a.x < -20) a.x = W + 20;
+        if (a.x > W + 20) a.x = -20;
+        if (a.y < -20) a.y = H + 20;
+        if (a.y > H + 20) a.y = -20;
+      }
+
+      // occasional message exchange along an existing edge
+      if (msgs.length < 4 && Math.random() < 0.025) {
+        const a = agents[(Math.random() * agents.length) | 0];
+        let nearest: Agent | null = null;
+        let nd = LINK_D * LINK_D;
+        for (const b of agents) {
+          if (b === a) continue;
+          const d = (a.x - b.x) ** 2 + (a.y - b.y) ** 2;
+          if (d < nd) { nd = d; nearest = b; }
+        }
+        if (nearest) msgs.push({ a, b: nearest, t: 0, speed: 0.012 + Math.random() * 0.008 });
+      }
+      for (let i = msgs.length - 1; i >= 0; i--) {
+        msgs[i].t += msgs[i].speed;
+        if (msgs[i].t >= 1) msgs.splice(i, 1);
+      }
+    }
+
+    function drawFrame() {
+      ctx.clearRect(0, 0, W, H);
+
+      // edges
+      for (let i = 0; i < agents.length; i++) {
+        const a = agents[i];
+        for (let j = i + 1; j < agents.length; j++) {
+          const b = agents[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const d = Math.hypot(dx, dy);
+          if (d < LINK_D) {
+            const alpha = (1 - d / LINK_D) * 0.16;
+            ctx.strokeStyle = ink;
+            ctx.globalAlpha = alpha;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // agents
+      for (const a of agents) {
+        ctx.globalAlpha = a.hub ? 0.85 : 0.5;
+        ctx.fillStyle = a.hub ? accent : ink;
+        ctx.beginPath();
+        ctx.arc(a.x, a.y, a.hub ? a.r + 0.7 : a.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // message glyphs in transit
+      for (const m of msgs) {
+        const x = m.a.x + (m.b.x - m.a.x) * m.t;
+        const y = m.a.y + (m.b.y - m.a.y) * m.t;
+        ctx.globalAlpha = 0.9 * Math.sin(Math.PI * m.t);
+        ctx.fillStyle = accent;
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(Math.PI / 4);
+        ctx.fillRect(-2, -2, 4, 4); // tiny rotated square = message packet
+        ctx.restore();
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    // --- run loop: pause off-screen / hidden tab / reduced motion ---
+    let visible = true;
+    let raf = 0;
+    let running = false;
+
+    function loop(now: number) {
+      step(now);
+      drawFrame();
+      raf = requestAnimationFrame(loop);
+    }
+    function start() {
+      if (running || reduced.matches || !visible || document.hidden) return;
+      running = true;
+      raf = requestAnimationFrame(loop);
+    }
+    function stop() {
+      running = false;
+      cancelAnimationFrame(raf);
+    }
+
+    new IntersectionObserver(
+      ([e]) => {
+        visible = e.isIntersecting;
+        visible ? start() : stop();
+      },
+      { threshold: 0.05 }
+    ).observe(canvas);
+
+    document.addEventListener('visibilitychange', () =>
+      document.hidden ? stop() : start()
+    );
+
+    reduced.addEventListener('change', () => {
+      if (reduced.matches) {
+        stop();
+        // settle to a meaningful static composition
+        for (let i = 0; i < 600; i++) step(i * 16);
+        drawFrame();
+      } else start();
+    });
+
+    if (reduced.matches) {
+      for (let i = 0; i < 600; i++) step(i * 16);
+      drawFrame();
+    } else {
+      // pre-warm so the network exists at first paint
+      for (let i = 0; i < 240; i++) step(i * 16);
+      start();
+    }
+  })();
+</script>

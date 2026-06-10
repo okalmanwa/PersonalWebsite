@@ -1,0 +1,78 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Diagram from '../../components/Diagram.astro';
+
+export async function getStaticPaths() {
+  const research = await getCollection('research');
+  return research.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ScholarlyArticle',
+  headline: d.title,
+  abstract: d.abstract,
+  author: {
+    '@type': 'Person',
+    name: 'Carey Manwa',
+    affiliation: { '@type': 'CollegeOrUniversity', name: 'Cornell University' },
+  },
+  creativeWorkStatus: d.status,
+  url: new URL(`/research/${entry.id}/`, Astro.site).href,
+};
+---
+
+<BaseLayout title={`${d.title} · Carey Manwa`} description={d.abstract} jsonLd={articleLd}>
+  <article>
+    <header class="article-header col">
+      <span class="eyebrow">
+        {d.lab}<span class="dot">·</span>{d.dates}<span class="dot">·</span>{d.status}
+      </span>
+      <h1 style="font-size: var(--text-2xl);">{d.title}</h1>
+      <p class="abstract">{d.abstract}</p>
+
+      <dl class="meta-block">
+        <dt>Status</dt>
+        <dd>{d.status}</dd>
+        <dt>Methods</dt>
+        <dd>{d.methods.join(' · ')}</dd>
+        {d.stack.length > 0 && (
+          <>
+            <dt>Stack</dt>
+            <dd>{d.stack.join(' · ')}</dd>
+          </>
+        )}
+      </dl>
+    </header>
+
+    <figure class="figure-wide reveal">
+      <div class="diagram">
+        <Diagram id={entry.id} />
+      </div>
+      {d.diagramCaption && <figcaption>{d.diagramCaption}</figcaption>}
+    </figure>
+
+    <div class="article-body col">
+      <Content />
+    </div>
+
+    <footer class="article-footer col">
+      <nav class="article-links" aria-label="Project links">
+        <a class="read-more" href="/research/">
+          <span class="arrow" style="transform: rotate(180deg);">→</span> All research
+        </a>
+        <a class="read-more" href="mailto:careyokal@gmail.com">
+          Ask me about this <span class="arrow">→</span>
+        </a>
+      </nav>
+    </footer>
+  </article>
+</BaseLayout>

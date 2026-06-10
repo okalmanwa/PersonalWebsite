@@ -1,0 +1,144 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sections = [
+  {
+    name: 'Research',
+    items: [
+      {
+        when: 'FEB 2026 – NOW',
+        title: 'Research Assistant',
+        where: 'Social Dynamics Lab, Cornell',
+        detail:
+          'Multi-agent LLM simulation (Stanford-Prison-inspired); regex + LLM audit pipelines for game-state consistency. Persuasion strategy classification over 2M+ political news articles; authored open-source GDELT scraper (concurrent, resumable, retry logic, content validation).',
+      },
+      {
+        when: 'MAR 2026 – NOW',
+        title: 'Research Assistant',
+        where: 'CIDER, Cornell',
+        detail:
+          'Co-authoring white paper for Cornell’s "Data Science to Build Resilience and Improve Humanitarian Response" Thought Summit. CDR feature construction, satellite imagery pipelines, multi-modal fusion; policy translation and partner engagement.',
+      },
+      {
+        when: 'AUG 2023 – NOW',
+        title: 'Webmaster',
+        where: 'Prof. Chris Barrett Research Group · SMART · CIDER',
+        detail:
+          'Sole maintainer of the full web presence of an internationally-reaching research community: hosting and server operations, SEO for publication discoverability, NEUDC 2026 conference site.',
+      },
+    ],
+  },
+  {
+    name: 'Teaching',
+    items: [
+      {
+        when: 'CORNELL',
+        title: 'Course Assistant, ORIE 3120',
+        where: 'OR, Machine Learning & Data Science',
+        detail:
+          'SQL, Python, Tableau, regression, classification, time-series, A/B testing.',
+      },
+      {
+        when: 'CORNELL',
+        title: 'Teaching Assistant, Bowers CIS',
+        where: 'Intro to Data Science · Intro to Web Development',
+        detail:
+          '~300 students/semester. Perfect 10/10 evaluations across three consecutive semesters.',
+      },
+    ],
+  },
+  {
+    name: 'Fellowships & Industry',
+    items: [
+      {
+        when: 'OCT 2025 – APR 2026',
+        title: 'SMART Fellow',
+        where: 'Cornell · USIU-Africa · NRT · Ecotourism Kenya',
+        detail:
+          'Digital transformation in East African ecotourism. Led hackathon-winning sustainable commerce platform, the top solution among 5 multi-institutional teams.',
+      },
+      {
+        when: '2023',
+        title: 'Extern',
+        where: 'PwC',
+        detail:
+          'Strategic presentations for CEO Action (2,500+ CEOs, 85 industries); organizational culture and leadership consulting support.',
+      },
+      {
+        when: '2021 – 2023',
+        title: 'Lead Mentor',
+        where: 'EducationUSA, Kenya',
+        detail:
+          'Led 20 mentors; outreach in 30+ Kenyan high schools reaching 20,000+ students. Awarded by the acting Deputy Chief of Mission, U.S. Embassy Nairobi.',
+      },
+    ],
+  },
+  {
+    name: 'Skills',
+    items: [
+      {
+        when: 'METHODS',
+        title: 'NLP · LLMs · time-series forecasting · A/B testing · data pipelines',
+        where: '',
+        detail: '',
+      },
+      {
+        when: 'TOOLS',
+        title: 'Python · SQL · React · TypeScript · Phaser 3 · Tableau · SEO',
+        where: '',
+        detail: '',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="CV · Carey Manwa"
+  description="Curriculum vitae of Carey Manwa, graduate student at Cornell University: research, teaching, fellowships."
+>
+  <div class="col">
+    <header class="article-header">
+      <span class="eyebrow">Curriculum Vitae<span class="dot">·</span>Updated June 2026</span>
+      <h1>Carey Manwa</h1>
+      <p class="abstract">
+        Graduate Student, Cornell University. Computational social science,
+        LLM agents, NLP, development economics.
+      </p>
+      <p class="no-print">
+        <button
+          class="read-more"
+          style="background:none;border:none;cursor:pointer;padding:0;"
+          onclick="window.print()">Print / save as PDF <span class="arrow">→</span></button>
+      </p>
+    </header>
+
+    {
+      sections.map((s) => (
+        <section class="cv-section">
+          <span class="eyebrow">{s.name}</span>
+          {s.items.map((i) => (
+            <div class="cv-item">
+              <span class="when tnum">{i.when}</span>
+              <div class="what">
+                <strong>{i.title}</strong>
+                {i.where && <span class="where"> · {i.where}</span>}
+                {i.detail && <p>{i.detail}</p>}
+              </div>
+            </div>
+          ))}
+        </section>
+      ))
+    }
+
+    <section class="cv-section">
+      <span class="eyebrow">Contact</span>
+      <div class="cv-item">
+        <span class="when">EMAIL</span>
+        <div class="what">
+          <a href="mailto:careyokal@gmail.com">careyokal@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

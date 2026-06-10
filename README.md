@@ -1,28 +1,54 @@
-# My Personal Website
+# careymanwa.com
 
-## Project Description
+Personal research website for Carey Manwa, built to `WEBSITE_DESIGN_BRIEF.md`.
 
-This repository contains the code and assets for my personal website. The site is designed to showcase my portfolio, provide information about my professional background, and offer a platform to connect with me.
+Astro 5 · hand-rolled CSS token system (no Tailwind, no component library) ·
+self-hosted variable fonts (Newsreader / Inter / IBM Plex Mono) ·
+signature element: live multi-agent Canvas 2D simulation in the hero
+(~2KB of JS total, pauses off-screen, fully static under `prefers-reduced-motion`).
 
-### Key Features:
+## Run it
 
-- **Responsive Design**: Ensures an optimal viewing experience across a wide range of devices, from desktop monitors to mobile phones.
-- **Portfolio Showcase**: Highlights my projects and achievements with detailed descriptions and images.
-- **About Me**: Provides background information about my professional journey, skills, and interests.
-- **Contact Form**: Allows visitors to easily get in touch with me.
-- **Blog Section**: Features articles and updates related to my professional interests and personal insights.
+```bash
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # static output in dist/
+npm run preview
+```
 
-## Development Server
+## Before you ship
 
-To run the development server, follow these steps:
+1. **Photo**: drop your portrait at `public/portrait.jpg` and rebuild; the
+   About page picks it up automatically (it's hidden until the file exists).
+2. **Links**: add your real GitHub / LinkedIn / Google Scholar URLs in
+   `src/components/Footer.astro` (marked TODO).
+3. **Research links**: each project page has an `article-links` footer;
+   add paper/repo/lab URLs in `src/pages/research/[slug].astro` or per-entry
+   frontmatter as they become public.
 
-1. Open this repository as a Codespace on GitHub (or as a container in VS Code).
-2. From the **Run** menu, select **Start Debugging**.
-3. Visit <http://127.0.0.1:8080/> in a browser to access the development server.
+## Editing content
 
-## Deployment
+Research pages are Markdown documents in `src/content/research/`:
+frontmatter (title, lab, dates, status, abstract, methods, stack, order,
+featured) plus the body following the Distill grammar: the question → the
+system → what I built → what we learned. System diagrams live in
+`src/components/Diagram.astro` (hand-drawn SVG, keyed by slug).
 
-The website is deployed and accessible at [careyokal.com](https://careyokal.com).
+## Deploy
 
+Static output: Vercel or Cloudflare Pages, zero config:
 
+```bash
+# Vercel
+npx vercel --prod
+# build command: npm run build, output dir: dist
+```
 
+Then point `careymanwa.com` at it and submit `https://careymanwa.com/sitemap-index.xml`
+in Google Search Console.
+
+## What's deliberately not here (phase 2 candidates)
+
+- `/notes` research garden (Maggie-Appleton-style)
+- Per-page generated OG images (one site-wide `public/og.png` ships now)
+- Margin sidenotes (the CSS hooks exist; add when there's prose that needs them)

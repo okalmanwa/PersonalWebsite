@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const research = (await getCollection('research')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<BaseLayout
+  title="Research · Carey Manwa"
+  description="Research projects: multi-agent LLM simulation, persuasion strategy classification at news scale, disaster resilience systems, and ecotourism commerce."
+>
+  <div class="wide">
+    <header class="article-header">
+      <span class="eyebrow">Research<span class="dot">·</span>{research.length} projects</span>
+      <h1>What I'm working on</h1>
+      <p class="abstract">
+        Every project here answers three questions: what was the question, what
+        did I build, what did we learn.
+      </p>
+    </header>
+
+    <ol class="entry-list">
+      {
+        research.map((p) => (
+          <li class="entry reveal">
+            <span class="eyebrow">
+              {p.data.lab}
+              <span class="dot">·</span>
+              {p.data.dates}
+              <span class="dot">·</span>
+              {p.data.status}
+            </span>
+            <h3>
+              <a href={`/research/${p.id}/`}>{p.data.title}</a>
+            </h3>
+            <p class="abstract">{p.data.abstract}</p>
+            <a class="read-more" href={`/research/${p.id}/`}>
+              Read more <span class="arrow">→</span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</BaseLayout>
