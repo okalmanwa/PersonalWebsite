@@ -3,7 +3,7 @@ title: 'Sustainable Ecotourism Commerce Platform'
 lab: 'SMART Fellowship · Cornell'
 dates: 'Oct 2025 – Apr 2026'
 status: 'Hackathon winner'
-abstract: 'Led the hackathon-winning commerce platform for East African ecotourism: the top solution among 5 multi-institutional teams, built with partners across Kenya.'
+abstract: 'Led the hackathon-winning commerce platform for East African ecotourism, judged the top solution among 5 multi-institutional teams and built with partners across Kenya.'
 methods: ['Product design', 'Digital transformation', 'Team leadership']
 stack: ['Web platform', 'Commerce']
 order: 4
@@ -21,10 +21,10 @@ The SMART (Student Multidisciplinary Applied Research Teams) fellowship is a Cor
 
 ## What I built
 
-I led our team's sustainable ecotourism commerce platform: a marketplace connecting community operators directly to travelers, with sustainability certification surfaced as a first-class signal rather than a footnote.
+I led our team's sustainable ecotourism commerce platform, a marketplace that connects community operators directly to travelers and surfaces sustainability certification as a primary signal in search and booking.
 
 At the program hackathon, our platform was judged the top solution among 5 multi-institutional teams.
 
 ## Why it matters
 
-This project is where my development economics interest stops being theoretical: digital marketplaces reshape who captures value in tourism economies, and the design decisions (fee structures, discoverability, certification) are economic policy written in code.
+Digital marketplaces shape who captures value in tourism economies. Fee structures, discoverability, and certification rules decide how much of each booking stays with the community running the conservancy. This project let me work on those decisions directly.

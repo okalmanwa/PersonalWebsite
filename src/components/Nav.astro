@@ -1,9 +1,9 @@
 ---
 const path = Astro.url.pathname;
 const links = [
+  { href: '/', label: 'Home' },
   { href: '/research/', label: 'Research' },
   { href: '/teaching/', label: 'Teaching' },
-  { href: '/about/', label: 'About' },
   { href: '/cv/', label: 'CV' },
 ];
 const isCurrent = (href: string) =>
@@ -12,7 +12,7 @@ const isCurrent = (href: string) =>
 
 <header class="site-nav">
   <div class="inner">
-    <a class="nav-name" href="/">carey.manwa<span class="nav-cursor">_</span></a>
+    <a class="nav-name" href="/">Carey Manwa</a>
     <nav class="nav-links" aria-label="Primary">
       {
         links.map((l) => (

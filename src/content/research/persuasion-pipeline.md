@@ -13,7 +13,7 @@ diagramCaption: 'FIG. 1 · The pipeline: GDELT event streams → concurrent scra
 
 ## The question
 
-When political media tries to persuade, *how* does it do it? Fear appeals, authority citations, in-group framing, statistical anchoring: persuasion strategies are well-theorized but rarely measured at the scale modern media operates. We want a map of narrative framing and social influence across the media landscape, built from the text itself.
+When political media tries to persuade, *how* does it do it? Persuasion strategies such as fear appeals, authority citations, in-group framing, and statistical anchoring are well theorized but rarely measured at the scale modern media operates. We want a map of narrative framing and social influence across the media landscape, built from the text itself.
 
 ## The system
 
@@ -21,15 +21,15 @@ The corpus is 2M+ political news articles spanning media domains, sourced throug
 
 ## What I built
 
-Scale is the obstacle: 2M articles means 2M chances for the open web to fail you. I authored the lab's open-source GDELT scraper with the failure modes designed in:
+The main engineering obstacle is scale, because requests fail constantly across 2M articles. I authored the lab's open-source GDELT scraper with the failure modes designed in:
 
 - Concurrent jobs that saturate bandwidth without tripping rate limits.
-- Resumable progress: a run that dies at article 1,400,000 restarts there, not at zero.
+- Resumable progress, so a run that dies at article 1,400,000 restarts there instead of at zero.
 - Retry logic with backoff for the transient failures that are guaranteed at this scale.
-- Content validation that catches paywalls, soft 404s, and boilerplate masquerading as articles before they poison the training data.
+- Content validation that catches paywalls, soft 404s, and boilerplate masquerading as articles before they contaminate the training data.
 
 Downstream, the corpus feeds fine-tuning and evaluation of LLM classifiers over a persuasion-strategy taxonomy.
 
 ## What we're learning
 
-Strategy distributions differ measurably across media domains; the fingerprints of editorial stance show up in *how* outlets persuade, not just what they cover. The scraper is open source and in use beyond the original project.
+Strategy distributions differ measurably across media domains. Outlets differ not just in what they cover but in how they persuade. The scraper is open source and in use beyond the original project.

@@ -3,7 +3,7 @@ title: 'Predictive Systems for Disaster Resilience'
 lab: 'CIDER · Cornell'
 dates: 'Mar 2026 – Present'
 status: 'White paper in progress'
-abstract: 'Co-authoring a white paper for Cornell''s "Data Science to Build Resilience and Improve Humanitarian Response" Thought Summit: fusing CDR, satellite imagery, and survey data into early-warning systems.'
+abstract: 'Co-authoring a white paper for Cornell''s "Data Science to Build Resilience and Improve Humanitarian Response" Thought Summit. The technical core is fusing CDR, satellite imagery, and survey data into early-warning systems.'
 methods: ['Multi-modal data fusion', 'Remote sensing', 'Predictive modeling', 'Policy translation']
 stack: ['Python', 'CDR features', 'Satellite imagery pipelines']
 order: 3
@@ -13,7 +13,7 @@ diagramCaption: 'FIG. 1 · Multi-modal fusion: call detail records, satellite im
 
 ## The question
 
-Disasters are predictable in aggregate and devastating in particulars. The data that could provide early warning (population movement in call detail records, vegetation and water stress in satellite imagery, vulnerability in ground surveys) exists, but lives in different formats, resolutions, and institutions. Can we fuse it into systems that give humanitarian responders lead time?
+Much of the data that could provide early warning for disasters already exists. Population movement shows up in call detail records, environmental stress in satellite imagery, and vulnerability in ground surveys. But it lives in different formats, resolutions, and institutions. Can we fuse it into systems that give humanitarian responders lead time?
 
 ## The system
 
@@ -21,10 +21,10 @@ At CIDER (Cornell Institute for Digital Engagement and Resilience), I'm co-autho
 
 ## What I built
 
-- CDR feature construction: turning raw call detail records into mobility and displacement signals that hold up as model inputs.
-- Satellite imagery pipelines: automated ingestion and feature extraction for environmental stress indicators.
-- Fusion architecture: aligning data sources that disagree about time, space, and what counts as a place.
+- CDR features that turn raw call detail records into mobility and displacement signals robust enough to serve as model inputs.
+- Satellite imagery pipelines for automated ingestion and feature extraction of environmental stress indicators.
+- Fusion architecture that aligns sources which differ in time, space, and geographic units.
 
 ## Beyond the models
 
-Half the work is translation. ML findings only matter here if they survive contact with policy: I write the policy narratives that carry model outputs to decision-makers, and engage the summit's funders and partners directly. A precision-recall curve never saved anyone; the institutional response it triggers might.
+Half the work is translation. I write the policy narratives that carry model findings to decision-makers and engage the summit's funders and partners directly, because the models only matter here if institutions act on them.

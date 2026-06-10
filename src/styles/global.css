@@ -794,3 +794,46 @@ html:not(.dark) .icon-sun { display: none; }
   color: var(--accent);
   letter-spacing: 0.2em;
 }
+
+/* ---------- side projects ---------- */
+.mini-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 0 var(--space-5);
+}
+
+.mini {
+  border-top: 1px solid var(--hairline);
+  padding: var(--space-3) 0 var(--space-4);
+}
+
+.mini a {
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.mini a:hover {
+  color: var(--accent);
+}
+
+.mini .ext {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  color: var(--muted);
+}
+
+.mini a:hover .ext {
+  color: var(--accent);
+}
+
+.mini p {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin: var(--space-1) 0 0;
+  max-width: 36ch;
+}
