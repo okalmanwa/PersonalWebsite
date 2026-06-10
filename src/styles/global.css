@@ -843,10 +843,6 @@ html:not(.dark) .icon-sun { display: none; }
   color: var(--accent);
 }
 
-.hero .tagline em {
-  font-style: italic;
-  color: var(--accent);
-}
 
 .hero::before {
   content: '';
