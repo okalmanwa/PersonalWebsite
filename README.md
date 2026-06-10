@@ -1,6 +1,6 @@
 # careymanwa.com
 
-Personal research website for Carey Manwa, built to `WEBSITE_DESIGN_BRIEF.md`.
+Personal research website for Carey Okal, built to `WEBSITE_DESIGN_BRIEF.md`.
 
 Astro 5 · hand-rolled CSS token system (no Tailwind, no component library) ·
 self-hosted variable fonts (Newsreader / Inter / IBM Plex Mono) ·
