@@ -3,7 +3,10 @@ title: 'Sustainable Ecotourism Commerce Platform'
 lab: 'SMART Fellowship · Cornell'
 dates: 'Oct 2025 – Apr 2026'
 status: 'Hackathon winner'
-abstract: 'Led the hackathon-winning commerce platform for East African ecotourism, judged the top solution among 5 multi-institutional teams and built with partners across Kenya.'
+abstract: 'Led the hackathon-winning Community Tourism Relay for Il Ngwesi Conservancy, judged the top solution among 5 multi-institutional teams and built with partners across Kenya.'
+links:
+  - label: 'View the live platform'
+    url: 'https://manwaokal.github.io/ilngwesi/'
 methods: ['Product design', 'Digital transformation', 'Team leadership']
 stack: ['Web platform', 'Commerce']
 order: 4
@@ -21,7 +24,7 @@ The SMART (Student Multidisciplinary Applied Research Teams) fellowship is a Cor
 
 ## What I built
 
-I led our team's sustainable ecotourism commerce platform, a marketplace that connects community operators directly to travelers and surfaces sustainability certification as a primary signal in search and booking.
+I led our team's Community Tourism Relay, a booking and commerce platform built for Il Ngwesi, a Maasai-owned conservancy in Laikipia County, Kenya. Visitors book lodge stays, homestays, guided wildlife walks, and cultural experiences directly; a community Tourism Steward confirms each booking over SMS, and payments run through M-Pesa, card, or PayPal. The system is deliberately low-tech so the community can run it themselves, and every booking keeps revenue with the people protecting the conservancy's 15,000 hectares.
 
 At the program hackathon, our platform was judged the top solution among 5 multi-institutional teams.
 

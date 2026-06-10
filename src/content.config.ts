@@ -13,6 +13,9 @@ const research = defineCollection({
     stack: z.array(z.string()).default([]),
     order: z.number(),
     featured: z.boolean().default(false),
+    links: z
+      .array(z.object({ label: z.string(), url: z.string() }))
+      .default([]),
     diagramCaption: z.string().optional(),
   }),
 });

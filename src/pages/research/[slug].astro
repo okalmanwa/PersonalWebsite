@@ -69,6 +69,11 @@ const articleLd = {
         <a class="read-more" href="/research/">
           <span class="arrow" style="transform: rotate(180deg);">→</span> All research
         </a>
+        {d.links.map((l) => (
+          <a class="read-more" href={l.url} target="_blank" rel="noopener">
+            {l.label} <span class="arrow">↗</span>
+          </a>
+        ))}
         <a class="read-more" href="mailto:careyokal@gmail.com">
           Ask me about this <span class="arrow">→</span>
         </a>
