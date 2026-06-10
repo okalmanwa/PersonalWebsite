@@ -13,15 +13,18 @@
   <div class="hero-fade" aria-hidden="true"></div>
   <div class="hero-content">
     <span class="eyebrow rise">Cornell University<span class="dot">·</span>Computational Social Science</span>
-    <h1 class="rise">Carey Manwa</h1>
+    <h1 class="rise">Carey Manwa<span class="accent-dot">.</span></h1>
     <p class="tagline rise">
       I build computational systems to study how humans, and now AI agents,
-      behave, persuade, and organize.
+      <em>behave</em>, <em>persuade</em>, and <em>organize</em>.
     </p>
-    <p class="meta-line rise">
-      LLM AGENTS · NLP · DEVELOPMENT ECONOMICS
-    </p>
+    <div class="hero-stats rise">
+      <span><b class="tnum">2M+</b> articles classified</span>
+      <span><b class="tnum">20K+</b> students reached</span>
+      <span><b class="tnum">10/10</b> teaching evals ×3</span>
+    </div>
   </div>
+  <a class="scroll-cue" href="#featured" aria-label="Scroll to research">↓</a>
 </div>
 
 <script>
@@ -91,7 +94,7 @@
         vy: 0,
         seed: Math.random() * 1000,
         r: 1.4 + Math.random() * 1.3,
-        hub: Math.random() < 0.12, // a few accent-colored "influencer" agents
+        hub: Math.random() < 0.16, // a few accent-colored "influencer" agents
       });
     }
 
@@ -159,7 +162,7 @@
       }
 
       // occasional message exchange along an existing edge
-      if (msgs.length < 4 && Math.random() < 0.025) {
+      if (msgs.length < 6 && Math.random() < 0.04) {
         const a = agents[(Math.random() * agents.length) | 0];
         let nearest: Agent | null = null;
         let nd = LINK_D * LINK_D;
@@ -188,7 +191,7 @@
           const dy = a.y - b.y;
           const d = Math.hypot(dx, dy);
           if (d < LINK_D) {
-            const alpha = (1 - d / LINK_D) * 0.16;
+            const alpha = (1 - d / LINK_D) * 0.22;
             ctx.strokeStyle = ink;
             ctx.globalAlpha = alpha;
             ctx.lineWidth = 1;
@@ -202,7 +205,7 @@
 
       // agents
       for (const a of agents) {
-        ctx.globalAlpha = a.hub ? 0.85 : 0.5;
+        ctx.globalAlpha = a.hub ? 0.9 : 0.62;
         ctx.fillStyle = a.hub ? accent : ink;
         ctx.beginPath();
         ctx.arc(a.x, a.y, a.hub ? a.r + 0.7 : a.r, 0, Math.PI * 2);
