@@ -3,6 +3,39 @@
    "Research as a living system."
    ============================================================ */
 
+/* ---------- Freight Sans Pro (body, matches NEUDC / Cornell brand) ---------- */
+@font-face {
+  font-family: 'Freight Sans Pro';
+  src: url('/fonts/FreightSansProBook-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Freight Sans Pro';
+  src: url('/fonts/FreightSansProBook-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Freight Sans Pro';
+  src: url('/fonts/FreightSansProSemibold-Regular.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Freight Sans Pro';
+  src: url('/fonts/FreightSansProBold-Regular.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ---------- tokens ---------- */
 :root {
   /* color: light */
@@ -17,7 +50,7 @@
 
   /* type */
   --font-display: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
-  --font-body: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Freight Sans Pro', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
   /* scale (1.25 ratio off a 17px base) */
