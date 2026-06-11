@@ -73,7 +73,7 @@
   --space-6: 4rem;
   --space-7: 6.5rem;
 
-  --nav-h: 3.5rem;
+  --nav-h: 4.25rem;
 }
 
 html.dark {
@@ -306,8 +306,8 @@ main {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
-  font-size: var(--text-sm);
+  gap: var(--space-5);
+  font-size: var(--text-base);
 }
 
 .nav-links a {
@@ -331,8 +331,8 @@ main {
   background: none;
   border: 1px solid var(--hairline);
   border-radius: 50%;
-  width: 1.9rem;
-  height: 1.9rem;
+  width: 2.3rem;
+  height: 2.3rem;
   display: grid;
   place-items: center;
   cursor: pointer;
