@@ -661,7 +661,9 @@ html:not(.dark) .icon-sun { display: none; }
 /* ---------- hero ---------- */
 .hero {
   position: relative;
-  min-height: calc(74vh - var(--nav-h));
+  /* always fill the first viewport, regardless of content height */
+  min-height: calc(100vh - var(--nav-h));
+  min-height: calc(100svh - var(--nav-h));
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -798,7 +800,10 @@ html:not(.dark) .icon-sun { display: none; }
 }
 
 @media (max-width: 720px) {
-  .hero { min-height: 70vh; }
+  .hero {
+    min-height: calc(100vh - var(--nav-h));
+    min-height: calc(100svh - var(--nav-h));
+  }
   .hero-fade {
     background: linear-gradient(
       to bottom,
