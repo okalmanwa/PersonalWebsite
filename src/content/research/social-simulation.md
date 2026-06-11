@@ -18,7 +18,7 @@ Classic social psychology experiments, the Stanford Prison Experiment chief amon
 
 The simulation is a real-time virtual world built in Phaser 3, with React and TypeScript around it and OpenRouter serving the models. Autonomous agents wander the world, encounter each other, form relationships, and hold conversations, each agent maintaining its own memory and internal message traces alongside the dialogue it produces.
 
-Every agent generates both *what it says* and *what it's thinking*, so the simulation produces a complete, inspectable record of social behavior. No human-subjects study can offer that.
+Every agent generates both *what it says* and *what it's thinking*, so the simulation produces a complete, inspectable record of social behavior.
 
 ## What I do
 
