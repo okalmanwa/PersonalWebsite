@@ -400,6 +400,9 @@ html:not(.dark) .icon-sun { display: none; }
 @media (max-width: 640px) {
   .nav-burger { display: flex; }
 
+  /* with the links collapsed, pin the controls (burger last) hard right */
+  .nav-controls { margin-left: auto; }
+
   .nav-links {
     position: absolute;
     top: var(--nav-h);
