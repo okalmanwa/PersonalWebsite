@@ -178,3 +178,31 @@ const projects = [
     >
   </section>
 </BaseLayout>
+
+<script>
+  // side projects: the browser windows tilt toward the cursor
+  (() => {
+    const fine =
+      matchMedia('(hover: hover) and (pointer: fine)').matches &&
+      !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!fine) return;
+
+    document.querySelectorAll('.project-card').forEach((card) => {
+      const browser = card.querySelector('.browser') as HTMLElement | null;
+      if (!browser) return;
+
+      card.addEventListener('pointermove', (e) => {
+        const r = browser.getBoundingClientRect();
+        const px = ((e as PointerEvent).clientX - r.left) / r.width - 0.5;
+        const py = ((e as PointerEvent).clientY - r.top) / r.height - 0.5;
+        browser.style.transition = 'transform 0.12s ease-out';
+        browser.style.transform = `perspective(900px) translateY(-7px) rotateX(${(-py * 7).toFixed(2)}deg) rotateY(${(px * 9).toFixed(2)}deg)`;
+      });
+
+      card.addEventListener('pointerleave', () => {
+        browser.style.transition = '';
+        browser.style.transform = '';
+      });
+    });
+  })();
+</script>
