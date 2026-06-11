@@ -99,6 +99,11 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* anchored sections stop below the sticky header */
+[id] {
+  scroll-margin-top: calc(var(--nav-h) + 1.25rem);
+}
+
 body {
   margin: 0;
   background: var(--paper);
@@ -656,10 +661,12 @@ html:not(.dark) .icon-sun { display: none; }
 /* ---------- hero ---------- */
 .hero {
   position: relative;
-  min-height: calc(88vh - var(--nav-h));
+  min-height: calc(74vh - var(--nav-h));
   display: flex;
   align-items: center;
   overflow: hidden;
+  /* stage for the 3d fold-away on scroll */
+  perspective: 1100px;
 }
 
 .hero-canvas {
@@ -681,8 +688,10 @@ html:not(.dark) .icon-sun { display: none; }
 }
 
 .hero h1 {
+  font-size: var(--text-2xl);
   margin-bottom: var(--space-3);
-  max-width: 14ch;
+  max-width: none;
+  min-height: 1.2em; /* hold the line while the name types in */
 }
 
 .hero .tagline {
@@ -692,6 +701,16 @@ html:not(.dark) .icon-sun { display: none; }
   color: var(--ink);
   max-width: 44ch;
   line-height: 1.5;
+  margin-bottom: var(--space-4);
+  text-wrap: pretty;
+}
+
+/* the bio lives in the hero, beside the portrait */
+.hero-bio {
+  font-size: var(--text-base);
+  color: var(--muted);
+  line-height: 1.72;
+  max-width: 56ch;
   margin-bottom: var(--space-4);
   text-wrap: pretty;
 }
@@ -724,8 +743,14 @@ html:not(.dark) .icon-sun { display: none; }
   56%, 100% { opacity: 0; }
 }
 
+.type-caret--done {
+  animation: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .type-caret { animation: none; }
+  .type-caret { display: none; }
 }
 
 .hero-fade {
@@ -749,6 +774,9 @@ html:not(.dark) .icon-sun { display: none; }
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--space-6);
+  transform-style: preserve-3d;
+  transform-origin: 50% 85%;
+  will-change: transform, opacity, filter;
 }
 
 .hero-fig {
@@ -1354,15 +1382,6 @@ html:not(.dark) .icon-sun { display: none; }
 }
 
 /* homepage lede: spans the full column like the visual entries below it */
-.section > p.bio-lede {
-  max-width: none;
-  font-size: var(--text-md);
-  font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.6;
-  text-wrap: pretty;
-}
-
 /* ---------- pizzazz pass ---------- */
 
 /* hero */

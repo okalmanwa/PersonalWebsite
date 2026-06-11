@@ -13,17 +13,24 @@
   <div class="hero-fade" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-text">
-      <span class="eyebrow rise">MPS, Information Science<span class="dot">·</span>Cornell Bowers CIS</span>
-      <h1 class="rise">Carey Okal</h1>
-      <p class="tagline rise">
-        NLP and computational social science, with work spanning media
-        analysis, AI behavior, and international development.
-      </p>
-      <p class="meta-line rise" id="typeline">
-        <span class="type-prompt" aria-hidden="true">&gt;</span>
-        <span id="typed">LLM AGENTS · NLP · DEVELOPMENT ECONOMICS</span><span
+      <h1 class="rise"><span id="typed-name">Carey Okal</span><span
           class="type-caret"
-          aria-hidden="true"></span>
+          aria-hidden="true"></span></h1>
+      <p class="hero-bio rise">
+        I'm an MPS student in Information Science at Cornell Bowers CIS (B.S.
+        Information Science '26, cum laude), working at the intersection of
+        LLMs, social simulation, and development economics. At the
+        <a href="/research/social-simulation/">Social Dynamics Lab</a> I audit
+        multi-agent LLM simulations and built the large-scale ingestion
+        pipelines behind persuasion-strategy research on political news; at
+        <a href="/research/disaster-resilience/">CIDER</a> I'm co-authoring a
+        white paper on predictive systems for disaster resilience. Before
+        Cornell, I worked with EducationUSA in Nairobi, reaching 20,000
+        students across 30 Kenyan high schools.
+      </p>
+      <p class="meta-line rise">
+        <span class="type-prompt" aria-hidden="true">&gt;</span>
+        LLM AGENTS · NLP · DEVELOPMENT ECONOMICS
       </p>
     </div>
     <figure class="hero-fig rise">
@@ -40,50 +47,58 @@
 </div>
 
 <script>
-  // typed tagline: cycles through focus areas, terminal-style
+  // 3d fold: as you scroll toward In brief, the hero tips backward
+  // into space, like a page falling away
   (() => {
-    const el = document.getElementById('typed');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const hero = document.querySelector('.hero') as HTMLElement | null;
+    const content = document.querySelector('.hero-content') as HTMLElement | null;
+    if (!hero || !content) return;
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const h = hero.offsetHeight || 1;
+      const p = Math.min(Math.max(window.scrollY / (h * 0.9), 0), 1);
+      content.style.transform = `rotateX(${(-58 * p).toFixed(2)}deg) scale(${(1 - 0.16 * p).toFixed(3)}) translateY(${(-26 * p).toFixed(1)}px)`;
+      content.style.opacity = (1 - 0.92 * p).toFixed(3);
+      content.style.filter = p > 0.01 ? `blur(${(3.5 * p).toFixed(2)}px)` : '';
+    };
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(update);
+        }
+      },
+      { passive: true }
+    );
+    update();
+  })();
+
+  // the name types itself in once, caret keeps blinking
+  (() => {
+    const el = document.getElementById('typed-name');
     if (!el) return;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const phrases = [
-      'LLM AGENTS',
-      'NLP',
-      'DEVELOPMENT ECONOMICS',
-      'MULTI-AGENT SIMULATION',
-      'PERSUASION AT SCALE',
-    ];
+    const name = el.textContent ?? '';
+    el.textContent = '';
+    const caret = document.querySelector('.type-caret') as HTMLElement | null;
 
-    const TYPE = 65;       // ms per character typed
-    const ERASE = 32;      // ms per character erased
-    const HOLD = 2200;     // pause with full phrase on screen
-    const GAP = 420;       // pause when empty, before next phrase
-
-    let i = 0;
-
-    const tick = (fn: () => void, ms: number) => setTimeout(fn, ms);
-
-    function typePhrase(p: string, at: number) {
-      if (at <= p.length) {
-        el!.textContent = p.slice(0, at);
-        tick(() => typePhrase(p, at + 1), TYPE + Math.random() * 45);
-      } else {
-        tick(() => erasePhrase(p, p.length), HOLD);
+    let at = 0;
+    function type() {
+      at += 1;
+      el!.textContent = name.slice(0, at);
+      if (at < name.length) {
+        setTimeout(type, 95 + Math.random() * 70);
+      } else if (caret) {
+        // done: let the caret blink twice more, then retire it
+        setTimeout(() => caret.classList.add('type-caret--done'), 2100);
       }
     }
-
-    function erasePhrase(p: string, at: number) {
-      if (at >= 0) {
-        el!.textContent = p.slice(0, at);
-        tick(() => erasePhrase(p, at - 1), ERASE);
-      } else {
-        i = (i + 1) % phrases.length;
-        tick(() => typePhrase(phrases[i], 0), GAP);
-      }
-    }
-
-    // let the hero rise animation land first, then take over the line
-    tick(() => erasePhrase(el.textContent ?? '', (el.textContent ?? '').length), 1600);
+    setTimeout(type, 500);
   })();
 
   (() => {
