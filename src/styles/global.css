@@ -1422,12 +1422,20 @@ html.dark .hero::before {
 
 .scroll-cue {
   position: absolute;
-  bottom: 1.5rem;
+  bottom: 3.5rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
   font-family: var(--font-mono);
-  color: var(--muted);
+  font-size: 1.2rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--hairline);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--paper) 75%, transparent);
+  color: var(--ink);
   text-decoration: none;
   animation: bob 2.2s ease-in-out infinite;
 }
