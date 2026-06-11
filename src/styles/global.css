@@ -819,10 +819,6 @@ html:not(.dark) .icon-sun { display: none; }
     justify-self: center;
     order: -1;
   }
-
-  .scroll-cue {
-    display: none;
-  }
 }
 
 /* hero load sequence */
@@ -1449,35 +1445,6 @@ html.dark .hero::before {
   );
 }
 
-
-.scroll-cue {
-  position: absolute;
-  bottom: 3.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-  font-family: var(--font-mono);
-  font-size: 1.2rem;
-  width: 2.4rem;
-  height: 2.4rem;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--hairline);
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--paper) 75%, transparent);
-  color: var(--ink);
-  text-decoration: none;
-  animation: bob 2.2s ease-in-out infinite;
-}
-
-.scroll-cue:hover {
-  color: var(--accent);
-}
-
-@keyframes bob {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, 6px); }
-}
 
 /* section eyebrows carry the accent: small doses of red through the page */
 .section-head .eyebrow,
