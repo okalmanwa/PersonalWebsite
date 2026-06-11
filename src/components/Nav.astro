@@ -14,16 +14,6 @@ const isCurrent = (href: string) =>
 
 <header class="site-nav" id="site-nav">
   <div class="inner">
-    <nav class="nav-links" id="nav-menu" aria-label="Primary">
-      {
-        links.map((l) => (
-          <a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>
-            {l.label}
-          </a>
-        ))
-      }
-    </nav>
-    <div class="nav-controls">
       <button
         class="theme-toggle"
         id="theme-toggle"
@@ -47,6 +37,15 @@ const isCurrent = (href: string) =>
             stroke-linecap="round"></path>
         </svg>
       </button>
+    <nav class="nav-links" id="nav-menu" aria-label="Primary">
+      {
+        links.map((l) => (
+          <a href={l.href} aria-current={isCurrent(l.href) ? 'page' : undefined}>
+            {l.label}
+          </a>
+        ))
+      }
+    </nav>
       <button
         class="nav-burger"
         id="nav-burger"
@@ -58,7 +57,6 @@ const isCurrent = (href: string) =>
         <span></span>
         <span></span>
       </button>
-    </div>
   </div>
 </header>
 

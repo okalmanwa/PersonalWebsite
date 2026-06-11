@@ -355,12 +355,6 @@ main {
 html.dark .icon-moon { display: none; }
 html:not(.dark) .icon-sun { display: none; }
 
-.nav-controls {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
 /* hamburger: hidden on desktop */
 .nav-burger {
   display: none;
@@ -399,9 +393,6 @@ html:not(.dark) .icon-sun { display: none; }
 
 @media (max-width: 640px) {
   .nav-burger { display: flex; }
-
-  /* with the links collapsed, pin the controls (burger last) hard right */
-  .nav-controls { margin-left: auto; }
 
   .nav-links {
     position: absolute;
