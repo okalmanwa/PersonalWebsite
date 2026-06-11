@@ -14,26 +14,22 @@ featured: false
 diagramCaption: 'FIG. 1 · The Community Tourism Relay connects the Il Ngwesi community to travelers and buyers through direct bookings and the Maasai Marketplace, with a community portal for revenue and shop management.'
 ---
 
-## The question
+## Setup
 
-East African ecotourism operators (community conservancies, local guides, small lodges) do conservation-critical work but compete for visibility against international booking platforms that take large cuts and ignore sustainability. Can digital commerce be designed to keep value in the communities doing the conserving?
+Community conservancies in East Africa do conservation-critical work, then compete for visibility against international booking platforms that take big cuts and couldn't care less about sustainability. The SMART fellowship — a Cornell program run with USIU-Africa's Chandaria Business School, the Northern Rangelands Trust, and Ecotourism Kenya — puts student teams on exactly this problem.
 
-## The setting
+## What we built
 
-The SMART (Student Multidisciplinary Applied Research Teams) fellowship is a Cornell program for digital transformation in East African ecotourism, run with USIU-Africa's Chandaria Business School, the Northern Rangelands Trust, and Ecotourism Kenya.
+I led our team's [Community Tourism Relay](https://manwaokal.github.io/ilngwesi/marketplace.html), built for Il Ngwesi, a Maasai-owned conservancy in Laikipia County, Kenya. Three pieces:
 
-## What I built
+- **Bookings.** Lodge stays, homestays, guided wildlife walks, cultural experiences — booked directly. A community Tourism Steward confirms each one over SMS, and payment runs through M-Pesa, card, or PayPal.
+- **The Maasai Marketplace.** An online shop for handmade goods from the community — jewelry, bags, clothing, decor, art — with cart, checkout, and delivery within Kenya.
+- **The Community Portal.** A revenue dashboard for bookings and income, plus a merchant portal where community members manage their own listings.
 
-I led our team's [Community Tourism Relay](https://manwaokal.github.io/ilngwesi/marketplace.html), a booking and commerce platform built for Il Ngwesi, a Maasai-owned conservancy in Laikipia County, Kenya. It has three parts.
+We kept it deliberately low-tech, because the whole point is that the community runs it themselves — and that revenue stays with the people protecting the conservancy's 15,000 hectares instead of leaking to a middleman.
 
-- Bookings. Visitors book lodge stays, homestays, guided wildlife walks, and cultural experiences directly. A community Tourism Steward confirms each booking over SMS, and payments run through M-Pesa, card, or PayPal.
-- The Maasai Marketplace. An online shop for handmade products from the community (jewelry, bags, clothing, decor, and art), with cart, checkout, and delivery within Kenya. Every purchase supports conservation.
-- The Community Portal. A revenue dashboard covering bookings and income, plus a merchant portal where community members manage their own shop listings and storefront content.
+At the program hackathon, it was judged the top solution among the 5 multi-institutional teams.
 
-The system is deliberately low-tech so the community can run it themselves, and every booking and sale keeps revenue with the people protecting the conservancy's 15,000 hectares.
+## Why I care
 
-At the program hackathon, our platform was judged the top solution among 5 multi-institutional teams.
-
-## Why it matters
-
-Digital marketplaces shape who captures value in tourism economies. Fee structures, discoverability, and certification rules decide how much of each booking or sale stays with the community running the conservancy. This project let me work on those decisions directly.
+Fee structures, discoverability, and certification rules quietly decide how much of each booking stays with the community doing the conserving. This project let me work on those decisions directly instead of writing about them.

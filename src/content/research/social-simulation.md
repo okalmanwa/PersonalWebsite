@@ -11,24 +11,20 @@ featured: true
 diagramCaption: 'FIG. 1 · System architecture: agents act in a Phaser 3 world; every conversation and internal message trace flows into a regex + LLM audit pipeline that checks game-state consistency.'
 ---
 
-## The question
+## Setup
 
-Classic social psychology experiments, the Stanford Prison Experiment chief among them, are too ethically fraught to rerun on people. But what happens when the participants are LLM agents? Do role assignment, power asymmetry, and group identity produce the same dynamics in LLM agents that Zimbardo observed in people? And can we trust what the agents report about themselves?
+You can't ethically rerun the Stanford Prison Experiment on people. The lab is running a study inspired by it on LLM agents instead: a real-time virtual world built in Phaser 3, with React and TypeScript around it and OpenRouter serving the models. Agents wander around, meet each other, form relationships, and talk. Each one keeps its own memory and an internal monologue alongside whatever it says out loud — which means, unlike any human study, every thought in the experiment is on the record.
 
-## The system
+## My job: catching the agents lying
 
-The simulation is a real-time virtual world built in Phaser 3, with React and TypeScript around it and OpenRouter serving the models. Autonomous agents wander the world, encounter each other, form relationships, and hold conversations, each agent maintaining its own memory and internal message traces alongside the dialogue it produces.
+All of that is only useful if you can trust the logs, and by default you can't. Agents drift. They mention events that never happened, contradict the game state, or quietly slip out of character. I build and run the audit layer that catches it:
 
-Every agent generates both *what it says* and *what it's thinking*, so the simulation produces a complete, inspectable record of social behavior. No human-subjects study can offer that.
+- regex sweeps over conversation logs for structural violations — impossible locations, phantom items, timeline breaks
+- LLM-as-judge passes over the internal traces, for the semantic inconsistencies a regex can't see
+- consistency checks that reconcile what an agent claims against what the world engine actually recorded
 
-## What I built
+I also debug the simulation itself — when an agent does something strange, someone has to trace whether that's emergent behavior or a bug, and that someone is usually me.
 
-My work centers on whether the simulation can be believed. LLM agents drift. They reference events that never happened, contradict the game state, or quietly break character. So I built the audit layer:
+## Where it's going
 
-- Regex pipelines that sweep agent conversation logs for structural violations such as impossible locations, phantom items, and timeline breaks.
-- LLM-as-judge pipelines that read internal message traces and flag semantic inconsistencies a regex can't see.
-- Game-state consistency checks that reconcile what agents claim against what the world engine recorded.
-
-## What we're learning
-
-Auditing agents turns out to be a research problem in its own right. The gap between an agent's internal trace and its outward behavior is measurable, and it bears directly on questions about persuasion, conformity, and role-playing fidelity. The audit pipelines now run as standard instrumentation across the lab's simulation experiments.
+The gap between what an agent thinks and what it does turns out to be measurable, which matters for the persuasion and conformity questions the lab actually cares about. The audit pipelines now run as standard instrumentation across the lab's simulation experiments.
