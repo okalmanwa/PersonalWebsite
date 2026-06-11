@@ -12,18 +12,80 @@
   <canvas class="hero-canvas" id="sim" aria-hidden="true"></canvas>
   <div class="hero-fade" aria-hidden="true"></div>
   <div class="hero-content">
-    <span class="eyebrow rise">MPS, Information Science<span class="dot">·</span>Cornell Bowers CIS</span>
-    <h1 class="rise">Carey Okal</h1>
-    <p class="tagline rise">
-      I build computational systems to study how humans, and now AI agents,
-      behave, persuade, and organize.
-    </p>
-    <p class="meta-line rise">LLM AGENTS · NLP · DEVELOPMENT ECONOMICS</p>
+    <div class="hero-text">
+      <span class="eyebrow rise">MPS, Information Science<span class="dot">·</span>Cornell Bowers CIS</span>
+      <h1 class="rise">Carey Okal</h1>
+      <p class="tagline rise">
+        I build computational systems to study how humans, and now AI agents,
+        behave, persuade, and organize.
+      </p>
+      <p class="meta-line rise" id="typeline">
+        <span class="type-prompt" aria-hidden="true">&gt;</span>
+        <span id="typed">LLM AGENTS · NLP · DEVELOPMENT ECONOMICS</span><span
+          class="type-caret"
+          aria-hidden="true"></span>
+      </p>
+    </div>
+    <figure class="hero-fig rise">
+      <img
+        src="/images/portrait.jpg"
+        alt="Carey Okal"
+        width="768"
+        height="1024"
+        fetchpriority="high"
+      />
+    </figure>
   </div>
   <a class="scroll-cue" href="#research" aria-label="Scroll to research">↓</a>
 </div>
 
 <script>
+  // typed tagline: cycles through focus areas, terminal-style
+  (() => {
+    const el = document.getElementById('typed');
+    if (!el) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const phrases = [
+      'LLM AGENTS',
+      'NLP',
+      'DEVELOPMENT ECONOMICS',
+      'MULTI-AGENT SIMULATION',
+      'PERSUASION AT SCALE',
+    ];
+
+    const TYPE = 65;       // ms per character typed
+    const ERASE = 32;      // ms per character erased
+    const HOLD = 2200;     // pause with full phrase on screen
+    const GAP = 420;       // pause when empty, before next phrase
+
+    let i = 0;
+
+    const tick = (fn: () => void, ms: number) => setTimeout(fn, ms);
+
+    function typePhrase(p: string, at: number) {
+      if (at <= p.length) {
+        el!.textContent = p.slice(0, at);
+        tick(() => typePhrase(p, at + 1), TYPE + Math.random() * 45);
+      } else {
+        tick(() => erasePhrase(p, p.length), HOLD);
+      }
+    }
+
+    function erasePhrase(p: string, at: number) {
+      if (at >= 0) {
+        el!.textContent = p.slice(0, at);
+        tick(() => erasePhrase(p, at - 1), ERASE);
+      } else {
+        i = (i + 1) % phrases.length;
+        tick(() => typePhrase(phrases[i], 0), GAP);
+      }
+    }
+
+    // let the hero rise animation land first, then take over the line
+    tick(() => erasePhrase(el.textContent ?? '', (el.textContent ?? '').length), 1600);
+  })();
+
   (() => {
     const canvas = document.getElementById('sim') as HTMLCanvasElement | null;
     if (!canvas) return;

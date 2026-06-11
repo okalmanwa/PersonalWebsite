@@ -7,6 +7,49 @@ import { visuals } from '../data/visuals';
 const research = (await getCollection('research')).sort(
   (a, b) => a.data.order - b.data.order
 );
+
+const projects = [
+  {
+    name: 'MathMentor',
+    url: 'https://www.mathmentor.academy/',
+    domain: 'mathmentor.academy',
+    img: '/images/projects/mathmentor.jpg',
+    alt: 'MathMentor landing page: train your own AI teaching assistants, with a live tutoring demo',
+    desc: 'A RAG-powered AI math tutoring platform.',
+  },
+  {
+    name: 'Block AI Overview',
+    url: 'https://chromewebstore.google.com/detail/block-ai-overview/bmlfocmlnojabbielkcelpallkfpljba',
+    domain: 'chromewebstore.google.com',
+    img: '/images/projects/block-ai-overview.jpg',
+    alt: 'Block AI Overview rewriting a Google search to skip the AI Overview',
+    desc: 'A Chrome extension that rewrites Google searches to skip AI Overviews, without touching the page DOM.',
+  },
+  {
+    name: 'NEUDC 2026',
+    url: 'https://cidercornell.github.io/neudc2026/',
+    domain: 'cidercornell.github.io',
+    img: '/images/projects/neudc2026.jpg',
+    alt: "NEUDC 2026 conference site with Cornell's McGraw Tower in autumn",
+    desc: 'Site for the longest-running development economics conference, hosted at Cornell in November 2026.',
+  },
+  {
+    name: 'Cornell CIDER',
+    url: 'https://business.cornell.edu/centers/cider/',
+    domain: 'business.cornell.edu',
+    img: '/images/projects/cider.jpg',
+    alt: 'Cornell CIDER website with a savanna sunset hero image',
+    desc: 'Web presence of the Collaboration for International Development Economics Research, which I maintain as webmaster.',
+  },
+  {
+    name: 'Missing Voices Kenya',
+    url: 'https://okalmanwa.github.io/killingsKE/',
+    domain: 'okalmanwa.github.io',
+    img: '/images/projects/missing-voices.jpg',
+    alt: 'Missing Voices Kenya: interactive map of police killings with county and year filters',
+    desc: 'An interactive map documenting police killings and extrajudicial executions in Kenya, filterable by county and year.',
+  },
+];
 ---
 
 <BaseLayout>
@@ -93,118 +136,46 @@ const research = (await getCollection('research')).sort(
       all currently live.
     </p>
     <ul class="project-grid">
-      <li class="reveal">
-        <a
-          class="project-card"
-          href="https://www.mathmentor.academy/"
-          target="_blank"
-          rel="noopener"
-        >
-          <span class="project-shot">
-            <img
-              src="/images/projects/mathmentor.jpg"
-              alt="MathMentor landing page: train your own AI teaching assistants, with a live tutoring demo"
-              loading="lazy"
-              width="500"
-              height="312"
-            />
-          </span>
-          <span class="project-name">MathMentor <span class="ext" aria-hidden="true">↗</span></span>
-          <span class="project-desc">A RAG-powered AI math tutoring platform.</span>
-        </a>
-      </li>
-      <li class="reveal">
-        <a
-          class="project-card"
-          href="https://chromewebstore.google.com/detail/block-ai-overview/bmlfocmlnojabbielkcelpallkfpljba"
-          target="_blank"
-          rel="noopener"
-        >
-          <span class="project-shot">
-            <img
-              src="/images/projects/block-ai-overview.jpg"
-              alt="Block AI Overview rewriting a Google search to skip the AI Overview"
-              loading="lazy"
-              width="500"
-              height="312"
-            />
-          </span>
-          <span class="project-name">Block AI Overview <span class="ext" aria-hidden="true">↗</span></span>
-          <span class="project-desc">
-            A Chrome extension that rewrites Google searches to skip AI
-            Overviews, without touching the page DOM.
-          </span>
-        </a>
-      </li>
-      <li class="reveal">
-        <a
-          class="project-card"
-          href="https://cidercornell.github.io/neudc2026/"
-          target="_blank"
-          rel="noopener"
-        >
-          <span class="project-shot">
-            <img
-              src="/images/projects/neudc2026.jpg"
-              alt="NEUDC 2026 conference site with Cornell's McGraw Tower in autumn"
-              loading="lazy"
-              width="500"
-              height="312"
-            />
-          </span>
-          <span class="project-name">NEUDC 2026 <span class="ext" aria-hidden="true">↗</span></span>
-          <span class="project-desc">
-            Site for the longest-running development economics conference,
-            hosted at Cornell in November 2026.
-          </span>
-        </a>
-      </li>
-      <li class="reveal">
-        <a
-          class="project-card"
-          href="https://business.cornell.edu/centers/cider/"
-          target="_blank"
-          rel="noopener"
-        >
-          <span class="project-shot">
-            <img
-              src="/images/projects/cider.jpg"
-              alt="Cornell CIDER website with a savanna sunset hero image"
-              loading="lazy"
-              width="500"
-              height="312"
-            />
-          </span>
-          <span class="project-name">Cornell CIDER <span class="ext" aria-hidden="true">↗</span></span>
-          <span class="project-desc">
-            Web presence of the Collaboration for International Development
-            Economics Research, which I maintain as webmaster.
-          </span>
-        </a>
-      </li>
-      <li class="reveal">
-        <a
-          class="project-card"
-          href="https://okalmanwa.github.io/killingsKE/"
-          target="_blank"
-          rel="noopener"
-        >
-          <span class="project-shot">
-            <img
-              src="/images/projects/missing-voices.jpg"
-              alt="Missing Voices Kenya: interactive map of police killings with county and year filters"
-              loading="lazy"
-              width="500"
-              height="312"
-            />
-          </span>
-          <span class="project-name">Missing Voices Kenya <span class="ext" aria-hidden="true">↗</span></span>
-          <span class="project-desc">
-            An interactive map documenting police killings and extrajudicial
-            executions in Kenya, filterable by county and year.
-          </span>
-        </a>
-      </li>
+      {
+        projects.map((p, idx) => (
+          <li class={`reveal${idx === 0 ? ' project-feature' : ''}`}>
+            <a class="project-card" href={p.url} target="_blank" rel="noopener">
+              <span class="browser">
+                <span class="browser-bar" aria-hidden="true">
+                  <span class="b-dots">
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                  <span class="b-url">{p.domain}</span>
+                  <span class="b-live">
+                    <i />
+                    LIVE
+                  </span>
+                </span>
+                <img
+                  src={p.img}
+                  alt={p.alt}
+                  loading="lazy"
+                  width="500"
+                  height="312"
+                />
+              </span>
+              <span class="project-meta">
+                <span class="project-index" aria-hidden="true">
+                  {String(idx + 1).padStart(2, '0')}
+                </span>
+                <span class="project-text">
+                  <span class="project-name">
+                    {p.name} <span class="ext" aria-hidden="true">↗</span>
+                  </span>
+                  <span class="project-desc">{p.desc}</span>
+                </span>
+              </span>
+            </a>
+          </li>
+        ))
+      }
     </ul>
     <p class="section-lede reveal" style="margin-top: var(--space-4);">
       More — scrapers, data pipelines, and experiments — on
