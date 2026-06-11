@@ -1,33 +1,23 @@
 ---
-title: 'Persuasion Strategy Classification at News Scale'
+title: 'Persuasion Strategy Classification in Political News'
 lab: 'Social Dynamics Lab'
 dates: 'Feb – Jun 2026'
 status: 'Concluded'
-abstract: 'Large-scale ingestion and preprocessing pipelines for classifying persuasion strategies in political news, powered by an open-source GDELT scraper built to survive the open web.'
-methods: ['NLP', 'LLM fine-tuning', 'Classification', 'Data engineering']
-stack: ['Python', 'GDELT', 'LLM evaluation']
+abstract: 'The ingestion and cleaning pipelines behind a roughly 2-million-article corpus of U.S. political news (14 outlets, 2000–2025), built for NSF-funded research on how persuasive style varies with editorial credibility and ideology.'
+methods: ['Data engineering', 'NLP', 'Classification']
+stack: ['Python', 'GDELT', 'RoBERTa']
 order: 2
 featured: true
-diagramCaption: 'FIG. 1 · The pipeline: GDELT event streams → concurrent scraper with resumable progress → content validation and cleaning → LLM fine-tuning and evaluation → persuasion strategy taxonomy.'
 ---
 
-## Setup
+## Project
 
-Political media persuades — with fear appeals, authority citations, in-group framing, statistical anchoring. The theory on these strategies is old and rich; what's missing is measurement at the scale media actually operates. The project: classify the persuasion strategies in political news articles, across many outlets, from the text itself, using fine-tuned LLM classifiers.
+The lab's NSF-funded project studies persuasive AI and the spread of misinformation. One thread of it is a classifier that scores text across four rhetorical strategies, causal, empirical, emotional, and moral, fine-tuned on LLM-labeled synthetic debates and validated against human annotators. The work has been published at NAACL and EMNLP 2025.
 
-Which means someone first has to get the articles.
+## What I built
 
-## Scraper
+My work was building the corpus, roughly 2 million articles across 14 outlets spanning 2000 to 2025. I wrote a GDELT scraper from scratch with concurrent pipeline jobs, retry logic, resumable progress tracking, and content validation to maximize clean-text yield. The result fed directly into the classifier's fine-tuning and evaluation pipeline.
 
-That was my job, and the honest version is that the open web fights back. Sites go down, rate-limit you, serve paywalls, or hand you a cookie banner where the article should be. At corpus scale, every one of those failures is guaranteed to happen, repeatedly. So I wrote the lab's GDELT scraper with the failure modes designed in rather than patched on:
+## Findings
 
-- concurrent jobs that keep bandwidth saturated without tripping rate limits
-- resumable progress — a run that dies at article 1,400,000 restarts there, not at zero
-- retry logic with backoff for everything transient
-- content validation that catches paywalls, soft 404s, and boilerplate pretending to be articles before they poison the training data
-
-The clean text feeds fine-tuning and evaluation of the classifiers downstream.
-
-## What came out of it
-
-Outlets differ not just in what they cover but in *how* they persuade — strategy distributions vary measurably across domains. The scraper is open source and has outlived the project; it's in use beyond the original study.
+Low-credibility outlets rely substantially more on moral and emotional appeals than high-credibility outlets, which lean toward causal reasoning. Ideological differences emerge primarily along the same affective dimension. Within mainstream opinion journalism, the Times leans more on causal, empirical, and moral argumentation while the Post leans more on emotional appeals, with partial convergence between the two over time.

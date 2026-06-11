@@ -846,12 +846,9 @@ html:not(.dark) .icon-sun { display: none; }
 }
 
 .article-header .abstract {
-  font-family: var(--font-display);
-  font-size: var(--text-md);
-  font-weight: 400;
-  line-height: 1.55;
-  color: var(--ink);
-  opacity: 0.9;
+  font-size: var(--text-base);
+  line-height: 1.72;
+  color: var(--muted);
   max-width: 42rem;
   text-wrap: pretty;
 }
@@ -861,16 +858,6 @@ html:not(.dark) .icon-sun { display: none; }
   font-size: var(--text-lg);
   margin-top: var(--space-6);
   color: var(--accent);
-}
-
-.article-body h2::before {
-  content: '';
-  display: inline-block;
-  width: 1.1rem;
-  height: 2px;
-  background: var(--accent);
-  vertical-align: 0.32em;
-  margin-right: 0.55em;
 }
 
 .article-body ul {
@@ -907,14 +894,6 @@ html:not(.dark) .icon-sun { display: none; }
 
 .article-body a:hover {
   text-decoration-color: var(--accent);
-}
-
-/* opening paragraph of each project: larger, in the display face */
-.article-body > p:first-of-type {
-  font-size: var(--text-md);
-  font-family: var(--font-display);
-  line-height: 1.6;
-  color: var(--ink);
 }
 
 .article-footer {
@@ -1444,18 +1423,6 @@ html.dark .hero::before {
 .section > .eyebrow,
 .contact-block > .eyebrow {
   color: var(--accent);
-}
-
-/* accent dash before section eyebrows */
-.section-head .eyebrow::before,
-.article-header > .eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 1.25rem;
-  height: 2px;
-  background: var(--accent);
-  margin-right: 0.6em;
-  vertical-align: 0.22em;
 }
 
 /* nav links: underline grows in */

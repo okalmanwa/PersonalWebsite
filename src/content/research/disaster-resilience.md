@@ -13,12 +13,10 @@ diagramCaption: 'FIG. 1 · The architecture the white paper surveys: call detail
 
 ## Setup
 
-A lot of the data that could warn us about disasters already exists. Population movement shows up in call detail records. Environmental stress shows up in satellite imagery. Vulnerability shows up in ground surveys. The problem is that it all lives in different formats, resolutions, and institutions — and the researchers working on fusing it into early-warning systems are scattered too.
+A lot of the data that could warn us about disasters already exists. Population movement shows up in call detail records, environmental stress in satellite imagery, vulnerability in ground surveys. The catch is that it lives in different formats, resolutions, and institutions, and so do the researchers working on it.
 
-Cornell's "Data Science to Build Resilience and Improve Humanitarian Response" Thought Summit pulls that research into one room. At CIDER, I'm co-authoring the white paper that comes out of it.
+Cornell's "Data Science to Build Resilience and Improve Humanitarian Response" Thought Summit brings that research into one room, along with the funders and field partners who could act on it. The output is a white paper, and I'm one of the people writing it.
 
-## What I actually do
+## The work
 
-To be clear: I don't build these systems. The work is reading the research submitted to the summit — CDR feature construction, satellite imagery pipelines, multi-modal fusion — and synthesizing it into one coherent argument about where the field is and what it needs. Then translating that from ML-paper language into something policymakers and humanitarian practitioners will actually read and act on.
-
-The other half is people. I engage the summit's funders and partners directly, because a white paper nobody acts on is just a PDF.
+Reading the research submitted to the summit (CDR feature construction, satellite imagery pipelines, multi-modal data fusion) and synthesizing it into one argument about where predictive disaster-resilience systems stand and what they need next. I also engage the summit's funders and partners directly.

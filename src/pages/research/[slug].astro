@@ -66,12 +66,16 @@ const articleLd = {
     </header>
 
 
-    <figure class="figure-wide reveal">
-      <div class="diagram">
-        <Diagram id={entry.id} />
-      </div>
-      {d.diagramCaption && <figcaption>{d.diagramCaption}</figcaption>}
-    </figure>
+    {
+      d.diagramCaption && (
+        <figure class="figure-wide reveal">
+          <div class="diagram">
+            <Diagram id={entry.id} />
+          </div>
+          <figcaption>{d.diagramCaption}</figcaption>
+        </figure>
+      )
+    }
 
     <div class="article-body col">
       <Content />
