@@ -666,6 +666,8 @@ html:not(.dark) .icon-sun { display: none; }
   min-height: calc(100svh - var(--nav-h));
   display: flex;
   align-items: center;
+  /* bias the content above true center so the top doesn't gape */
+  padding-bottom: 14vh;
   overflow: hidden;
   /* stage for the 3d fold-away on scroll */
   perspective: 1100px;
