@@ -6,7 +6,7 @@ status: 'Hackathon winner'
 abstract: 'Led the hackathon-winning Community Tourism Relay for Il Ngwesi Conservancy, a booking platform, handmade-goods marketplace, and community revenue portal judged the top solution among 5 multi-institutional teams.'
 links:
   - label: 'View the live platform'
-    url: 'https://manwaokal.github.io/ilngwesi/'
+    url: 'https://manwaokal.github.io/ilngwesi/marketplace.html'
 methods: ['Product design', 'Digital transformation', 'Team leadership']
 stack: ['Web platform', 'Commerce']
 order: 4
@@ -24,7 +24,7 @@ The SMART (Student Multidisciplinary Applied Research Teams) fellowship is a Cor
 
 ## What I built
 
-I led our team's Community Tourism Relay, a booking and commerce platform built for Il Ngwesi, a Maasai-owned conservancy in Laikipia County, Kenya. It has three parts.
+I led our team's [Community Tourism Relay](https://manwaokal.github.io/ilngwesi/marketplace.html), a booking and commerce platform built for Il Ngwesi, a Maasai-owned conservancy in Laikipia County, Kenya. It has three parts.
 
 - Bookings. Visitors book lodge stays, homestays, guided wildlife walks, and cultural experiences directly. A community Tourism Steward confirms each booking over SMS, and payments run through M-Pesa, card, or PayPal.
 - The Maasai Marketplace. An online shop for handmade products from the community (jewelry, bags, clothing, decor, and art), with cart, checkout, and delivery within Kenya. Every purchase supports conservation.

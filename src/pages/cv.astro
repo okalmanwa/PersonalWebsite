@@ -3,6 +3,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const sections = [
   {
+    name: 'Education',
+    items: [
+      {
+        when: 'EXP. DEC 2026',
+        title: 'MPS, Information Science',
+        where: 'Cornell Bowers CIS',
+        detail: '',
+      },
+      {
+        when: '2026',
+        title: 'B.S., Information Science, cum laude',
+        where: 'Cornell University',
+        detail: '',
+      },
+    ],
+  },
+  {
     name: 'Research',
     items: [
       {
@@ -10,14 +27,14 @@ const sections = [
         title: 'Research Assistant',
         where: 'Social Dynamics Lab, Cornell',
         detail:
-          'Multi-agent LLM simulation (Stanford-Prison-inspired); regex + LLM audit pipelines for game-state consistency. Persuasion strategy classification over 2M+ political news articles; authored open-source GDELT scraper (concurrent, resumable, retry logic, content validation).',
+          'Multi-agent LLM simulation (Stanford-Prison-inspired); regex + LLM audit pipelines for game-state consistency. Built and deployed large-scale ingestion and preprocessing pipelines for persuasion-strategy classification in political news; authored open-source GDELT scraper (concurrent, resumable, retry logic, content validation).',
       },
       {
         when: 'MAR 2026 – NOW',
         title: 'Research Assistant',
         where: 'CIDER, Cornell',
         detail:
-          'Co-authoring white paper for Cornell’s "Data Science to Build Resilience and Improve Humanitarian Response" Thought Summit. CDR feature construction, satellite imagery pipelines, multi-modal fusion; policy translation and partner engagement.',
+          'Co-authoring white paper for Cornell’s "Data Science to Build Resilience and Improve Humanitarian Response" Thought Summit. Synthesizing submitted research across CDR feature construction, satellite imagery pipelines, and multi-modal fusion; policy translation and funder engagement.',
       },
       {
         when: 'AUG 2023 – NOW',
@@ -50,7 +67,7 @@ const sections = [
         title: 'Teaching Assistant, Intro to Web Development',
         where: 'Cornell Bowers CIS',
         detail:
-          'Perfect 10/10 TA evaluations across four consecutive semesters of TAing both courses.',
+          'Perfect 10/10 TA evaluations across three consecutive semesters of TAing both courses.',
       },
     ],
   },
@@ -69,14 +86,14 @@ const sections = [
         title: 'Extern',
         where: 'PwC',
         detail:
-          'Strategic presentations for CEO Action (2,500+ CEOs, 85 industries); organizational culture and leadership consulting support.',
+          'Strategic presentations for CEO Action (2,500 CEOs, 85 industries); organizational culture and leadership consulting support.',
       },
       {
         when: '2021 – 2023',
         title: 'Lead Mentor',
         where: 'EducationUSA, Kenya',
         detail:
-          'Led 20 mentors; outreach in 30+ Kenyan high schools reaching 20,000+ students. Awarded by the acting Deputy Chief of Mission, U.S. Embassy Nairobi.',
+          'Led 20 mentors; outreach in 30 Kenyan high schools reaching 20,000 students. Awarded by the acting Deputy Chief of Mission, U.S. Embassy Nairobi.',
       },
     ],
   },
@@ -102,15 +119,15 @@ const sections = [
 
 <BaseLayout
   title="CV · Carey Okal"
-  description="Curriculum vitae of Carey Okal, graduate student at Cornell University, covering research, teaching, and fellowships."
+  description="Curriculum vitae of Carey Okal, MPS student in Information Science at Cornell University, covering education, research, teaching, and fellowships."
 >
   <div class="col">
     <header class="article-header">
       <span class="eyebrow">Curriculum Vitae<span class="dot">·</span>Updated June 2026</span>
       <h1>Carey Okal</h1>
       <p class="abstract">
-        Graduate Student, Cornell University. Computational social science,
-        LLM agents, NLP, development economics.
+        MPS, Information Science, Cornell Bowers CIS. Computational social
+        science, LLM agents, NLP, development economics.
       </p>
       <p class="no-print">
         <button

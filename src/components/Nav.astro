@@ -2,12 +2,14 @@
 const path = Astro.url.pathname;
 const links = [
   { href: '/', label: 'Home' },
-  { href: '/research/', label: 'Research' },
+  { href: '/#research', label: 'Research' },
   { href: '/teaching/', label: 'Teaching' },
   { href: '/cv/', label: 'CV' },
 ];
 const isCurrent = (href: string) =>
-  path === href || (href !== '/' && path.startsWith(href));
+  path === href ||
+  (href === '/#research' && path.startsWith('/research/')) ||
+  (href !== '/' && !href.includes('#') && path.startsWith(href));
 ---
 
 <header class="site-nav">

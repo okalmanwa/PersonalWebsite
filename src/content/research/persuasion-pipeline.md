@@ -1,9 +1,9 @@
 ---
 title: 'Persuasion Strategy Classification at News Scale'
 lab: 'Social Dynamics Lab'
-dates: 'Feb 2026 – Present'
-status: 'Ongoing'
-abstract: 'Pipelines ingesting 2M+ political news articles across media domains to classify persuasion strategies, powered by an open-source GDELT scraper built to survive the open web.'
+dates: 'Feb – Jun 2026'
+status: 'Concluded'
+abstract: 'Large-scale ingestion and preprocessing pipelines for classifying persuasion strategies in political news, powered by an open-source GDELT scraper built to survive the open web.'
 methods: ['NLP', 'LLM fine-tuning', 'Classification', 'Data engineering']
 stack: ['Python', 'GDELT', 'LLM evaluation']
 order: 2
@@ -17,11 +17,11 @@ When political media tries to persuade, *how* does it do it? Persuasion strategi
 
 ## The system
 
-The corpus is 2M+ political news articles spanning media domains, sourced through GDELT's global event stream. Articles flow through cleaning and validation into LLM fine-tuning and evaluation pipelines that classify the persuasion strategies at work in each piece.
+The corpus is political news articles spanning many media domains, sourced through GDELT's global event stream. Articles flow through cleaning and validation into LLM fine-tuning and evaluation pipelines that classify the persuasion strategies at work in each piece.
 
 ## What I built
 
-The main engineering obstacle is scale, because requests fail constantly across 2M articles. I authored the lab's open-source GDELT scraper with the failure modes designed in:
+The main engineering obstacle is scale, because at corpus size the open web fails constantly. I authored the lab's open-source GDELT scraper with the failure modes designed in:
 
 - Concurrent jobs that saturate bandwidth without tripping rate limits.
 - Resumable progress, so a run that dies at article 1,400,000 restarts there instead of at zero.

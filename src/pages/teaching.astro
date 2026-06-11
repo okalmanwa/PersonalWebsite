@@ -1,92 +1,65 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const courses = [
+  {
+    tag: 'ORIE 3120',
+    title: 'Course Assistant · Practical Tools for OR, ML & Data Science',
+    org: 'Cornell Engineering',
+    body: `Cornell's applied data science core for engineers. I support students
+      across SQL and Python for data work, Tableau for communication, and
+      the modeling sequence of regression, classification, time-series
+      forecasting, and A/B testing. Most of the course comes down to
+      judgment about which method answers which question.`,
+    chips: ['SQL', 'Python', 'Tableau', 'Regression', 'Classification', 'Time series', 'A/B testing'],
+  },
+  {
+    tag: 'INFO 2950',
+    title: 'Teaching Assistant · Introduction to Data Science',
+    org: 'Cornell Bowers CIS',
+    body: `An introductory data science course with roughly 300 students a
+      semester, many of them writing their first real code. I work with
+      students on Python, statistical analysis, and building the confidence
+      to debug their own work.`,
+    chips: ['Python', 'Regression', 'Hypothesis testing', 'Data visualization'],
+  },
+  {
+    tag: 'INFO 1300',
+    title: 'Teaching Assistant · Introductory Design & Programming for the Web',
+    org: 'Cornell Bowers CIS',
+    body: `An introductory course where students design and ship their first
+      accessible websites, from markup to UX. Across three consecutive
+      semesters as a TA for these two courses, students rated me a perfect
+      10/10 in TA evaluations.`,
+    chips: ['HTML', 'CSS', 'JavaScript', 'UX design', 'Accessibility'],
+  },
+];
 ---
 
 <BaseLayout
   title="Teaching · Carey Okal"
-  description="Teaching at Cornell. ORIE 3120 course assistant and Bowers CIS TA for about 300 students a semester, with perfect 10/10 TA evaluations across four consecutive semesters."
+  description="Teaching at Cornell: ORIE 3120 course assistant, and Bowers CIS TA for INFO 2950 and INFO 1300 with perfect 10/10 TA evaluations across three consecutive semesters."
 >
   <div class="col">
     <header class="article-header">
       <span class="eyebrow">Teaching<span class="dot">·</span>Cornell University</span>
       <h1>Teaching</h1>
-      <p class="abstract">
-        I teach the tools I use in my own research, to about 300 Cornell
-        students a semester.
-      </p>
     </header>
 
-    <div class="stat-row reveal">
-      <div class="stat">
-        <span class="num">10/10</span>
-        <span class="label">TA evaluation score</span>
-      </div>
-      <div class="stat">
-        <span class="num">×4</span>
-        <span class="label">consecutive semesters</span>
-      </div>
-      <div class="stat">
-        <span class="num">~300</span>
-        <span class="label">students / semester</span>
-      </div>
-    </div>
-
-    <section class="reveal">
-      <h2 style="font-size: var(--text-lg); margin-top: var(--space-6);">
-        Course Assistant · ORIE 3120
-      </h2>
-      <span class="eyebrow">OR, MACHINE LEARNING &amp; DATA SCIENCE</span>
-      <p>
-        Cornell's applied data science core for engineers. I support students
-        across SQL and Python for data work, Tableau for communication, and
-        the modeling sequence of regression, classification, time-series
-        forecasting, and A/B testing. Most of the course comes down to
-        judgment about which method answers which question.
-      </p>
-    </section>
-
-    <section class="reveal">
-      <h2 style="font-size: var(--text-lg); margin-top: var(--space-6);">
-        Teaching Assistant · Intro to Data Science
-      </h2>
-      <span class="eyebrow">CORNELL BOWERS CIS</span>
-      <p>
-        An introductory data science course with roughly 300 students a
-        semester, many of them writing their first real code. I work with
-        students on Python, data analysis, and building the confidence to
-        debug their own work.
-      </p>
-    </section>
-
-    <section class="reveal">
-      <h2 style="font-size: var(--text-lg); margin-top: var(--space-6);">
-        Teaching Assistant · Intro to Web Development
-      </h2>
-      <span class="eyebrow">CORNELL BOWERS CIS</span>
-      <p>
-        An introductory web development course where students design and ship
-        their first websites. Across four consecutive semesters as a TA for
-        these two courses, students rated me a perfect 10/10 in TA
-        evaluations.
-      </p>
-    </section>
-
-    <section class="reveal">
-      <h2 style="font-size: var(--text-lg); margin-top: var(--space-6);">
-        How I teach
-      </h2>
-      <p>
-        Students learn debugging when their own code breaks and someone shows
-        them how to read the error instead of fearing it. My office hours are
-        built around that moment. I would rather a student leave knowing how
-        to get unstuck than leave with a finished assignment.
-      </p>
-      <p>
-        Before Cornell, I led 20 mentors at EducationUSA reaching 20,000+
-        students across 30 Kenyan high schools. That was teaching at a very different
-        scale, and it taught me that access to knowledge is mostly a
-        distribution problem.
-      </p>
-    </section>
+    {
+      courses.map((c) => (
+        <section class="course reveal">
+          <span class="course-tag">{c.tag}</span>
+          <h2>{c.title}</h2>
+          <span class="eyebrow">{c.org}</span>
+          <p>{c.body}</p>
+          <ul class="topic-chips" aria-label="Topics covered">
+            {c.chips.map((chip) => (
+              <li>{chip}</li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
   </div>
 </BaseLayout>

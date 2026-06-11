@@ -1,7 +1,7 @@
 ---
 title: 'AI Social Simulation: LLM Agents in a Virtual World'
 lab: 'Social Dynamics Lab'
-dates: 'Feb 2026 – Present'
+dates: 'Jun 2026 – Present'
 status: 'Ongoing'
 abstract: 'A multi-agent LLM simulation inspired by the Stanford Prison Experiment. Autonomous agents inhabit a virtual world, form relationships, and interact in real time, and audit pipelines verify what they say against the world state.'
 methods: ['Multi-agent simulation', 'LLM evaluation', 'Log auditing']

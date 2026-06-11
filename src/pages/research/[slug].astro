@@ -41,17 +41,30 @@ const articleLd = {
 
       <dl class="meta-block">
         <dt>Status</dt>
-        <dd>{d.status}</dd>
+        <dd><span class="status-pill">{d.status}</span></dd>
         <dt>Methods</dt>
-        <dd>{d.methods.join(' · ')}</dd>
+        <dd>
+          <ul class="topic-chips">
+            {d.methods.map((m) => (
+              <li>{m}</li>
+            ))}
+          </ul>
+        </dd>
         {d.stack.length > 0 && (
           <>
             <dt>Stack</dt>
-            <dd>{d.stack.join(' · ')}</dd>
+            <dd>
+              <ul class="topic-chips">
+                {d.stack.map((s) => (
+                  <li>{s}</li>
+                ))}
+              </ul>
+            </dd>
           </>
         )}
       </dl>
     </header>
+
 
     <figure class="figure-wide reveal">
       <div class="diagram">
@@ -66,7 +79,7 @@ const articleLd = {
 
     <footer class="article-footer col">
       <nav class="article-links" aria-label="Project links">
-        <a class="read-more" href="/research/">
+        <a class="read-more" href="/#research">
           <span class="arrow" style="transform: rotate(180deg);">→</span> All research
         </a>
         {d.links.map((l) => (

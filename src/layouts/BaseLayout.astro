@@ -14,7 +14,7 @@ interface Props {
 
 const {
   title = 'Carey Okal · Computational Social Science',
-  description = 'I build computational systems to study how humans, and now AI agents, behave, persuade, and organize. Graduate student at Cornell University.',
+  description = 'I build computational systems to study how humans, and now AI agents, behave, persuade, and organize. MPS student in Information Science at Cornell University.',
   jsonLd,
 } = Astro.props;
 
@@ -27,7 +27,8 @@ const personLd = {
   url: 'https://careymanwa.com',
   email: 'mailto:careyokal@gmail.com',
   affiliation: { '@type': 'CollegeOrUniversity', name: 'Cornell University' },
-  jobTitle: 'Graduate Student & Research Assistant',
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'Cornell University' },
+  jobTitle: 'MPS Student, Information Science & Research Assistant',
   knowsAbout: [
     'Computational Social Science',
     'Large Language Models',

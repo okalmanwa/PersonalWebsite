@@ -6,4 +6,6 @@ export default defineConfig({
   site: 'https://careyokal.com',
   integrations: [sitemap()],
   prefetch: true,
+  // the research index collapsed into the homepage section
+  redirects: { '/research/': '/#research' },
 });
