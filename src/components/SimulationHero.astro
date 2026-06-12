@@ -76,10 +76,12 @@
 
   // ── Suminagashi rings ─────────────────────────────────────────────────────
   // Concentric hairline rings spread from a few drop points, like ink rings
-  // on still water. Each ring undulates slowly; moving the cursor across them
-  // drags the lines aside like a stylus through the water, and they relax
-  // back. Crisp 1px strokes at low alpha — the same hairline weight the rest
-  // of the site is built from. Transparent canvas: the paper shows through.
+  // on still water. Three layers of life:
+  //   · depth — inner rings ink darker, fading toward the rim
+  //   · ripples — every few seconds a red wave radiates out through a system,
+  //     swelling and tinting the rings it passes, like a fresh drop landing
+  //   · the cursor — rings light up as it nears them, and movement drags the
+  //     lines aside like a stylus through the water before they relax back
   (() => {
     const canvas = document.getElementById('sim') as HTMLCanvasElement | null;
     if (!canvas) return;
@@ -88,7 +90,6 @@
 
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
-    const animated = !reduced && fine; // touch + reduced-motion get a still print
 
     // ── sizing ──
     let W = 0, H = 0, dpr = 1;
@@ -104,24 +105,35 @@
     let rt: ReturnType<typeof setTimeout>;
     window.addEventListener('resize', () => {
       clearTimeout(rt);
-      rt = setTimeout(() => { resize(); if (!animated) draw(0); }, 150);
+      rt = setTimeout(() => { resize(); if (reduced) draw(0); }, 150);
     });
 
     // ── palette ──
     let ink = '#121216', accent = '#9a1414';
+    let inkRgb = [18, 18, 22], accentRgb = [154, 20, 20];
+    function hexRgb(h: string): number[] {
+      h = h.trim().replace('#', '');
+      if (h.length === 3) h = h.split('').map((c) => c + c).join('');
+      const n = parseInt(h, 16);
+      return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+    }
     function readColors() {
       const s = getComputedStyle(document.documentElement);
       ink    = s.getPropertyValue('--ink').trim()    || ink;
       accent = s.getPropertyValue('--accent').trim() || accent;
+      inkRgb = hexRgb(ink);
+      accentRgb = hexRgb(accent);
+    }
+    function towardAccent(f: number): string {
+      const r = Math.round(inkRgb[0] + (accentRgb[0] - inkRgb[0]) * f);
+      const g = Math.round(inkRgb[1] + (accentRgb[1] - inkRgb[1]) * f);
+      const b = Math.round(inkRgb[2] + (accentRgb[2] - inkRgb[2]) * f);
+      return `rgb(${r},${g},${b})`;
     }
     readColors();
-    window.addEventListener('themechange', () => { readColors(); if (!animated) draw(0); });
+    window.addEventListener('themechange', () => { readColors(); if (reduced) draw(0); });
 
     // ── drop systems ──
-    // Anchors in normalised coords; the main system sits behind the portrait
-    // side, two smaller ones balance the corners. The hero-fade quiets
-    // whatever passes under the text. Harmonics give each system its own
-    // hand-drawn waviness.
     const drops = [
       {
         ax: 0.70, ay: 0.42, gap: 30, rings: 42, accentRing: 7,
@@ -137,71 +149,118 @@
       },
     ];
 
+    // ── ripples: a wave radiates out from each centre on its own clock ──
+    const ripples = drops.map((d, i) => ({
+      at: performance.now() + 1400 + i * 3400,
+      speed: 150 + i * 20, // px per second
+    }));
+
     // ── stylus impulses ──
-    // Each cursor movement leaves a short-lived push in the water.
-    // Gaussian in space, exponential decay in time.
     interface Imp { x: number; y: number; dx: number; dy: number; born: number }
     const imps: Imp[] = [];
-    const SIGMA = 80, SIG2 = 2 * SIGMA * SIGMA, TAU = 1200, MAX_IMPS = 14;
+    const SIGMA = 90, SIG2 = 2 * SIGMA * SIGMA, TAU = 1200, MAX_IMPS = 14;
 
-    let lastX = -1, lastY = -1;
+    let lastX = -1, lastY = -1;   // previous pointer sample (for deltas)
+    let curX = -1, curY = -1;     // live pointer position (for the glow)
     const hero = canvas.closest('.hero') as HTMLElement | null;
-    if (animated && hero) {
+    if (!reduced && fine && hero) {
       hero.addEventListener('pointermove', (e: PointerEvent) => {
         const r = hero.getBoundingClientRect();
         const x = e.clientX - r.left, y = e.clientY - r.top;
+        curX = x; curY = y;
         if (lastX >= 0) {
           let dx = x - lastX, dy = y - lastY;
           const sp = Math.hypot(dx, dy);
-          if (sp < 3) return; // ignore micro-jitter
-          const cap = Math.min(sp, 22) / sp; // clamp push strength
-          dx *= cap * 1.4; dy *= cap * 1.4;
+          if (sp < 3) return;
+          const cap = Math.min(sp, 24) / sp;
+          dx *= cap * 1.55; dy *= cap * 1.55;
           imps.push({ x, y, dx, dy, born: performance.now() });
           if (imps.length > MAX_IMPS) imps.shift();
         }
         lastX = x; lastY = y;
       }, { passive: true });
-      hero.addEventListener('pointerleave', () => { lastX = -1; lastY = -1; });
+      hero.addEventListener('pointerleave', () => {
+        lastX = -1; lastY = -1; curX = -1; curY = -1;
+      });
     }
 
     // ── draw ──
     function draw(t: number) {
       ctx.clearRect(0, 0, W, H);
-      ctx.lineWidth = 1;
       const now = performance.now();
 
       for (let i = imps.length - 1; i >= 0; i--) {
         if (now - imps[i].born > TAU * 4) imps.splice(i, 1);
       }
 
-      for (const d of drops) {
+      for (let di = 0; di < drops.length; di++) {
+        const d = drops[di];
         const cx = d.ax * W, cy = d.ay * H;
+        const maxR = d.rings * d.gap;
+
+        // where is this system's ripple right now?
+        const rp = ripples[di];
+        let rippleR = -1;
+        if (!reduced && now >= rp.at) {
+          rippleR = ((now - rp.at) / 1000) * rp.speed;
+          if (rippleR > maxR + 150) {
+            rp.at = now + 2600 + Math.random() * 3200;
+            rippleR = -1;
+          }
+        }
+
+        // cursor distance to this centre (for the proximity glow)
+        const dc = curX >= 0 ? Math.hypot(curX - cx, curY - cy) : -1;
 
         for (let ri = 1; ri <= d.rings; ri++) {
           const r0 = ri * d.gap;
-          const segs = Math.min(220, Math.max(56, (r0 * 0.55) | 0));
+
+          // depth: strong heart, whispering rim
+          let a = 0.225 - (r0 / maxR) * 0.145;
+          if (ri % 5 === 0) a += 0.05;
+
+          // the ring nearest the cursor catches the light
+          if (dc >= 0) {
+            const dd = Math.abs(dc - r0);
+            if (dd < 80) a += 0.2 * (1 - dd / 80) ** 2;
+          }
+
+          // the passing wave: swell, brighten, blush red
+          let g = 0;
+          if (rippleR >= 0) {
+            const dr = Math.abs(r0 - rippleR);
+            if (dr < 130) g = Math.exp(-(dr * dr) / 3872); // 2·44²
+          }
+          a += 0.26 * g;
 
           const isAccent = ri === d.accentRing;
-          ctx.strokeStyle = isAccent ? accent : ink;
-          ctx.globalAlpha = isAccent ? 0.20 : ri % 5 === 0 ? 0.16 : 0.10;
+          if (isAccent) {
+            ctx.strokeStyle = accent;
+            a = Math.max(a, 0.26);
+          } else {
+            ctx.strokeStyle = g > 0.04 ? towardAccent(Math.min(1, g * 0.85)) : ink;
+          }
+          ctx.globalAlpha = Math.min(a, 0.5);
+          ctx.lineWidth = 1 + 0.7 * g;
+
+          const rBase = r0 + 7 * g; // the wave lifts the ring as it passes
+          const segs = Math.min(220, Math.max(56, (r0 * 0.55) | 0));
 
           ctx.beginPath();
           for (let s = 0; s <= segs; s++) {
             const th = (s / segs) * Math.PI * 2;
 
-            // organic waviness + very slow breathing
-            let r = r0;
+            let r = rBase;
             for (const hm of d.h) {
-              r += Math.sin(hm.k * th + hm.p + t * 0.00005 * hm.k) * r0 * hm.a;
+              r += Math.sin(hm.k * th + hm.p + t * 0.00008 * hm.k) * r0 * hm.a;
             }
 
             let px = cx + Math.cos(th) * r;
             let py = cy + Math.sin(th) * r;
 
-            // stylus displacement
             for (const im of imps) {
               const ddx = px - im.x, ddy = py - im.y;
-              if (ddx > 260 || ddx < -260 || ddy > 260 || ddy < -260) continue;
+              if (ddx > 280 || ddx < -280 || ddy > 280 || ddy < -280) continue;
               const w =
                 Math.exp(-(ddx * ddx + ddy * ddy) / SIG2) *
                 Math.exp(-(now - im.born) / TAU);
@@ -215,6 +274,7 @@
         }
       }
       ctx.globalAlpha = 1;
+      ctx.lineWidth = 1;
     }
 
     // ── run loop ──
@@ -224,7 +284,7 @@
     function start() { if (running || !visible || document.hidden) return; running = true; raf = requestAnimationFrame(loop); }
     function stop()  { running = false; cancelAnimationFrame(raf); }
 
-    if (animated) {
+    if (!reduced) {
       new IntersectionObserver(([e]) => {
         visible = e.isIntersecting;
         visible ? start() : stop();
