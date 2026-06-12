@@ -655,6 +655,10 @@ html:not(.dark) .icon-sun { display: none; }
 /* ---------- hero ---------- */
 .hero {
   position: relative;
+  /* flush under the nav: swallow main's top padding, but keep the
+     content itself comfortably below it */
+  margin-top: calc(-1 * var(--space-6));
+  padding-top: var(--space-6);
   /* always fill the first viewport, regardless of content height */
   min-height: calc(100vh - var(--nav-h));
   min-height: calc(100svh - var(--nav-h));
@@ -1418,31 +1422,6 @@ html:not(.dark) .icon-sun { display: none; }
 /* hero */
 .accent-dot {
   color: var(--accent);
-}
-
-
-.hero::before {
-  content: '';
-  position: absolute;
-  width: 55vw;
-  height: 70vh;
-  right: -12vw;
-  top: -12vh;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--accent) 7%, transparent),
-    transparent 65%
-  );
-}
-
-html.dark .hero::before {
-  background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--accent) 13%, transparent),
-    transparent 65%
-  );
 }
 
 
