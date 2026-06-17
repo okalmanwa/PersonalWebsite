@@ -286,28 +286,17 @@ main {
   gap: var(--space-3);
 }
 
-.nav-name {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  letter-spacing: 0.04em;
-  color: var(--ink);
-}
-
-.nav-name:hover .nav-cursor {
-  opacity: 1;
-}
-
-.nav-cursor {
-  color: var(--accent);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
 .nav-links {
   display: flex;
   align-items: center;
   gap: var(--space-5);
   font-size: var(--text-base);
+  flex: 1;
+  justify-content: center;
+}
+
+.theme-toggle {
+  flex-shrink: 0;
 }
 
 .nav-links a {
@@ -394,7 +383,17 @@ html:not(.dark) .icon-sun { display: none; }
 @media (max-width: 640px) {
   .nav-burger { display: flex; }
 
+  .theme-toggle {
+    order: 1;
+  }
+
+  .nav-burger {
+    order: 3;
+    margin-left: auto;
+  }
+
   .nav-links {
+    order: 2;
     position: absolute;
     top: var(--nav-h);
     left: 0;
