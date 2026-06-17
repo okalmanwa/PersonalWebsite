@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SimulationHero from '../components/SimulationHero.astro';
 import { visuals } from '../data/visuals';
+import { notebooks } from '../data/notebooks';
 
 const research = (await getCollection('research')).sort(
   (a, b) => a.data.order - b.data.order
@@ -50,6 +51,7 @@ const projects = [
     desc: 'An interactive map documenting police killings and extrajudicial executions in Kenya, filterable by county and year.',
   },
 ];
+
 ---
 
 <BaseLayout>
@@ -109,6 +111,30 @@ const projects = [
         ))
       }
     </ol>
+  </section>
+
+  <section class="section wide" aria-labelledby="scratch-builds">
+    <div class="section-head reveal">
+      <span class="eyebrow" id="scratch-builds">Built from scratch</span>
+    </div>
+    <p class="section-lede reveal">
+      Original coursework implementations where I built the core models myself.
+    </p>
+    <ul class="scratch-grid">
+      {
+        notebooks.map((item) => (
+          <li class="reveal">
+            <a class="scratch-card" href={`/notebooks/${item.slug}/`}>
+              <span class="scratch-title">
+                {item.title} <span class="arrow" aria-hidden="true">→</span>
+              </span>
+              <span class="scratch-meta">{item.stack}</span>
+              <p>{item.blurb}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </section>
 
   <section class="section wide" aria-labelledby="side-projects">
