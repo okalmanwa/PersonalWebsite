@@ -4,7 +4,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "notebooks:html": "mkdir -p public/notebooks/html && python3 -m nbconvert --to html public/notebooks/*.ipynb --output-dir public/notebooks/html",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview"

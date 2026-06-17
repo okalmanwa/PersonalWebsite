@@ -10,8 +10,8 @@ export function getStaticPaths() {
 }
 
 const { notebook } = Astro.props;
-const viewerUrl = `/notebooks/html/${notebook.slug}.html`;
-const githubUrl = `https://github.com/okalmanwa/PersonalWebsite/blob/main/public/notebooks/${notebook.file}`;
+const notebookUrl = new URL(`/notebooks/${notebook.file}`, Astro.site).href;
+const nbviewerUrl = `https://nbviewer.org/format/url/${encodeURIComponent(notebookUrl)}`;
 const downloadUrl = `/notebooks/${notebook.file}`;
 ---
 
@@ -26,8 +26,8 @@ const downloadUrl = `/notebooks/${notebook.file}`;
       <h1 style="font-size: var(--text-2xl);">{notebook.title}</h1>
       <p class="abstract">{notebook.blurb}</p>
       <div class="notebook-actions">
-        <a class="btn" href={githubUrl} target="_blank" rel="noopener">
-          View on GitHub <span class="arrow">↗</span>
+        <a class="btn" href={nbviewerUrl} target="_blank" rel="noopener">
+          Open in nbviewer <span class="arrow">↗</span>
         </a>
         <a class="btn btn--ghost" href={downloadUrl} download>
           Download .ipynb <span class="arrow">↓</span>
@@ -37,9 +37,10 @@ const downloadUrl = `/notebooks/${notebook.file}`;
 
     <div class="notebook-frame reveal">
       <iframe
-        src={viewerUrl}
+        src={nbviewerUrl}
         title={`${notebook.title} notebook`}
         loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-popups"
       ></iframe>
     </div>
   </article>
