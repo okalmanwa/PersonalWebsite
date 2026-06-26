@@ -48,7 +48,7 @@
 
 .project-card:hover .browser {
   transform: translateY(-7px) rotate(-0.7deg);
-  border-color: color-mix(in srgb, var(--accent) 35%, var(--hairline));
+  border-color: color-mix(in srgb, var(--ink) 18%, var(--hairline));
   box-shadow: 0 24px 48px -20px color-mix(in srgb, var(--ink) 42%, transparent);
 }
 
@@ -166,7 +166,7 @@
 .project-index {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  color: var(--accent);
+  color: var(--faint);
   letter-spacing: 0.04em;
   flex-shrink: 0;
 }
@@ -197,9 +197,14 @@
 .project-name .ext {
   font-family: var(--font-mono);
   font-size: 0.7em;
-  color: var(--accent);
+  color: var(--faint);
   vertical-align: 0.15em;
   margin-left: 0.15em;
+  transition: color 0.15s ease;
+}
+
+.project-card:hover .project-name .ext {
+  color: var(--accent);
 }
 
 .project-desc {

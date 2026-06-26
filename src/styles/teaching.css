@@ -1,0 +1,161 @@
+/* teaching page */
+
+.teaching-header {
+  margin-bottom: var(--space-5);
+}
+
+/* course list — flat index, mirrors research list */
+.course-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: course;
+}
+
+.course-list .course {
+  counter-increment: course;
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.course-list .course:last-child {
+  border-bottom: 1px solid var(--hairline);
+}
+
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.65rem;
+  margin-bottom: var(--space-3);
+}
+
+.course-list .entry-index::before {
+  content: counter(course, decimal-leading-zero);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--faint);
+  letter-spacing: 0.02em;
+}
+
+.course-code {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.28em 0.65em;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.course-code--orie {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.course-code--info {
+  color: #2a5f8f;
+  background: color-mix(in srgb, #2a5f8f 10%, var(--paper));
+  border-color: color-mix(in srgb, #2a5f8f 24%, var(--hairline));
+}
+
+html.dark .course-code--info {
+  color: #7eb8e8;
+  background: color-mix(in srgb, #2a5f8f 20%, var(--surface));
+  border-color: color-mix(in srgb, #7eb8e8 20%, var(--hairline));
+}
+
+.role-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.28em 0.75em;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.role-pill--lead {
+  color: #1a6b52;
+  background: color-mix(in srgb, #1a6b52 11%, var(--paper));
+  border-color: color-mix(in srgb, #1a6b52 28%, var(--hairline));
+}
+
+.role-pill--ta {
+  color: #8a6420;
+  background: color-mix(in srgb, #c9a227 14%, var(--paper));
+  border-color: color-mix(in srgb, #c9a227 32%, var(--hairline));
+}
+
+html.dark .role-pill--lead {
+  color: #6fd4ae;
+  background: color-mix(in srgb, #1a6b52 22%, var(--surface));
+  border-color: color-mix(in srgb, #6fd4ae 22%, var(--hairline));
+}
+
+html.dark .role-pill--ta {
+  color: #e8c96a;
+  background: color-mix(in srgb, #c9a227 16%, var(--surface));
+  border-color: color-mix(in srgb, #e8c96a 20%, var(--hairline));
+}
+
+.course-org {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  color: var(--faint);
+  margin-left: auto;
+}
+
+.course-list .course h2 {
+  font-size: var(--text-lg);
+  line-height: 1.28;
+  margin: 0 0 var(--space-2);
+  color: var(--ink);
+  max-width: 44rem;
+}
+
+.course-body {
+  color: color-mix(in srgb, var(--ink) 58%, var(--muted));
+  font-size: var(--text-base);
+  line-height: 1.72;
+  max-width: 44rem;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+.course-chips {
+  list-style: none;
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.course-chips li {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  color: var(--faint);
+  border: 1px solid var(--hairline);
+  background: transparent;
+  padding: 0.22em 0.62em;
+  border-radius: 4px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.course-chips li:hover {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--ink) 22%, var(--hairline));
+}
+
+@media (max-width: 640px) {
+  .course-org {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+}

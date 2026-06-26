@@ -3,8 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Diagram from '../../components/Diagram.astro';
 import NewspaperStyles from '../../components/NewspaperStyles.astro';
-import HackathonSticker from '../../components/HackathonSticker.astro';
-import '../../styles/hackathon-sticker.css';
+import { statusVariant } from '../../utils/statusVariant';
 import '../../styles/article.css';
 
 export async function getStaticPaths() {
@@ -26,18 +25,15 @@ const d = entry.data;
       <span class="eyebrow">
         {d.lab}<span class="dot">·</span>{d.dates}
       </span>
-      {d.status === 'Hackathon winner' ? (
-        <div class="title-with-sticker">
-          <h1>{d.title}</h1>
-          <HackathonSticker size="lg" />
-        </div>
-      ) : (
-        <h1>{d.title}</h1>
-      )}
+      <h1>{d.title}</h1>
       <p class="abstract">{d.abstract}</p>
       <dl class="meta-block">
         <dt>Status</dt>
-        <dd><span class="status-pill">{d.status}</span></dd>
+        <dd>
+          <span class:list={['status-pill', statusVariant(d.status)]}>
+            {d.status}
+          </span>
+        </dd>
         <dt>Methods</dt>
         <dd>
           <ul class="topic-chips">

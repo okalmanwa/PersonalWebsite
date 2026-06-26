@@ -257,7 +257,7 @@ main {
 }
 
 .eyebrow .dot {
-  color: var(--accent);
+  color: var(--hairline);
   margin-inline: 0.4em;
 }
 
@@ -456,52 +456,21 @@ html:not(.dark) .icon-sun { display: none; }
   color: var(--accent);
 }
 
-/* ---------- editorial entry list ----------
-   no ruled lines: entries hang off a network spine,
-   each with a node — the research-as-system motif */
+/* ---------- editorial entry list (legacy / article pages) ---------- */
 .entry-list {
   list-style: none;
   margin: 0;
-  padding: 0 0 0 var(--space-5);
-  position: relative;
-}
-
-.entry-list::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.6rem;
-  bottom: 0;
-  width: 1.5px;
-  background: linear-gradient(
-    to bottom,
-    var(--hairline) 0%,
-    var(--hairline) 78%,
-    transparent 100%
-  );
+  padding: 0;
 }
 
 .entry {
   position: relative;
   padding: var(--space-4) 0 var(--space-5);
+  border-top: 1px solid var(--hairline);
 }
 
-.entry::before {
-  content: '';
-  position: absolute;
-  left: calc(-1 * var(--space-5));
-  top: calc(var(--space-4) + 0.25rem);
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--paper);
-  border: 1.5px solid var(--accent);
-  transform: translateX(-50%);
-  transition: background-color 0.2s ease;
-}
-
-.entry:hover::before {
-  background: var(--accent);
+.entry:last-child {
+  border-bottom: 1px solid var(--hairline);
 }
 
 .entry .eyebrow {
@@ -552,7 +521,7 @@ html:not(.dark) .icon-sun { display: none; }
   position: absolute;
   inset: 0;
   transform: translate(9px, 9px);
-  border: 1.5px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  border: 1.5px solid var(--hairline);
   border-radius: 2.6rem 0.5rem 2.6rem 0.5rem;
   transition: transform 0.35s cubic-bezier(0.2, 0.6, 0.2, 1);
 }
@@ -723,7 +692,7 @@ html:not(.dark) .icon-sun { display: none; }
 }
 
 .type-prompt {
-  color: var(--accent);
+  color: var(--faint);
   margin-right: 0.5em;
 }
 
@@ -733,7 +702,7 @@ html:not(.dark) .icon-sun { display: none; }
   height: 1.05em;
   margin-left: 0.18em;
   vertical-align: text-bottom;
-  background: var(--accent);
+  background: var(--ink);
   animation: caret-blink 1.05s steps(1) infinite;
 }
 
@@ -876,11 +845,11 @@ html:not(.dark) .icon-sun { display: none; }
   text-wrap: pretty;
 }
 
-/* prose color: accent-dashed headings, warm markers, tinted emphasis */
+/* prose: ink headings, quiet markers, links accent on hover only */
 .article-body h2 {
   font-size: var(--text-lg);
   margin-top: var(--space-6);
-  color: var(--accent);
+  color: var(--ink);
 }
 
 .article-body ul {
@@ -897,7 +866,7 @@ html:not(.dark) .icon-sun { display: none; }
   content: '→';
   position: absolute;
   left: -1.4em;
-  color: var(--accent);
+  color: var(--faint);
   font-family: var(--font-mono);
   font-size: 0.85em;
   top: 0.15em;
@@ -905,18 +874,18 @@ html:not(.dark) .icon-sun { display: none; }
 
 .article-body strong {
   color: var(--ink);
-  background: linear-gradient(transparent 68%, var(--accent-soft) 68%);
-  padding-inline: 0.08em;
+  font-weight: 600;
 }
 
 .article-body a {
-  color: var(--accent);
-  text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  color: var(--ink);
+  text-decoration-color: var(--hairline);
   text-underline-offset: 3px;
 }
 
 .article-body a:hover {
-  text-decoration-color: var(--accent);
+  color: var(--accent);
+  text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent);
 }
 
 .article-footer {
@@ -966,10 +935,60 @@ html:not(.dark) .icon-sun { display: none; }
   font-size: var(--text-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-soft);
+  color: var(--muted);
+  background: color-mix(in srgb, var(--ink) 3%, var(--surface));
+  border: 1px solid var(--hairline);
   padding: 0.2em 0.7em;
   border-radius: 999px;
+}
+
+/* completion / status tags — semantic color per state */
+.status-pill--active {
+  color: #1a6b52;
+  background: color-mix(in srgb, #1a6b52 11%, var(--paper));
+  border-color: color-mix(in srgb, #1a6b52 28%, var(--hairline));
+}
+
+.status-pill--done {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--hairline));
+}
+
+.status-pill--draft {
+  color: #8a6420;
+  background: color-mix(in srgb, #c9a227 14%, var(--paper));
+  border-color: color-mix(in srgb, #c9a227 32%, var(--hairline));
+}
+
+.status-pill--winner {
+  color: #7a5610;
+  background: color-mix(in srgb, #f5d76e 30%, var(--paper));
+  border-color: color-mix(in srgb, #d4a72c 42%, transparent);
+}
+
+html.dark .status-pill--active {
+  color: #6fd4ae;
+  background: color-mix(in srgb, #1a6b52 22%, var(--surface));
+  border-color: color-mix(in srgb, #6fd4ae 22%, var(--hairline));
+}
+
+html.dark .status-pill--done {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 16%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--hairline));
+}
+
+html.dark .status-pill--draft {
+  color: #e8c96a;
+  background: color-mix(in srgb, #c9a227 16%, var(--surface));
+  border-color: color-mix(in srgb, #e8c96a 20%, var(--hairline));
+}
+
+html.dark .status-pill--winner {
+  color: #f5d76e;
+  background: color-mix(in srgb, #d4a72c 18%, var(--surface));
+  border-color: color-mix(in srgb, #f5d76e 22%, var(--hairline));
 }
 
 
@@ -1060,42 +1079,7 @@ html:not(.dark) .icon-sun { display: none; }
   }
 }
 
-/* ---------- teaching page ---------- */
-.course {
-  margin-top: var(--space-6);
-}
-
-/* the header already provides the gap; don't double it before the first course */
-.article-header + .course {
-  margin-top: 0;
-}
-
-/* a title-only header (teaching) needs far less air than a full article header */
-.article-header:has(+ .course) {
-  margin-bottom: var(--space-4);
-}
-
-.course-tag {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  color: var(--accent);
-  background: var(--accent-soft);
-  padding: 0.3em 0.7em;
-  border-radius: 999px;
-  margin-bottom: var(--space-2);
-}
-
-.course h2 {
-  font-size: var(--text-lg);
-  margin: 0 0 var(--space-1);
-}
-
-.course .eyebrow {
-  margin-bottom: var(--space-2);
-}
+/* ---------- teaching page (see teaching.css) ---------- */
 
 .topic-chips {
   list-style: none;
@@ -1119,8 +1103,8 @@ html:not(.dark) .icon-sun { display: none; }
 }
 
 .topic-chips li:hover {
-  color: var(--accent);
-  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--ink) 22%, var(--hairline));
 }
 
 /* ---------- contact block ---------- */
@@ -1230,10 +1214,8 @@ html:not(.dark) .icon-sun { display: none; }
 
 .project-card:hover .browser {
   transform: translateY(-7px) rotate(-0.7deg);
-  border-color: color-mix(in srgb, var(--accent) 35%, var(--hairline));
-  box-shadow:
-    0 24px 48px -20px color-mix(in srgb, var(--ink) 42%, transparent),
-    0 10px 36px -14px color-mix(in srgb, var(--accent) 30%, transparent);
+  border-color: color-mix(in srgb, var(--ink) 18%, var(--hairline));
+  box-shadow: 0 24px 48px -20px color-mix(in srgb, var(--ink) 42%, transparent);
 }
 
 .project-grid li:nth-child(even) .project-card:hover .browser {
@@ -1338,7 +1320,7 @@ html:not(.dark) .icon-sun { display: none; }
 .project-index {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
-  color: var(--accent);
+  color: var(--faint);
   letter-spacing: 0.04em;
   flex-shrink: 0;
 }
@@ -1369,9 +1351,14 @@ html:not(.dark) .icon-sun { display: none; }
 .project-name .ext {
   font-family: var(--font-mono);
   font-size: 0.7em;
-  color: var(--accent);
+  color: var(--faint);
   vertical-align: 0.15em;
   margin-left: 0.15em;
+  transition: color 0.15s ease;
+}
+
+.project-card:hover .project-name .ext {
+  color: var(--accent);
 }
 
 .project-desc {
@@ -1419,12 +1406,12 @@ html:not(.dark) .icon-sun { display: none; }
 }
 
 
-/* section eyebrows carry the accent: small doses of red through the page */
+/* section eyebrows: quiet labels — accent reserved for links and hovers */
 .section-head .eyebrow,
 .article-header > .eyebrow,
 .section > .eyebrow,
 .contact-block > .eyebrow {
-  color: var(--accent);
+  color: var(--faint);
 }
 
 /* nav links: underline grows in */

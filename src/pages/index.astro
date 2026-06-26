@@ -2,9 +2,10 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SimulationHero from '../components/SimulationHero.astro';
-import HackathonSticker from '../components/HackathonSticker.astro';
-import '../styles/hackathon-sticker.css';
+import { visuals } from '../data/visuals';
+import { statusVariant } from '../utils/statusVariant';
 import '../styles/projects.css';
+import '../styles/research-list.css';
 
 const research = (await getCollection('research')).sort(
   (a, b) => a.data.order - b.data.order
@@ -58,40 +59,74 @@ const projects = [
   <div class="home">
     <SimulationHero />
 
-    <section class="section wide" id="research" aria-labelledby="featured">
+    <section class="section wide research-section" id="research" aria-labelledby="featured">
       <div class="section-head reveal">
         <span class="eyebrow" id="featured">Selected research</span>
         <a class="all-link" href="/research/">All research →</a>
       </div>
-      <ol class="entry-list">
+      <ol class="research-list">
         {
           research.map((p) => {
             const isHackathonWinner =
               p.data.status === 'Hackathon winner' || p.id === 'ecotourism-platform';
+            const visual = visuals[p.id];
             return (
               <li
-                class:list={['entry', 'reveal', isHackathonWinner && 'entry--winner']}
+                class:list={['entry', 'entry--visual', 'reveal']}
               >
-                <span class="eyebrow">
-                  {p.data.lab}
-                  <span class="dot">·</span>
-                  {p.data.dates}
-                  <span class="dot">·</span>
-                  {p.data.status}
-                </span>
-                {isHackathonWinner ? (
-                  <div class="title-with-sticker">
-                    <h3>
-                      <a href={`/research/${p.id}/`}>{p.data.title}</a>
-                    </h3>
-                    <HackathonSticker size="sm" />
+                <div class="entry-body">
+                  <div class="entry-meta">
+                    <span class="entry-lab">{p.data.lab}</span>
+                    <span class="entry-dates">{p.data.dates}</span>
+                    <span
+                      class:list={[
+                        'status-pill',
+                        statusVariant(p.data.status, isHackathonWinner),
+                      ]}
+                    >
+                      {p.data.status}
+                    </span>
                   </div>
-                ) : (
                   <h3>
                     <a href={`/research/${p.id}/`}>{p.data.title}</a>
                   </h3>
-                )}
-                <p class="abstract">{p.data.abstract}</p>
+                  <p class="abstract">{p.data.abstract}</p>
+                  {
+                    p.data.methods.length > 0 && (
+                      <ul class="entry-chips" aria-label="Methods">
+                        {p.data.methods.map((method) => (
+                          <li>{method}</li>
+                        ))}
+                      </ul>
+                    )
+                  }
+                  <a class="read-more entry-read-more" href={`/research/${p.id}/`}>
+                    Read more <span class="arrow">→</span>
+                  </a>
+                </div>
+                {
+                  visual && (
+                    <a
+                      class="entry-visual"
+                      href={`/research/${p.id}/`}
+                      tabindex="-1"
+                      aria-hidden="true"
+                    >
+                      <img
+                        src={visual.src}
+                        alt={visual.alt}
+                        loading="lazy"
+                        width="400"
+                        height="300"
+                        style={
+                          visual.pos
+                            ? `object-position: ${visual.pos}`
+                            : undefined
+                        }
+                      />
+                    </a>
+                  )
+                }
               </li>
             );
           })
