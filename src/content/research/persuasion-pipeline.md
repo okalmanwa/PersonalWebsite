@@ -10,9 +10,44 @@ order: 2
 featured: true
 ---
 
-## Project
+<style>
+  .newspaper-open {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-5);
+    border-bottom: 1px solid var(--hairline);
+  }
 
-The lab's NSF-funded project studies persuasive AI and the spread of misinformation. One thread of it is a classifier that scores text across four rhetorical strategies, causal, empirical, emotional, and moral, fine-tuned on LLM-labeled synthetic debates and validated against human annotators. The work has been published at NAACL and EMNLP 2025.
+  .newspaper-open p {
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+
+  .newspaper-open p.dropcap {
+    text-wrap: pretty;
+  }
+
+  .newspaper-open .dropcap-letter {
+    float: left;
+    font-family: var(--font-display);
+    font-size: 2.45em;
+    line-height: 0.84;
+    font-weight: 400;
+    color: var(--ink);
+    padding: 0.02em 0.6rem 0 0;
+    margin: 0.06em 0.45rem 0 0;
+    border-right: 1px solid var(--hairline);
+  }
+
+  .newspaper-open p:last-child {
+    margin-bottom: 0;
+  }
+</style>
+
+<div class="newspaper-open">
+
+<p class="dropcap"><span class="dropcap-letter" aria-hidden="true">T</span>he lab's NSF-funded project studies persuasive AI and the spread of misinformation. One thread of it is a classifier that scores text across four rhetorical strategies, causal, empirical, emotional, and moral, fine-tuned on LLM-labeled synthetic debates and validated against human annotators. The work has been published at NAACL and EMNLP 2025.</p>
+
+</div>
 
 ## What I built
 

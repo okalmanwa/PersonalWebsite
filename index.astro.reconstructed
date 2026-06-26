@@ -1,0 +1,167 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SimulationHero from '../components/SimulationHero.astro';
+import { visuals } from '../data/visuals-new';
+import { notebooks } from '../data/notebooks';
+
+const research = (await getCollection('research')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const projects = [
+  {
+    name: 'MathMentor',
+    url: 'https://www.mathmentor.academy/',
+    domain: 'mathmentor.academy',
+    img: '/images/projects/mathmentor.jpg',
+    alt: 'MathMentor landing page: train your own AI teaching assistants, with a live tutoring demo',
+    desc: 'A RAG-powered AI math tutoring platform.',
+  },
+  {
+    name: 'Block AI Overview',
+    url: 'https://chromewebstore.google.com/detail/block-ai-overview/bmlfocmlnojabbielkcelpallkfpljba',
+    domain: 'chromewebstore.google.com',
+    img: '/images/projects/block-ai-overview.jpg',
+    alt: 'Get Pre-AI Google Search Results on the Chrome Web Store: block AI Overview and filter pre-2023 results',
+    desc: 'A Chrome extension that rewrites Google searches to skip AI Overviews, without touching the page DOM.',
+  },
+  {
+    name: 'NEUDC 2026',
+    url: 'https://cidercornell.github.io/neudc2026/',
+    domain: 'cidercornell.github.io',
+    img: '/images/projects/neudc2026.jpg',
+    alt: "NEUDC 2026 conference site with Cornell's McGraw Tower in autumn",
+    desc: 'Site for the longest-running development economics conference, hosted at Cornell in November 2026.',
+  },
+  {
+    name: 'Cornell CIDER',
+    url: 'https://business.cornell.edu/centers/cider/',
+    domain: 'business.cornell.edu',
+    img: '/images/projects/cider.jpg',
+    alt: 'Cornell CIDER website with a savanna sunset hero image',
+    desc: 'Web presence of the Collaboration for International Development Economics Research, which I maintain as webmaster.',
+  },
+  {
+    name: 'Missing Voices Kenya',
+    url: 'https://okalmanwa.github.io/killingsKE/',
+    domain: 'okalmanwa.github.io',
+    img: '/images/projects/missing-voices.jpg',
+    alt: 'Missing Voices Kenya: interactive map of police killings with county and year filters',
+    desc: 'An interactive map documenting police killings and extrajudicial executions in Kenya, filterable by county and year.',
+  },
+];
+
+---
+
+<BaseLayout>
+  <div class="home">
+    <SimulationHero />
+
+    <section class="section wide reveal" id="about" aria-labelledby="bio">
+      <span class="eyebrow" id="bio">In brief</span>
+      <p>
+        I'm an MPS student in Information Science at Cornell Bowers CIS (B.S.
+      Information Science '26, cum laude), working at the intersection of LLMs,
+        social simulation, and development economics. At the
+        <a href="/research/social-simulation/">Social Dynamics Lab</a> I audit
+        multi-agent LLM simulations and classify persuasion strategies across
+        large news corpora; at
+        <a href="/research/disaster-resilience/">CIDER</a> I help build
+        predictive systems for disaster resilience. Before Cornell, I worked
+        with EducationUSA in Nairobi, reaching students across Kenyan high
+        schools.
+      </p>
+    </section>
+
+    <section class="section wide" id="research" aria-labelledby="featured">
+      <div class="section-head reveal">
+        <span class="eyebrow" id="featured">Selected research</span>
+        <a class="all-link" href="/research/">All research →</a>
+      </div>
+      <ol class="entry-list">
+        {
+          research.map((p) => (
+            <li class="entry reveal">
+              <span class="eyebrow">
+                {p.data.lab}
+                <span class="dot">·</span>
+                {p.data.dates}
+                <span class="dot">·</span>
+                {p.data.status}
+              </span>
+              <h3>
+                <a href={`/research/${p.id}/`}>{p.data.title}</a>
+              </h3>
+              <p class="abstract">{p.data.abstract}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="section wide" id="projects" aria-labelledby="side-projects">
+      <div class="section-head reveal">
+        <span class="eyebrow" id="side-projects">Side projects</span>
+      </div>
+      <ul class="link-list">
+        <li class="reveal">
+          <a href="https://www.mathmentor.academy/" target="_blank" rel="noopener">
+            MathMentor
+          </a>
+          <p class="desc">A RAG-powered AI math tutoring platform.</p>
+        </li>
+        <li class="reveal">
+          <a
+            href="https://chromewebstore.google.com/detail/block-ai-overview/bmlfocmlnojabbielkcelpallkfpljba"
+            target="_blank"
+            rel="noopener"
+          >
+            Block AI Overview
+          </a>
+          <p class="desc">
+            A Chrome extension that rewrites Google searches to skip AI
+            Overviews, without touching the page DOM.
+          </p>
+        </li>
+        <li class="reveal">
+          <a
+            href="https://cidercornell.github.io/neudc2026/"
+            target="_blank"
+            rel="noopener"
+          >
+            NEUDC 2026
+          </a>
+          <p class="desc">
+            Site for the longest-running development economics conference,
+            hosted at Cornell in November 2026.
+          </p>
+        </li>
+        <li class="reveal">
+          <a
+            href="https://famous-lamington-f4a918.netlify.app/"
+            target="_blank"
+            rel="noopener"
+          >
+            SMART Student Blog
+          </a>
+          <p class="desc">
+            A blog platform for Cornell's SMART Program, with accounts, posts,
+            and project filtering.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section wide contact-block reveal" id="contact" aria-labelledby="contact-label">
+      <span class="eyebrow" id="contact-label">Contact</span>
+      <p class="contact-lead">
+        Open to research collaborations, PhD conversations, and hard data
+        problems.
+      </p>
+      <a class="read-more" href="mailto:careyokal@gmail.com">
+        careyokal@gmail.com <span class="arrow">→</span>
+      </a>
+    </section>
+  </div>
+</BaseLayout>

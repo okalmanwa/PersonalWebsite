@@ -1,0 +1,6 @@
+/* Supplementary styles when status sits inline without the component wrapper */
+.status-with-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}

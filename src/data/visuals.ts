@@ -1,13 +1,5 @@
 /**
- * Research entry photography. Free-licensed sources (Wikimedia Commons):
- * - social-simulation: The Opte Project / Barrett Lyon, "Internet map",
- *   CC BY 2.5
- * - persuasion-pipeline: Tom T, "Web-fed offset press printing
- *   newspapers", CC BY 2.0
- * - disaster-resilience: NASA, "Hurricane Isabel from ISS"
- *   (public domain)
- * - ecotourism-platform: "Lolldaiga Conservancy, Kenya" (Laikipia),
- *   via Flickr, CC BY 2.0
+ * Research entry photography.
  */
 export interface Visual {
   src: string;
@@ -17,9 +9,9 @@ export interface Visual {
 
 export const visuals: Record<string, Visual> = {
   'social-simulation': {
-    src: '/images/research/social-simulation.jpg',
-    alt: 'Network visualization: thousands of glowing connected nodes on black',
-    pos: 'center 22%',
+    src: '/images/research/social-simulation.png',
+    alt: 'AI social simulation: prison world map with agent conversations and audit UI',
+    pos: 'center center',
   },
   'persuasion-pipeline': {
     src: '/images/research/persuasion-pipeline.jpg',
