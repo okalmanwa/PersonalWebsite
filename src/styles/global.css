@@ -666,8 +666,6 @@ html:not(.dark) .icon-sun { display: none; }
   /* bias the content above true center so the top doesn't gape */
   padding-bottom: 14vh;
   overflow: hidden;
-  /* stage for the 3d fold-away on scroll */
-  perspective: 1100px;
 }
 
 .hero-canvas {
@@ -775,9 +773,6 @@ html:not(.dark) .icon-sun { display: none; }
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--space-6);
-  transform-style: preserve-3d;
-  transform-origin: 50% 85%;
-  will-change: transform, opacity, filter;
 }
 
 .hero-fig {

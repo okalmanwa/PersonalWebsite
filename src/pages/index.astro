@@ -2,7 +2,9 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SimulationHero from '../components/SimulationHero.astro';
-import { visuals } from '../data/visuals';
+import HackathonSticker from '../components/HackathonSticker.astro';
+import '../styles/hackathon-sticker.css';
+import '../styles/projects.css';
 
 const research = (await getCollection('research')).sort(
   (a, b) => a.data.order - b.data.order
@@ -53,152 +55,111 @@ const projects = [
 ---
 
 <BaseLayout>
-  <SimulationHero />
+  <div class="home">
+    <SimulationHero />
 
-  <section class="section wide" aria-labelledby="research">
-    <div class="section-head reveal">
-      <span class="eyebrow" id="research">Research</span>
-    </div>
-    <ol class="entry-list">
-      {
-        research.map((p) => (
-          <li class="entry entry--visual reveal">
-            <div class="entry-body">
-              <span class="eyebrow">
-                {p.data.lab}
-                <span class="dot">·</span>
-                {p.data.dates}
-                <span class="dot">·</span>
-                {p.data.status}
-              </span>
-              <h3>
-                <a href={`/research/${p.id}/`}>{p.data.title}</a>
-              </h3>
-              <p class="abstract">{p.data.abstract}</p>
-              <span class="entry-links">
-                <a class="read-more" href={`/research/${p.id}/`}>
-                  Read more <span class="arrow">→</span>
-                </a>
-                {p.data.links?.map((l) => (
-                  <a class="read-more" href={l.url} target="_blank" rel="noopener">
-                    {l.label} <span class="arrow">↗</span>
-                  </a>
-                ))}
-              </span>
-            </div>
-            {
-              visuals[p.id] && (
-                <a
-                  class="entry-visual"
-                  href={`/research/${p.id}/`}
-                  tabindex="-1"
-                  aria-hidden="true"
-                >
+    <section class="section wide" id="research" aria-labelledby="featured">
+      <div class="section-head reveal">
+        <span class="eyebrow" id="featured">Selected research</span>
+        <a class="all-link" href="/research/">All research →</a>
+      </div>
+      <ol class="entry-list">
+        {
+          research.map((p) => {
+            const isHackathonWinner =
+              p.data.status === 'Hackathon winner' || p.id === 'ecotourism-platform';
+            return (
+              <li
+                class:list={['entry', 'reveal', isHackathonWinner && 'entry--winner']}
+              >
+                <span class="eyebrow">
+                  {p.data.lab}
+                  <span class="dot">·</span>
+                  {p.data.dates}
+                  <span class="dot">·</span>
+                  {p.data.status}
+                </span>
+                {isHackathonWinner ? (
+                  <div class="title-with-sticker">
+                    <h3>
+                      <a href={`/research/${p.id}/`}>{p.data.title}</a>
+                    </h3>
+                    <HackathonSticker size="sm" />
+                  </div>
+                ) : (
+                  <h3>
+                    <a href={`/research/${p.id}/`}>{p.data.title}</a>
+                  </h3>
+                )}
+                <p class="abstract">{p.data.abstract}</p>
+              </li>
+            );
+          })
+        }
+      </ol>
+    </section>
+
+    <section class="section wide" id="projects" aria-labelledby="side-projects">
+      <div class="section-head reveal">
+        <span class="eyebrow" id="side-projects">Side projects</span>
+      </div>
+      <p class="section-lede reveal">
+        Research aside, I build for the web — client work and my own products,
+        all currently live.
+      </p>
+      <ul class="project-grid">
+        {
+          projects.map((p, idx) => (
+            <li class:list={['reveal', idx === 0 && 'project-feature']}>
+              <a class="project-card" href={p.url} target="_blank" rel="noopener">
+                <span class="browser">
+                  <span class="browser-bar" aria-hidden="true">
+                    <span class="b-dots">
+                      <i />
+                      <i />
+                      <i />
+                    </span>
+                    <span class="b-url">{p.domain}</span>
+                    <span class="b-live">
+                      <i />
+                      LIVE
+                    </span>
+                  </span>
                   <img
-                    src={visuals[p.id].src}
-                    alt={visuals[p.id].alt}
+                    src={p.img}
+                    alt={p.alt}
                     loading="lazy"
-                    width="400"
-                    height="300"
-                    style={visuals[p.id].pos ? `object-position: ${visuals[p.id].pos}` : undefined}
+                    width="500"
+                    height="312"
                   />
-                </a>
-              )
-            }
-          </li>
-        ))
-      }
-    </ol>
-  </section>
+                </span>
+                <span class="project-meta">
+                  <span class="project-index" aria-hidden="true">
+                    {String(idx + 1).padStart(2, '0')}
+                  </span>
+                  <span class="project-text">
+                    <span class="project-name">
+                      {p.name} <span class="ext" aria-hidden="true">↗</span>
+                    </span>
+                    <span class="project-desc">{p.desc}</span>
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
 
-  <section class="section wide" aria-labelledby="side-projects">
-    <div class="section-head reveal">
-      <span class="eyebrow" id="side-projects">Side projects</span>
-    </div>
-    <p class="section-lede reveal">
-      Research aside, I build for the web: client work and my own products,
-      all currently live.
-    </p>
-    <ul class="project-grid">
-      {
-        projects.map((p, idx) => (
-          <li class={`reveal${idx === 0 ? ' project-feature' : ''}`}>
-            <a class="project-card" href={p.url} target="_blank" rel="noopener">
-              <span class="browser">
-                <span class="browser-bar" aria-hidden="true">
-                  <span class="b-dots">
-                    <i />
-                    <i />
-                    <i />
-                  </span>
-                  <span class="b-url">{p.domain}</span>
-                  <span class="b-live">
-                    <i />
-                    LIVE
-                  </span>
-                </span>
-                <img
-                  src={p.img}
-                  alt={p.alt}
-                  loading="lazy"
-                  width="500"
-                  height="312"
-                />
-              </span>
-              <span class="project-meta">
-                <span class="project-index" aria-hidden="true">
-                  {String(idx + 1).padStart(2, '0')}
-                </span>
-                <span class="project-text">
-                  <span class="project-name">
-                    {p.name} <span class="ext" aria-hidden="true">↗</span>
-                  </span>
-                  <span class="project-desc">{p.desc}</span>
-                </span>
-              </span>
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-
-  <section class="contact-block wide reveal" aria-labelledby="contact">
-    <span class="eyebrow" id="contact">Contact</span>
-    <p>
-      Open to research collaborations, PhD conversations, and hard data
-      problems.
-    </p>
-    <a class="btn" href="mailto:careyokal@gmail.com"
-      >Email me <span class="arrow">→</span></a
-    >
-  </section>
+    <section class="section wide contact-block reveal" id="contact" aria-labelledby="contact-label">
+      <span class="eyebrow" id="contact-label">Contact</span>
+      <p class="contact-lead">
+        Open to research collaborations, PhD conversations, and hard data
+        problems.
+      </p>
+      <a class="read-more" href="mailto:careyokal@gmail.com">
+        careyokal@gmail.com <span class="arrow">→</span>
+      </a>
+    </section>
+  </div>
 </BaseLayout>
-
-<script>
-  // side projects: the browser windows tilt toward the cursor
-  (() => {
-    const fine =
-      matchMedia('(hover: hover) and (pointer: fine)').matches &&
-      !matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!fine) return;
-
-    document.querySelectorAll('.project-card').forEach((card) => {
-      const browser = card.querySelector('.browser') as HTMLElement | null;
-      if (!browser) return;
-
-      card.addEventListener('pointermove', (e) => {
-        const r = browser.getBoundingClientRect();
-        const px = ((e as PointerEvent).clientX - r.left) / r.width - 0.5;
-        const py = ((e as PointerEvent).clientY - r.top) / r.height - 0.5;
-        browser.style.transition = 'transform 0.12s ease-out';
-        browser.style.transform = `perspective(900px) translateY(-7px) rotateX(${(-py * 7).toFixed(2)}deg) rotateY(${(px * 9).toFixed(2)}deg)`;
-      });
-
-      card.addEventListener('pointerleave', () => {
-        browser.style.transition = '';
-        browser.style.transform = '';
-      });
-    });
-  })();
-</script>

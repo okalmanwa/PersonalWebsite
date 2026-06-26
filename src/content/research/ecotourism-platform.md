@@ -61,5 +61,3 @@ I was the lead developer on our team's [Community Tourism Relay](https://manwaok
 - **The Community Portal.** A revenue dashboard for bookings and income, plus a merchant portal where community members manage their own listings.
 
 We kept it deliberately low-tech, because the whole point is that the community runs it themselves, and that revenue stays with the people protecting the conservancy's 15,000 hectares instead of leaking to a middleman.
-
-At the program hackathon, it was judged the top solution among the 5 multi-institutional teams.

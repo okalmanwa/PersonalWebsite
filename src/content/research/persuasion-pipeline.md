@@ -51,7 +51,7 @@ featured: true
 
 ## What I built
 
-My work was building the corpus, roughly 2 million articles across 14 outlets spanning 2000 to 2025. I wrote a GDELT scraper from scratch with concurrent pipeline jobs, retry logic, resumable progress tracking, and content validation to maximize clean-text yield. The result fed directly into the classifier's fine-tuning and evaluation pipeline.
+My work was building the corpus, roughly 2 million articles across 14 outlets spanning 2000 to 2025. I wrote a [GDELT](https://www.gdeltproject.org/) scraper from scratch with concurrent pipeline jobs, retry logic, resumable progress tracking, and content validation to maximize clean-text yield. The result fed directly into the classifier's fine-tuning and evaluation pipeline.
 
 ## Findings
 
