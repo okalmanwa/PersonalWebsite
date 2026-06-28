@@ -945,8 +945,7 @@ main:has(> .home) {
   }
 
   .scroll-cue {
-    bottom: var(--space-3);
-    font-size: var(--text-xs);
+    display: none;
   }
 }
 
