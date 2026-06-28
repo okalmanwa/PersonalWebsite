@@ -1,0 +1,58 @@
+/* research article prose */
+.newspaper-open {
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.newspaper-open p {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+}
+
+.newspaper-open p.dropcap {
+  text-wrap: pretty;
+}
+
+.newspaper-open .dropcap-letter {
+  float: left;
+  font-family: var(--font-display);
+  font-size: 2.45em;
+  line-height: 0.84;
+  font-weight: 400;
+  color: var(--ink);
+  padding: 0.02em 0.6rem 0 0;
+  margin: 0.06em 0.45rem 0 0;
+  border-right: 1px solid var(--hairline);
+}
+
+.newspaper-open p:last-child {
+  margin-bottom: 0;
+}
+
+.newspaper-open--compact {
+  margin-bottom: var(--space-4);
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.article-body ul {
+  list-style: none;
+  padding-left: 1.4em;
+}
+
+.article-body ul li {
+  position: relative;
+  margin-bottom: var(--space-2);
+}
+
+.article-body ul li::before {
+  content: '–';
+  position: absolute;
+  left: -1.4em;
+  color: var(--faint);
+}
+
+.article-body strong {
+  font-weight: 600;
+}

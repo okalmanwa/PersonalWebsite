@@ -1,0 +1,36 @@
+/* Font pairing presets — set on <html data-fonts="…"> */
+
+[data-fonts='current'] {
+  --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-body: 'Freight Sans Pro', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+}
+
+[data-fonts='literata'] {
+  --font-display: 'Literata', Georgia, 'Times New Roman', serif;
+  --font-body: 'Literata', Georgia, 'Times New Roman', serif;
+}
+
+[data-fonts='source'] {
+  --font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-body: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+}
+
+[data-fonts='lora-dm'] {
+  --font-display: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-body: 'DM Sans', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+}
+
+[data-fonts='instrument-inter'] {
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+[data-fonts='fraunces-franklin'] {
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Libre Franklin', 'Segoe UI', system-ui, sans-serif;
+}
+
+[data-fonts='system'] {
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}

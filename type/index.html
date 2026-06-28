@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-fonts="current">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Font explorer · Carey Okal</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:wght@400;500;600&family=Inter:wght@400;500;600&family=Libre+Franklin:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Lora:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/font-themes.css">
+  <link rel="stylesheet" href="/css/type-lab.css">
+</head>
+<body>
+  <div class="type-lab">
+    <div class="inner">
+      <h1>Font pairing</h1>
+      <label>
+        <span class="visually-hidden">Choose fonts</span>
+        <select id="font-picker" aria-label="Choose font pairing">
+          <option value="current">Current — Newsreader + Freight Sans</option>
+          <option value="literata">Literata — unified serif</option>
+          <option value="source">Source Serif 4 — academic / Distill</option>
+          <option value="lora-dm">Lora + DM Sans — editorial contrast</option>
+          <option value="instrument-inter">Instrument Serif + Inter — modern</option>
+          <option value="fraunces-franklin">Fraunces + Libre Franklin — character</option>
+          <option value="system">System — Georgia + system UI</option>
+        </select>
+      </label>
+      <a href="/">← Back to site</a>
+      <p class="hint">Preview how body, headings, and labels read together. Tell me which pairing to apply site-wide.</p>
+    </div>
+  </div>
+
+  <div class="type-specimen">
+    <section class="type-block" aria-labelledby="hero-sample">
+      <p class="type-label" id="hero-sample">Hero intro</p>
+      <div class="type-hero-sample">
+        <span class="hero-eyebrow">About</span>
+        <p class="hero-bio">
+          I am Carey Okal, a master's student in Information Science at Cornell
+          University (B.S. May 2026, concentrations in Data Science and
+          Behavioral Science). My work focuses on computational social science
+          and applying data science to build resilience and improve humanitarian
+          response.
+        </p>
+      </div>
+    </section>
+
+    <section class="type-block" aria-labelledby="research-sample">
+      <p class="type-label" id="research-sample">Research entry</p>
+      <div class="type-entry">
+        <span class="eyebrow">Selected research</span>
+        <h3>AI Social Simulation: LLM Agents in a Virtual World</h3>
+        <p class="abstract">
+          A multi-agent LLM simulation inspired by the Stanford Prison Experiment.
+          Autonomous agents inhabit a virtual world, form relationships, and interact
+          in real time.
+        </p>
+        <p class="type-mono-sample">Social Dynamics Lab · May 2026 – Present · ONGOING</p>
+      </div>
+    </section>
+
+    <section class="type-block" aria-labelledby="prose-sample">
+      <p class="type-label" id="prose-sample">Article prose</p>
+      <div class="article-body">
+        <h2>What I built</h2>
+        <p>
+          My work was building the corpus, roughly 2 million articles across 14 outlets
+          spanning 2000 to 2025. I wrote a
+          <a href="#">GDELT scraper</a> from scratch with concurrent pipeline jobs,
+          retry logic, and resumable progress tracking.
+        </p>
+        <ul>
+          <li>Regex sweeps over conversation logs for structural violations.</li>
+          <li>LLM-as-judge passes over internal traces for semantic inconsistencies.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const picker = document.getElementById('font-picker');
+    const stored = localStorage.getItem('font-preview');
+
+    if (stored && picker.querySelector(`option[value="${stored}"]`)) {
+      picker.value = stored;
+      root.dataset.fonts = stored;
+    }
+
+    picker.addEventListener('change', () => {
+      root.dataset.fonts = picker.value;
+      localStorage.setItem('font-preview', picker.value);
+    });
+  </script>
+</body>
+</html>

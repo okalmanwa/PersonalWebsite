@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>AI Social Simulation: LLM Agents in a Virtual World · Carey Okal</title>
+  <meta name="description" content="Classic social psychology experiments are too ethically fraught to rerun on people. What happens when the participants are LLM agents?">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">skip to content</a>
+  <header class="site-nav" id="site-nav">
+    <div class="inner">
+      <a class="nav-brand" href="/" aria-label="Carey Okal">CO</a>
+      <nav class="nav-links" id="nav-menu" aria-label="Primary">
+        <a href="/">About</a>
+        <a href="/#research" aria-current="page">Research</a>
+        <a href="/#projects">Side projects</a>
+        <a href="/teaching/">Teaching</a>
+      </nav>
+      <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="wide">
+      <header class="article-header">
+        <h1>AI Social Simulation: LLM Agents in a Virtual World</h1>
+        <dl class="meta-block">
+          <dt>Status</dt>
+          <dd><span class="status-pill status-pill--active">Ongoing</span></dd>
+          <dt>Methods</dt>
+          <dd><ul class="topic-chips"><li>Multi-agent simulation</li><li>LLM evaluation</li><li>Log auditing</li></ul></dd>
+          <dt>Stack</dt>
+          <dd><ul class="topic-chips"><li>React</li><li>TypeScript</li><li>Phaser 3</li><li>OpenRouter</li></ul></dd>
+        </dl>
+      </header>
+
+      <div class="article-body reveal">
+        <div class="newspaper-open">
+          <p class="dropcap"><span class="dropcap-letter" aria-hidden="true">C</span>lassic social psychology experiments, the <a href="https://en.wikipedia.org/wiki/Stanford_prison_experiment">Stanford Prison Experiment</a> chief among them, are too ethically fraught to rerun on people. But what happens when the participants are LLM agents? Do role assignment, power asymmetry, and group identity produce the same dynamics in LLM agents that Zimbardo observed in people? And can we trust what the agents report about themselves?</p>
+          <p>The simulation is a real-time virtual world built in Phaser 3, with React and TypeScript around it and OpenRouter serving the models. Autonomous agents wander the world, encounter each other, form relationships, and hold conversations, each agent maintaining its own memory and internal message traces alongside the dialogue it produces.</p>
+          <p>Every agent generates both <em>what it says</em> and <em>what it's thinking</em>, so the simulation produces a complete, inspectable record of social behavior.</p>
+        </div>
+        <h2>What I do</h2>
+        <ul>
+          <li>Regex sweeps over conversation logs for structural violations: impossible locations, phantom items, timeline breaks.</li>
+          <li>LLM-as-judge passes over the internal traces, for the semantic inconsistencies a regex can't see.</li>
+          <li>Consistency checks that reconcile what an agent claims against what the world engine actually recorded.</li>
+        </ul>
+      </div>
+
+      <footer class="article-footer reveal">
+        <a class="read-more read-more--back" href="/#research"><span class="arrow">→</span> All research</a>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <span>© 2026 Carey Okal</span>
+      <span><a href="mailto:careyokal@gmail.com">careyokal@gmail.com</a></span>
+      <span>ITHACA, NY · 42.44°N 76.50°W</span>
+    </div>
+  </footer>
+  <script src="/js/nav.js" defer></script>
+  <script src="/js/reveal.js" defer></script>
+</body>
+</html>
