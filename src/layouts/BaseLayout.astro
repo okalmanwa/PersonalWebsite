@@ -40,10 +40,11 @@ const personLd = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -57,17 +58,6 @@ const personLd = {
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL('/og.png', Astro.site)} />
     <meta name="twitter:card" content="summary_large_image" />
-
-    <script is:inline>
-      // theme before paint, zero flash
-      (() => {
-        const stored = localStorage.getItem('theme');
-        const dark =
-          stored === 'dark' ||
-          (!stored && matchMedia('(prefers-color-scheme: dark)').matches);
-        if (dark) document.documentElement.classList.add('dark');
-      })();
-    </script>
 
     <script
       type="application/ld+json"

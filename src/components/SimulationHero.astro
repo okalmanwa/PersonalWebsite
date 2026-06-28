@@ -90,7 +90,6 @@
       accent = s.getPropertyValue('--accent').trim() || accent;
     }
     readColors();
-    window.addEventListener('themechange', () => { readColors(); if (!animated) draw(0); });
 
     // ── drop systems ──
     // Anchors in normalised coords; the main system sits behind the portrait
