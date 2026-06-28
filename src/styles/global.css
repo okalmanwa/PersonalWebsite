@@ -291,15 +291,17 @@ main {
   align-items: center;
   gap: var(--space-5);
   font-size: var(--text-base);
-  flex: 1;
-  justify-content: center;
 }
 
-.theme-toggle {
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   flex-shrink: 0;
 }
 
 .nav-links a {
+  position: relative;
   color: var(--ink);
   opacity: 0.72;
   transition: color 0.15s ease, opacity 0.15s ease;
@@ -310,9 +312,26 @@ main {
   opacity: 1;
 }
 
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.nav-links a:hover::after,
+.nav-links a[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
 .nav-links a[aria-current='page'] {
   opacity: 1;
-  box-shadow: inset 0 -2px 0 var(--accent);
 }
 
 .theme-toggle {
@@ -326,14 +345,14 @@ main {
   place-items: center;
   cursor: pointer;
   color: var(--muted);
-  transition: color 0.15s ease, border-color 0.15s ease, transform 0.3s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
   padding: 0;
+  flex-shrink: 0;
 }
 
 .theme-toggle:hover {
   color: var(--ink);
   border-color: var(--faint);
-  transform: rotate(40deg);
 }
 
 .theme-toggle svg {
@@ -383,17 +402,7 @@ html:not(.dark) .icon-sun { display: none; }
 @media (max-width: 640px) {
   .nav-burger { display: flex; }
 
-  .theme-toggle {
-    order: 1;
-  }
-
-  .nav-burger {
-    order: 3;
-    margin-left: auto;
-  }
-
   .nav-links {
-    order: 2;
     position: absolute;
     top: var(--nav-h);
     left: 0;
@@ -417,11 +426,10 @@ html:not(.dark) .icon-sun { display: none; }
   }
 
   .nav-links a[aria-current='page'] {
-    box-shadow: none;
     color: var(--accent);
   }
 
-  .nav-links a:not([aria-current='page'])::after {
+  .nav-links a::after {
     content: none;
   }
 }
@@ -1412,28 +1420,6 @@ html.dark .status-pill--winner {
 .section > .eyebrow,
 .contact-block > .eyebrow {
   color: var(--faint);
-}
-
-/* nav links: underline grows in */
-.nav-links a:not(.theme-toggle) {
-  position: relative;
-}
-
-.nav-links a:not([aria-current='page'])::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.22s cubic-bezier(0.2, 0.6, 0.2, 1);
-}
-
-.nav-links a:hover::after {
-  transform: scaleX(1);
 }
 
 .btn {
