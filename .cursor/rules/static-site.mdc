@@ -1,15 +1,14 @@
 ---
-description: This project is a plain HTML/CSS/JS static site. All edits go in site/.
-globs: site/**
+description: This project is a plain HTML/CSS/JS static site at the repo root.
+globs: "{index.html,css/**,js/**,images/**,fonts/**,research/**,teaching/**,type/**,404.html}"
 alwaysApply: true
 ---
 
 # Static site (canonical)
 
-- **Work in `site/` only** — HTML pages, `css/main.css`, `js/*.js`, images, fonts.
-- No Astro, no build step, no `src/` for new changes.
-- Run locally: `npm run dev` (serves `site/`).
-- Deploy: GitHub Actions uploads `site/` to Pages on push to `main`.
+- **Work at repo root** — HTML pages, `css/main.css`, `js/*.js`, images, fonts.
+- No Astro, no build step.
+- Deploy: GitHub Actions uploads the repo root to Pages on push to `main`.
 - Keep root-relative asset paths (`/css/`, `/images/`, `/js/`).
-- Research pages: `site/research/<slug>/index.html`.
-- Nav scroll-spy lives in `site/js/nav.js`; hero canvas in `site/js/hero.js`.
+- Research pages: `research/<slug>/index.html`.
+- Nav scroll-spy lives in `js/nav.js`; scroll cue in `js/scroll-cue.js`.
