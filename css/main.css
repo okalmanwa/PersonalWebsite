@@ -470,6 +470,68 @@ main:has(> .home) {
   color: var(--accent);
 }
 
+.back-to-top {
+  position: fixed;
+  right: max(var(--space-4), env(safe-area-inset-right, 0px));
+  bottom: max(var(--space-4), env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--hairline));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  backdrop-filter: blur(8px);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 10px 28px -16px color-mix(in srgb, var(--ink) 28%, transparent);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.18s ease,
+    background-color 0.18s ease,
+    color 0.18s ease;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  pointer-events: none;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.back-to-top:hover,
+.back-to-top:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+  outline: none;
+}
+
+.back-to-top__icon {
+  display: block;
+  transform: translateY(-0.05em);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top {
+    transition: none;
+  }
+}
+
+@media print {
+  .back-to-top {
+    display: none;
+  }
+}
+
 /* ---------- editorial entry list (legacy / article pages) ---------- */
 .entry-list {
   list-style: none;
@@ -835,6 +897,15 @@ main:has(> .home) {
   background: var(--surface);
 }
 
+/* hairlines are invisible on the cream band; use a warmer visible line */
+#research .research-index {
+  border-top-color: color-mix(in srgb, var(--accent) 18%, #e3d6d6);
+}
+
+#research .research-index__item {
+  border-bottom-color: color-mix(in srgb, var(--accent) 18%, #e3d6d6);
+}
+
 #projects {
   position: relative;
   padding-top: 0;
@@ -1050,6 +1121,70 @@ html.dark .status-pill--winner {
   border-color: color-mix(in srgb, #f5d76e 22%, var(--hairline));
 }
 
+
+/* field notes — staggered photo spread on research pages */
+.field-notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4) var(--space-5);
+  margin: var(--space-5) 0;
+  align-items: start;
+}
+
+.field-note {
+  margin: 0;
+}
+
+/* second photo drops below the first, like prints laid on a desk */
+.field-note:nth-child(even) {
+  margin-top: var(--space-5);
+}
+
+/* mirror the leaf-cut sweep on alternating photos */
+.field-note:nth-child(even) .photo-frame::before,
+.field-note:nth-child(even) .photo-frame img {
+  border-radius: 0.5rem 2.6rem 0.5rem 2.6rem;
+}
+
+.field-note .photo-frame img {
+  filter: saturate(0.94) contrast(1.02);
+}
+
+.field-note:hover .photo-frame img {
+  filter: saturate(1.1) contrast(1.04);
+}
+
+.field-note:hover .photo-frame::before {
+  transform: translate(5px, 5px);
+}
+
+/* single full-width shot */
+.field-note--solo {
+  margin: var(--space-5) 0;
+}
+
+.field-note figcaption {
+  margin-top: var(--space-3);
+  padding-right: var(--space-3);
+  line-height: 1.55;
+}
+
+.field-note__marker {
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-right: 0.4em;
+}
+
+@media (max-width: 720px) {
+  .field-notes {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .field-note:nth-child(even) {
+    margin-top: 0;
+  }
+}
 
 /* figure / diagram breakout */
 .figure-wide {
@@ -1400,40 +1535,23 @@ html.dark .status-pill--winner {
   }
 }
 
-/* side projects: browser-window cards */
+/* projects: compact 2-up grid, same vertical card for every item */
 .project-grid {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 var(--space-4);
-  border-top: 1px solid var(--hairline);
-}
-
-.project-feature {
-  grid-column: 1 / -1;
+  gap: var(--space-4);
 }
 
 .project-grid > li {
-  padding: var(--space-4) 0;
-  border-bottom: 1px solid var(--hairline);
-}
-
-.project-grid > li:last-child {
-  border-bottom: none;
+  padding: 0;
 }
 
 .project-card {
   display: block;
   text-decoration: none;
-}
-
-.project-feature .project-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
-  gap: var(--space-5);
-  align-items: center;
 }
 
 .browser {
@@ -1442,18 +1560,6 @@ html.dark .status-pill--winner {
   overflow: hidden;
   border: 1px solid var(--hairline);
   background: var(--paper);
-  box-shadow:
-    0 1px 2px color-mix(in srgb, var(--ink) 5%, transparent),
-    0 6px 18px -12px color-mix(in srgb, var(--ink) 9%, transparent);
-  transition: transform 0.25s ease, border-color 0.2s ease, box-shadow 0.25s ease;
-}
-
-.project-card:hover .browser {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--accent) 16%, var(--hairline));
-  box-shadow:
-    0 4px 10px -6px color-mix(in srgb, var(--ink) 10%, transparent),
-    0 14px 28px -18px color-mix(in srgb, var(--accent) 14%, transparent);
 }
 
 .browser-bar {
@@ -1543,25 +1649,17 @@ html.dark .status-pill--winner {
   object-position: center top;
 }
 
-.project-feature .browser img {
-  aspect-ratio: 16 / 9;
-}
-
 .project-meta {
   display: flex;
-  gap: var(--space-3);
-  margin-top: var(--space-3);
+  gap: var(--space-2);
   align-items: flex-start;
-}
-
-.project-feature .project-meta {
-  margin-top: 0;
+  margin-top: var(--space-3);
 }
 
 .project-index {
   font-family: var(--font-mono);
   font-size: clamp(0.8125rem, 0.75rem + 0.25vw, var(--text-sm));
-  color: var(--muted);
+  color: var(--accent);
   letter-spacing: 0.04em;
   flex-shrink: 0;
   padding-top: 0.15em;
@@ -1575,17 +1673,13 @@ html.dark .status-pill--winner {
 .project-name {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(1.3rem, 1.05rem + 1.1vw, var(--text-lg));
+  font-size: clamp(1.15rem, 1rem + 0.6vw, var(--text-md));
   font-weight: 500;
   line-height: 1.25;
   letter-spacing: -0.015em;
   color: var(--ink);
-  margin-bottom: var(--space-2);
+  margin-bottom: 0.35rem;
   transition: color 0.15s ease;
-}
-
-.project-feature .project-name {
-  font-size: clamp(1.45rem, 1.1rem + 1.6vw, var(--text-xl));
 }
 
 .project-card:hover .project-name {
@@ -1607,32 +1701,23 @@ html.dark .status-pill--winner {
 
 .project-desc {
   display: block;
-  font-size: clamp(1.0625rem, 0.92rem + 0.4vw, var(--text-base));
-  color: var(--ink);
-  line-height: 1.65;
+  font-size: clamp(0.9375rem, 0.88rem + 0.25vw, var(--text-sm));
+  color: var(--muted);
+  line-height: 1.55;
   text-wrap: pretty;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 760px) {
   .project-grid {
     grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .project-feature .project-card {
-    display: block;
-  }
-
-  .project-feature .project-meta {
-    margin-top: var(--space-3);
+    gap: var(--space-4);
   }
 }
-/* research detail pages: keep long titles readable, not billboard-sized */
+/* research detail pages */
 main > article.wide .article-header h1 {
   font-size: var(--text-xl);
   line-height: 1.22;
   letter-spacing: -0.01em;
-  max-width: 42rem;
   text-wrap: pretty;
 }
 

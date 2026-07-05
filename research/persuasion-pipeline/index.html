@@ -20,7 +20,7 @@
       <nav class="nav-links" id="nav-menu" aria-label="Primary">
         <a href="/">About</a>
         <a href="/#research" aria-current="page">Research</a>
-        <a href="/#projects">Side projects</a>
+        <a href="/#projects">Projects</a>
         <a href="/teaching/">Teaching</a>
       </nav>
       <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
@@ -51,6 +51,20 @@
           <li>Wrote a <a href="https://www.gdeltproject.org/">GDELT</a> scraper from scratch with concurrent pipeline jobs, retry logic, resumable progress tracking, and content validation to maximize clean-text yield.</li>
           <li>Fed the result directly into the classifier's fine-tuning and evaluation pipeline.</li>
         </ul>
+        <div class="field-notes" aria-label="Screenshots of the scraper running">
+          <figure class="field-note">
+            <span class="photo-frame photo-frame--landscape">
+              <img src="/images/research/persuasion-scraper-run.jpg" alt="Terminal showing the GDELT scraper starting a run for 2022 with the political-only filter, downloading export files" loading="lazy" width="1640" height="1230">
+            </span>
+            <figcaption><span class="field-note__marker">°01</span> The scraper kicking off a run: GDELT exports downloading, filtered to political news</figcaption>
+          </figure>
+          <figure class="field-note">
+            <span class="photo-frame photo-frame--landscape">
+              <img src="/images/research/persuasion-scraper-scrape.jpg" alt="Terminal showing filtered URLs written to CSV and the article scraping stage running with OK confirmations" loading="lazy" width="1640" height="1230">
+            </span>
+            <figcaption><span class="field-note__marker">°02</span> Filtered URLs written to CSV, then article scraping in progress</figcaption>
+          </figure>
+        </div>
         <h2>Findings</h2>
         <p>Low-credibility outlets rely substantially more on moral and emotional appeals than high-credibility outlets, which lean toward causal reasoning. Ideological differences emerge primarily along the same affective dimension. Within mainstream opinion journalism, the Times leans more on causal, empirical, and moral argumentation while the Post leans more on emotional appeals, with partial convergence between the two over time.</p>
       </div>
@@ -70,5 +84,6 @@
   </footer>
   <script src="/js/nav.js" defer></script>
   <script src="/js/reveal.js" defer></script>
+  <script src="/js/back-to-top.js" defer></script>
 </body>
 </html>

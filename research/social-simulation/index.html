@@ -20,7 +20,7 @@
       <nav class="nav-links" id="nav-menu" aria-label="Primary">
         <a href="/">About</a>
         <a href="/#research" aria-current="page">Research</a>
-        <a href="/#projects">Side projects</a>
+        <a href="/#projects">Projects</a>
         <a href="/teaching/">Teaching</a>
       </nav>
       <button class="nav-burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu"><span></span><span></span><span></span></button>
@@ -45,8 +45,13 @@
         <div class="newspaper-open">
           <p class="dropcap"><span class="dropcap-letter" aria-hidden="true">C</span>lassic social psychology experiments, the <a href="https://en.wikipedia.org/wiki/Stanford_prison_experiment">Stanford Prison Experiment</a> chief among them, are too ethically fraught to rerun on people. But what happens when the participants are LLM agents? Do role assignment, power asymmetry, and group identity produce the same dynamics in LLM agents that Zimbardo observed in people? And can we trust what the agents report about themselves?</p>
           <p>The simulation is a real-time virtual world built in Phaser 3, with React and TypeScript around it and OpenRouter serving the models. Autonomous agents wander the world, encounter each other, form relationships, and hold conversations, each agent maintaining its own memory and internal message traces alongside the dialogue it produces.</p>
-          <p>Every agent generates both <em>what it says</em> and <em>what it's thinking</em>, so the simulation produces a complete, inspectable record of social behavior.</p>
         </div>
+        <figure class="field-note field-note--solo">
+          <span class="photo-frame">
+            <img src="/images/research/social-simulation.jpg" alt="Screenshot of the simulation: a pixel-art prison world with guard and prisoner agents, beside a live feed of their conversations" loading="lazy" width="1024" height="576">
+          </span>
+          <figcaption><span class="field-note__marker">°01</span> The simulation in progress</figcaption>
+        </figure>
         <h2>What I do</h2>
         <ul>
           <li>Regex sweeps over conversation logs for structural violations: impossible locations, phantom items, timeline breaks.</li>
@@ -70,5 +75,6 @@
   </footer>
   <script src="/js/nav.js" defer></script>
   <script src="/js/reveal.js" defer></script>
+  <script src="/js/back-to-top.js" defer></script>
 </body>
 </html>
