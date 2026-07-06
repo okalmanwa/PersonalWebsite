@@ -46,7 +46,7 @@
   const onHome = path === '/' || path === '/index.html';
   if (!onHome) return;
 
-  const sectionHrefs = ['/', '/#research', '/#projects'];
+  const sectionHrefs = ['/', '/#research', '/#teaching'];
   const anchors = new Map(
     sectionHrefs
       .map((href) => {
@@ -66,11 +66,11 @@
   const updateSectionNav = () => {
     const offset = nav.offsetHeight + 32;
     const research = document.getElementById('research');
-    const projects = document.getElementById('projects');
+    const teaching = document.getElementById('teaching');
     const researchTop = research?.getBoundingClientRect().top ?? Infinity;
-    const projectsTop = projects?.getBoundingClientRect().top ?? Infinity;
+    const teachingTop = teaching?.getBoundingClientRect().top ?? Infinity;
 
-    if (projectsTop <= offset) setSectionActive('/#projects');
+    if (teachingTop <= offset) setSectionActive('/#teaching');
     else if (researchTop <= offset) setSectionActive('/#research');
     else setSectionActive('/');
   };

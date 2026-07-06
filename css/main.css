@@ -265,6 +265,10 @@ main:has(.hero) {
   padding-top: 0;
 }
 
+main:has(> .projects-section) {
+  padding-top: 0;
+}
+
 main:has(> .home) {
   padding-bottom: 0;
 }
@@ -992,7 +996,7 @@ main:has(> .home) {
   border-bottom-color: color-mix(in srgb, var(--accent) 18%, #e3d6d6);
 }
 
-#projects {
+#teaching {
   position: relative;
   padding-top: 0;
   padding-bottom: var(--space-5);
@@ -1000,15 +1004,15 @@ main:has(> .home) {
   margin-bottom: 0;
 }
 
-#research + #projects {
+#research + #teaching {
   margin-top: 0;
 }
 
-#research + #projects .section-head {
+#research + #teaching .section-head {
   padding-top: var(--space-4);
 }
 
-#projects::before {
+#teaching::before {
   content: '';
   position: absolute;
   z-index: -1;
@@ -1017,6 +1021,46 @@ main:has(> .home) {
   width: 100vw;
   transform: translateX(-50%);
   background: var(--surface-alt);
+}
+
+#teaching .research-index {
+  border-top-color: color-mix(in srgb, var(--accent) 16%, #d4d0d0);
+}
+
+#teaching .research-index__item {
+  border-bottom-color: color-mix(in srgb, var(--accent) 16%, #d4d0d0);
+}
+
+.home > .hero + #research .section-head {
+  padding-top: var(--space-4);
+}
+
+#teaching .research-index__item:last-child {
+  border-bottom: none;
+}
+
+.projects-section {
+  position: relative;
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-5);
+  margin-top: 0;
+}
+
+.projects-section::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: var(--surface-alt);
+}
+
+.projects-section .section-lede {
+  font-size: clamp(1.0625rem, 0.95rem + 0.35vw, var(--text-base));
+  line-height: 1.65;
+  max-width: 48rem;
 }
 
 .home > .hero + .section {
@@ -1415,13 +1459,6 @@ html.dark .status-pill--winner {
   margin: calc(-1 * var(--space-2)) 0 var(--space-4);
   max-width: none;
 }
-
-#projects .section-lede {
-  font-size: clamp(1.0625rem, 0.95rem + 0.35vw, var(--text-base));
-  line-height: 1.65;
-  max-width: 48rem;
-}
-
 .section > p:not(.section-lede) {
   max-width: 42rem;
   line-height: 1.72;
@@ -1799,18 +1836,8 @@ html.dark .status-pill--winner {
     gap: var(--space-4);
   }
 }
-/* research detail pages */
-main > article.wide .article-header h1 {
-  font-size: var(--text-xl);
-  line-height: 1.22;
-  letter-spacing: -0.01em;
-  text-wrap: pretty;
-}
+/* research detail pages — see end of file */
 
-main > article.wide .article-body h2 {
-  font-size: var(--text-md);
-  margin-top: var(--space-5);
-}
 /* teaching page */
 .teaching-section {
   margin-top: 0;
@@ -1823,6 +1850,11 @@ main > article.wide .article-body h2 {
   flex-direction: column;
   gap: 0;
   min-width: 0;
+}
+
+.teaching-section .research-index__when {
+  grid-row: 1;
+  white-space: normal;
 }
 
 .teaching-section .research-index__meta {
@@ -1844,6 +1876,14 @@ main > article.wide .article-body h2 {
   margin: 0;
 }
 
+.teaching-section .research-index__lede + .research-index__lede {
+  margin-top: var(--space-3);
+}
+
+.teaching-section .research-index__title + .research-index__lede {
+  margin-top: var(--space-2);
+}
+
 .teaching-section .teaching-index__body .topic-chips {
   margin: var(--space-3) 0 0;
   padding-top: var(--space-2);
@@ -1855,9 +1895,8 @@ main > article.wide .article-body h2 {
 
 /* research article prose */
 .newspaper-open {
-  margin-bottom: var(--space-6);
-  padding-bottom: var(--space-5);
-  border-bottom: 1px solid var(--hairline);
+  margin-bottom: var(--space-5);
+  padding-bottom: 0;
 }
 
 .newspaper-open p {
@@ -1872,13 +1911,13 @@ main > article.wide .article-body h2 {
 .newspaper-open .dropcap-letter {
   float: left;
   font-family: var(--font-display);
-  font-size: 2.45em;
-  line-height: 0.84;
+  font-size: 2.75em;
+  line-height: 0.82;
   font-weight: 400;
-  color: var(--ink);
-  padding: 0.02em 0.6rem 0 0;
-  margin: 0.06em 0.45rem 0 0;
-  border-right: 1px solid var(--hairline);
+  color: var(--accent);
+  padding: 0.02em 0.65rem 0 0;
+  margin: 0.05em 0.5rem 0 0;
+  border-right: 1px solid color-mix(in srgb, var(--accent) 24%, var(--hairline));
 }
 
 .newspaper-open p:last-child {
@@ -1887,14 +1926,12 @@ main > article.wide .article-body h2 {
 
 .newspaper-open--compact {
   margin-bottom: var(--space-4);
-  padding-bottom: 0;
-  border-bottom: none;
 }
 
-.newspaper-open:has(+ h2) {
+.newspaper-open:has(+ h2),
+.newspaper-open:has(+ .field-notes),
+.newspaper-open:has(+ figure) {
   margin-bottom: var(--space-4);
-  padding-bottom: 0;
-  border-bottom: none;
 }
 
 .article-body ul {
@@ -1916,4 +1953,137 @@ main > article.wide .article-body h2 {
 
 .article-body strong {
   font-weight: 600;
+}
+
+/* ---------- research detail pages ----------
+   Club-journal polish: cream wash, display-serif lead,
+   spec-sheet meta, burgundy accents — no broadsheet gimmicks. */
+
+main:has(> article.wide) {
+  position: relative;
+}
+
+main:has(> article.wide)::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: min(48vh, 28rem);
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg,
+    var(--surface) 0%,
+    color-mix(in srgb, var(--surface) 35%, var(--paper)) 72%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+main > article.wide {
+  padding-top: var(--space-3);
+}
+
+main > article.wide .article-header {
+  margin-bottom: var(--space-5);
+}
+
+main > article.wide .article-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-lg), 1.15rem + 1.8vw, var(--text-xl));
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+  max-width: none;
+  text-wrap: pretty;
+}
+
+main > article.wide .meta-block {
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: color-mix(in srgb, var(--surface) 72%, var(--paper));
+  border: 1px solid color-mix(in srgb, var(--accent) 11%, var(--hairline));
+  border-radius: 12px;
+  gap: var(--space-2) var(--space-5);
+}
+
+main > article.wide .article-body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.72;
+  color: var(--ink);
+  padding-top: var(--space-1);
+}
+
+main > article.wide .article-body > p,
+main > article.wide .article-body > ul,
+main > article.wide .newspaper-open p {
+  text-wrap: pretty;
+}
+
+main > article.wide .article-body > ul {
+  padding-left: 2rem;
+}
+
+main > article.wide .article-body > ul > li {
+  margin-bottom: var(--space-3);
+  padding-left: 0.2em;
+}
+
+main > article.wide .article-body > ul > li::before {
+  content: '';
+  display: block;
+  left: -1.65em;
+  top: 0.58em;
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 70%, var(--paper));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 10%, transparent);
+  border-radius: 0.5px;
+}
+
+main > article.wide .article-body > ul > li:last-child {
+  margin-bottom: 0;
+}
+
+main > article.wide .article-body h2 {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--muted);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-3);
+  text-decoration: underline;
+  text-decoration-color: var(--hairline);
+  text-underline-offset: 0.35em;
+  text-decoration-thickness: 1px;
+}
+
+main > article.wide .field-note figcaption {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+main > article.wide .article-footer {
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  main > article.wide .meta-block {
+    padding: var(--space-3);
+  }
+
+  main > article.wide .article-header h1 {
+    font-size: var(--text-lg);
+  }
 }
