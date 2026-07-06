@@ -1535,6 +1535,54 @@ html.dark .status-pill--winner {
   align-items: start;
 }
 
+#research .research-index__lede {
+  max-width: 40rem;
+  font-size: clamp(1.0625rem, 1rem + 0.2vw, 1.125rem);
+  line-height: 1.62;
+}
+
+.affiliation-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+}
+
+.affiliation-tags li {
+  font-family: var(--font-mono);
+  font-size: clamp(0.6875rem, 0.62rem + 0.2vw, var(--text-xs));
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 9%, var(--paper)) 0%,
+    color-mix(in srgb, var(--accent) 5%, var(--paper)) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--hairline));
+  padding: 0.3em 0.75em;
+  border-radius: 999px;
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--paper) 80%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--paper) 55%, transparent);
+}
+
+.affiliation-tags a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.affiliation-tags a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.meta-block .affiliation-tags {
+  margin: 0;
+}
+
 .research-index__when {
   grid-column: 1;
   grid-row: 1 / span 3;
