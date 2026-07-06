@@ -18,6 +18,30 @@
     if (e.key === 'Escape') setOpen(false);
   });
 
+  // reading progress hairline
+  const progress = document.createElement('span');
+  progress.className = 'nav-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  nav.appendChild(progress);
+  let ticking = false;
+  const setProgress = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = `scaleX(${max > 0 ? Math.min(window.scrollY / max, 1) : 0})`;
+    ticking = false;
+  };
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(setProgress);
+      }
+    },
+    { passive: true }
+  );
+  window.addEventListener('resize', setProgress, { passive: true });
+  setProgress();
+
   const path = window.location.pathname;
   const onHome = path === '/' || path === '/index.html';
   if (!onHome) return;

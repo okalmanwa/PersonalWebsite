@@ -35,11 +35,11 @@
       <div class="hero">
         <div class="hero-content">
           <div class="hero-text">
-            <span class="hero-eyebrow rise">About</span>
             <p class="hero-bio rise">
-              I am Carey Okal, a master's student in Information Science at Cornell
-              University (B.S. May 2026). My work focuses on computational social science
-              and applying data science to build resilience and improve humanitarian
+              <span class="dropcap-letter" aria-hidden="true">I</span> am Carey Okal, a master's student in Information Science at Cornell
+              University (B.S. May 2026). My research interests are in computational
+              social science: simulating social behavior with LLM agents, persuasion
+              and misinformation in political news, and data science for humanitarian
               response. This site is a window into my work.
             </p>
           </div>
@@ -49,6 +49,7 @@
             </span>
           </figure>
         </div>
+        <a class="hero-scroll" href="#research" aria-label="Scroll to selected research">↓</a>
       </div>
 
       <section class="section wide research-section" id="research" aria-labelledby="featured">
@@ -60,7 +61,7 @@
             <article>
               <time class="research-index__when" datetime="2026-05">May 2026 – Present</time>
               <h3 class="research-index__title"><a href="/research/social-simulation/">AI Social Simulation: LLM Agents in a Virtual World</a></h3>
-              <p class="research-index__lede">Classic social psychology experiments, the <a href="https://en.wikipedia.org/wiki/Stanford_prison_experiment">Stanford Prison Experiment</a> chief among them, are too ethically fraught to rerun on people. But what happens when the participants are LLM agents? Do role assignment, power asymmetry, and group identity produce the same dynamics in LLM agents that Zimbardo observed in people? And can we trust what the agents report about themselves?</p>
+              <p class="research-index__lede">Classic social psychology experiments, the <a href="https://en.wikipedia.org/wiki/Stanford_prison_experiment">Stanford Prison Experiment</a> chief among them, are too ethically fraught to rerun on people. But what happens when the participants are LLM agents? Do role assignment, power asymmetry, and group identity produce the same dynamics in LLM agents that Zimbardo observed in people? And can we trust what the agents report about themselves? I explore these questions at the <a href="https://sdl.as.cornell.edu/" target="_blank" rel="noopener">Social Dynamics Lab</a> at Cornell.</p>
               <p class="research-index__more"><a href="/research/social-simulation/">Continue reading <span class="arrow" aria-hidden="true">→</span></a></p>
             </article>
           </li>
@@ -68,7 +69,7 @@
             <article>
               <time class="research-index__when" datetime="2026-01/2026-05">Jan – May 2026</time>
               <h3 class="research-index__title"><a href="/research/persuasion-pipeline/">Persuasion Strategy Classification in Political News</a></h3>
-              <p class="research-index__lede">The lab's NSF-funded project studies persuasive AI and the spread of misinformation. One thread of it is a classifier that scores text across four rhetorical strategies, causal, empirical, emotional, and moral, fine-tuned on LLM-labeled synthetic debates and validated against human annotators. The work has been published at NAACL and EMNLP 2025.</p>
+              <p class="research-index__lede">The <a href="https://sdl.as.cornell.edu/" target="_blank" rel="noopener">Social Dynamics Lab</a>'s NSF-funded project studies persuasive AI and the spread of misinformation. One thread of it is a classifier that scores text across four rhetorical strategies, causal, empirical, emotional, and moral, fine-tuned on LLM-labeled synthetic debates and validated against human annotators. The work has been published at NAACL and EMNLP 2025.</p>
               <p class="research-index__more"><a href="/research/persuasion-pipeline/">Continue reading <span class="arrow" aria-hidden="true">→</span></a></p>
             </article>
           </li>
@@ -157,7 +158,7 @@
             </a>
           </li>
           <li>
-            <a class="project-card" href="https://business.cornell.edu/centers/cider/" target="_blank" rel="noopener">
+            <a class="project-card" href="https://web.archive.org/web/20260619070913/https://business.cornell.edu/centers/cider/" target="_blank" rel="noopener">
               <span class="browser">
                 <span class="browser-bar" aria-hidden="true">
                   <span class="b-dots"><i></i><i></i><i></i></span>
@@ -210,5 +211,6 @@
   <script src="/js/nav.js" defer></script>
   <script src="/js/reveal.js" defer></script>
   <script src="/js/back-to-top.js" defer></script>
+  <script src="/js/hero-network.js" defer></script>
 </body>
 </html>
