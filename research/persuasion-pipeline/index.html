@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <title>Persuasion Strategy Classification in Political News · Carey Okal</title>
-  <meta name="description" content="Ingestion and cleaning pipelines behind a roughly 2-million-article corpus of U.S. political news for NSF-funded persuasion research.">
+  <title>Persuasive AI and the Spread of Misinformation and Disinformation Online · Carey Okal</title>
+  <meta name="description" content="Corpus engineering and GDELT scraping for NSF-funded persuasion strategy classification in U.S. political news.">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,7 @@
   <main id="main">
     <article class="wide">
       <header class="article-header">
-        <h1>Persuasion Strategy Classification in Political News</h1>
+        <h1 class="page-title">Persuasive AI and the Spread of Misinformation and Disinformation Online</h1>
         <dl class="meta-block">
           <dt>Lab</dt>
           <dd>
@@ -49,13 +49,13 @@
 
       <div class="article-body reveal">
         <div class="newspaper-open">
-          <p class="dropcap"><span class="dropcap-letter" aria-hidden="true">T</span>his NSF-funded project studies persuasive AI and the spread of misinformation. One thread of it is a classifier that scores text across four rhetorical strategies, causal, empirical, emotional, and moral, fine-tuned on LLM-labeled synthetic debates and validated against human annotators. The work has been published at NAACL and EMNLP 2025.</p>
+          <p class="dropcap"><span class="dropcap-letter" aria-hidden="true">T</span>his NSF-funded project studies persuasive AI and the spread of misinformation. One thread of it is a classifier that scores text across four rhetorical strategies, causal, empirical, emotional, and moral, fine-tuned on LLM-labeled synthetic debates and validated against human annotators. The underlying classifier framework has been published at NAACL and EMNLP 2025.</p>
         </div>
         <h2 id="what-i-did">What I did</h2>
         <ul>
-          <li>Built the corpus, roughly 2 million articles across 14 outlets spanning 2000 to 2025.</li>
           <li>Wrote a <a href="https://github.com/okalmanwa/gdlet_scraper_1.0" target="_blank" rel="noopener">GDELT scraper</a> from scratch with concurrent pipeline jobs, retry logic, resumable progress tracking, and content validation to maximize clean-text yield.</li>
-          <li>Fed the result directly into the classifier's fine-tuning and evaluation pipeline.</li>
+          <li>Built the corpus: roughly 2 million articles across 14 U.S. outlets spanning 2000 to 2025, cleaned, deduplicated, and standardized into a unified schema of outlet lean, credibility, year, title, and content.</li>
+          <li>The corpus became the substrate for the classifier's large-scale media analysis, articles chunked, scored across all four strategies, and aggregated by outlet, year, and genre.</li>
         </ul>
         <div class="field-notes" aria-label="Screenshots of the scraper running">
           <figure class="field-note">
@@ -72,7 +72,7 @@
           </figure>
         </div>
         <h2>Findings</h2>
-        <p>Low-credibility outlets rely substantially more on moral and emotional appeals than high-credibility outlets, which lean toward causal reasoning. Ideological differences emerge primarily along the same affective dimension. Within mainstream opinion journalism, the Times leans more on causal, empirical, and moral argumentation while the Post leans more on emotional appeals, with partial convergence between the two over time.</p>
+        <p>Low-credibility outlets rely substantially more on moral and emotional appeals than high-credibility outlets, which lean toward causal reasoning. Ideological differences emerge primarily along the same affective dimension. Within mainstream opinion journalism, The New York Times leans more on causal, empirical, and moral argumentation while the New York Post leans more on emotional appeals, with partial convergence between the two over time.</p>
       </div>
 
       <footer class="article-footer reveal">

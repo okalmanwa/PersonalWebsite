@@ -60,12 +60,20 @@
   /* scale (1.25 ratio off an 18px base) */
   --text-xs: 0.8125rem;
   --text-sm: 0.9375rem;
-  --text-base: 1.25rem;
+  --text-base: 1.125rem;
   --text-md: 1.4375rem;
   --text-lg: 1.75rem;
   --text-xl: 2.1875rem;
   --text-2xl: 2.75rem;
   --text-3xl: clamp(3rem, 8vw, 5.2rem);
+
+  /* semantic roles */
+  --type-body: var(--text-base);
+  --type-lede: var(--text-base);
+  --type-title: var(--text-lg);
+  --type-meta: var(--text-sm);
+  --type-caption: var(--text-xs);
+  --type-eyebrow: var(--text-sm);
 
   /* rhythm */
   --measure: 68ch;
@@ -114,8 +122,8 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: var(--text-base);
-  line-height: 1.72;
+  font-size: var(--type-body);
+  line-height: 1.68;
   font-feature-settings: 'cv11' 1;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -791,6 +799,17 @@ main:has(> .home) {
   gap: var(--space-4) var(--space-6);
 }
 
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 1.55rem + 1.1vw, 2.375rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--accent);
+  margin: 0 0 var(--space-3);
+  text-wrap: balance;
+}
+
 .hero-text {
   max-width: 38rem;
 }
@@ -804,7 +823,7 @@ main:has(> .home) {
 .hero-eyebrow {
   display: block;
   font-family: var(--font-mono);
-  font-size: var(--text-base);
+  font-size: var(--type-eyebrow);
   font-weight: 500;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -835,13 +854,13 @@ main:has(> .home) {
 }
 
 .hero-text .hero-bio {
-  font-size: clamp(1.25rem, 1.18rem + 0.35vw, 1.375rem);
+  font-size: clamp(1.125rem, 1.05rem + 0.4vw, 1.3125rem);
   line-height: 1.68;
-  letter-spacing: normal;
+  letter-spacing: 0.005em;
 }
 
 .hero-bio {
-  font-size: clamp(1.25rem, 1.18rem + 0.35vw, 1.375rem);
+  font-size: clamp(1.125rem, 1.05rem + 0.4vw, 1.3125rem);
   color: var(--muted);
   line-height: 1.68;
   max-width: none;
@@ -983,7 +1002,7 @@ main:has(> .home) {
   left: 50%;
   width: 100vw;
   transform: translateX(-50%);
-  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 35%, var(--paper));
 }
 
 /* hairlines are invisible on the cream band; use a warmer visible line */
@@ -1019,7 +1038,7 @@ main:has(> .home) {
   left: 50%;
   width: 100vw;
   transform: translateX(-50%);
-  background: var(--surface-alt);
+  background: color-mix(in srgb, var(--surface-alt) 35%, var(--paper));
 }
 
 #teaching .research-index {
@@ -1053,13 +1072,19 @@ main:has(> .home) {
   left: 50%;
   width: 100vw;
   transform: translateX(-50%);
-  background: var(--surface-alt);
+  background: color-mix(in srgb, var(--surface-alt) 35%, var(--paper));
 }
 
 .projects-section .section-lede {
-  font-size: clamp(1.0625rem, 0.95rem + 0.35vw, var(--text-base));
-  line-height: 1.65;
-  max-width: 48rem;
+  font-size: var(--type-lede);
+  line-height: 1.68;
+  max-width: 42rem;
+  color: var(--muted);
+  margin-bottom: var(--space-4);
+}
+
+.projects-section .section-head {
+  margin-bottom: var(--space-2);
 }
 
 .home > .hero + .section {
@@ -1074,9 +1099,16 @@ main:has(> .home) {
   margin-bottom: var(--space-3);
 }
 
+.section-head .page-title,
 .section-head .hero-eyebrow,
 .section-head .eyebrow {
   margin-bottom: 0;
+}
+
+main > article.wide .article-header .page-title {
+  margin: 0;
+  max-width: none;
+  text-wrap: pretty;
 }
 
 .section-head .all-link {
@@ -1455,12 +1487,14 @@ html.dark .status-pill--winner {
 
 .section-lede {
   color: var(--muted);
+  font-size: var(--type-lede);
+  line-height: 1.68;
   margin: calc(-1 * var(--space-2)) 0 var(--space-4);
   max-width: none;
 }
 .section > p:not(.section-lede) {
   max-width: 42rem;
-  line-height: 1.72;
+  line-height: 1.68;
 }
 
 /* homepage lede: spans the full column like the visual entries below it */
@@ -1537,8 +1571,6 @@ html.dark .status-pill--winner {
 
 #research .research-index__lede {
   max-width: 40rem;
-  font-size: clamp(1.0625rem, 1rem + 0.2vw, 1.125rem);
-  line-height: 1.62;
 }
 
 .affiliation-tags {
@@ -1552,7 +1584,7 @@ html.dark .status-pill--winner {
 
 .affiliation-tags li {
   font-family: var(--font-mono);
-  font-size: clamp(0.6875rem, 0.62rem + 0.2vw, var(--text-xs));
+  font-size: var(--type-caption);
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--accent);
@@ -1587,7 +1619,7 @@ html.dark .status-pill--winner {
   grid-column: 1;
   grid-row: 1 / span 3;
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: var(--type-meta);
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--faint);
@@ -1599,7 +1631,7 @@ html.dark .status-pill--winner {
   grid-row: 1;
   margin: 0;
   font-family: var(--font-display);
-  font-size: var(--text-lg);
+  font-size: var(--type-title);
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.015em;
@@ -1620,7 +1652,7 @@ html.dark .status-pill--winner {
   grid-row: 2;
   margin: 0;
   max-width: 48rem;
-  font-size: var(--text-base);
+  font-size: var(--type-lede);
   line-height: 1.68;
   color: var(--muted);
 }
@@ -1645,7 +1677,7 @@ html.dark .status-pill--winner {
 
 .research-index__more a {
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: var(--type-meta);
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--accent);
@@ -1698,6 +1730,13 @@ html.dark .status-pill--winner {
   .teaching-section .teaching-index__body {
     grid-column: unset;
     grid-row: unset;
+  }
+
+  .teaching-section .teaching-role {
+    grid-column: unset;
+    grid-row: unset;
+    max-width: none;
+    margin-top: 0;
   }
 
   .research-index__item.reveal:nth-child(n) {
@@ -1828,7 +1867,7 @@ html.dark .status-pill--winner {
 
 .project-index {
   font-family: var(--font-mono);
-  font-size: clamp(0.8125rem, 0.75rem + 0.25vw, var(--text-sm));
+  font-size: var(--type-meta);
   color: var(--accent);
   letter-spacing: 0.04em;
   flex-shrink: 0;
@@ -1843,9 +1882,9 @@ html.dark .status-pill--winner {
 .project-name {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(1.15rem, 1rem + 0.6vw, var(--text-md));
+  font-size: var(--type-title);
   font-weight: 500;
-  line-height: 1.25;
+  line-height: 1.2;
   letter-spacing: -0.015em;
   color: var(--ink);
   margin-bottom: 0.35rem;
@@ -1871,9 +1910,9 @@ html.dark .status-pill--winner {
 
 .project-desc {
   display: block;
-  font-size: clamp(0.9375rem, 0.88rem + 0.25vw, var(--text-sm));
+  font-size: var(--type-lede);
   color: var(--muted);
-  line-height: 1.55;
+  line-height: 1.68;
   text-wrap: pretty;
 }
 
@@ -1881,6 +1920,157 @@ html.dark .status-pill--winner {
   .project-grid {
     grid-template-columns: 1fr;
     gap: var(--space-4);
+  }
+}
+
+/* projects page: editorial index, typography first */
+.projects-section .project-grid {
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid color-mix(in srgb, var(--accent) 12%, var(--hairline));
+}
+
+.projects-section .project-grid > li {
+  padding: var(--space-4) 0 var(--space-5);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 12%, var(--hairline));
+}
+
+.projects-section .project-grid > li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.projects-section .project-card {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  column-gap: var(--space-5);
+  row-gap: var(--space-3);
+  align-items: start;
+  text-decoration: none;
+  color: inherit;
+}
+
+.projects-section .project-meta {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: start;
+  margin: 0;
+  gap: 0;
+}
+
+.projects-section .project-index {
+  grid-column: 1;
+  padding-top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: var(--type-meta);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--faint);
+}
+
+.projects-section .project-text {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.projects-section .project-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-title);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  transition: color 0.2s ease;
+}
+
+.projects-section .project-url {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--type-caption);
+  letter-spacing: 0.05em;
+  color: color-mix(in srgb, var(--faint) 88%, var(--accent));
+}
+
+.projects-section .project-desc {
+  margin: 0.15rem 0 0;
+  max-width: 40rem;
+  font-size: var(--type-lede);
+  line-height: 1.68;
+  color: var(--muted);
+}
+
+.projects-section .project-shot {
+  grid-column: 2;
+  display: block;
+  width: 100%;
+  max-width: 42rem;
+}
+
+.projects-section .project-shot img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center top;
+  transition: opacity 0.25s ease, transform 0.35s ease;
+}
+
+.projects-section .project-card:hover .project-name {
+  color: var(--accent);
+}
+
+.projects-section .project-card:hover .project-shot img {
+  opacity: 0.94;
+  transform: scale(1.005);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-section .project-shot img {
+    transition: opacity 0.25s ease;
+  }
+
+  .projects-section .project-card:hover .project-shot img {
+    transform: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .projects-section .project-card {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-2);
+  }
+
+  .projects-section .project-meta {
+    display: block;
+  }
+
+  .projects-section .project-index {
+    display: block;
+    margin-bottom: var(--space-1);
+    padding-top: 0;
+  }
+
+  .projects-section .project-shot {
+    grid-column: 1;
+    max-width: none;
+  }
+
+  .projects-section .project-grid > li {
+    padding: var(--space-3) 0 var(--space-4);
+  }
+}
+
+@supports not (grid-template-columns: subgrid) {
+  .projects-section .project-meta {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    column-gap: var(--space-5);
   }
 }
 /* research detail pages — see end of file */
@@ -1900,17 +2090,26 @@ html.dark .status-pill--winner {
 }
 
 .teaching-section .research-index__when {
+  grid-column: 1;
   grid-row: 1;
+  align-self: start;
   white-space: normal;
 }
 
-.teaching-section .research-index__meta {
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: var(--faint);
-  margin: 0 0 var(--space-1);
+.teaching-section .teaching-role {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: start;
+  font-family: var(--font-display);
+  font-size: var(--type-meta);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: color-mix(in srgb, var(--faint) 82%, var(--accent));
+  margin: 0.45rem 0 0;
+  padding: 0;
+  max-width: 8.5rem;
 }
 
 .teaching-section .research-index__title {
@@ -2036,18 +2235,6 @@ main > article.wide .article-header {
   margin-bottom: var(--space-5);
 }
 
-main > article.wide .article-header h1 {
-  font-family: var(--font-display);
-  font-size: clamp(var(--text-lg), 1.15rem + 1.8vw, var(--text-xl));
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin: 0;
-  max-width: none;
-  text-wrap: pretty;
-}
-
 main > article.wide .meta-block {
   margin-top: var(--space-4);
   padding: var(--space-3) var(--space-4);
@@ -2059,8 +2246,8 @@ main > article.wide .meta-block {
 
 main > article.wide .article-body {
   font-family: var(--font-body);
-  font-size: var(--text-base);
-  line-height: 1.72;
+  font-size: var(--type-body);
+  line-height: 1.68;
   color: var(--ink);
   padding-top: var(--space-1);
 }
@@ -2130,7 +2317,7 @@ main > article.wide .article-footer {
     padding: var(--space-3);
   }
 
-  main > article.wide .article-header h1 {
-    font-size: var(--text-lg);
+  main > article.wide .article-header .page-title {
+    font-size: clamp(1.5625rem, 1.35rem + 1vw, 1.875rem);
   }
 }
