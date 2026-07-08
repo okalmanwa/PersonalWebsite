@@ -76,7 +76,7 @@
     mapW = Math.min(W * 0.94, 1360);
     mapH = mapW * 0.3889;
     mapX = (W - mapW) / 2;
-    mapY = Math.max((H - mapH) / 2, 24);
+    mapY = Math.max(H - mapH - 36, H * 0.42);
     spacing = mapW / (COLS - 1);
     dprNow = dpr;
     buildMask();
@@ -123,6 +123,17 @@
       ctx.stroke();
     });
     ctx.setLineDash([]);
+
+    if (!reduced) {
+      const arcIndex = Math.floor(t / SEG) % ARCS.length;
+      const localT = (t % SEG) / SEG;
+      const [ia, ib] = ARCS[arcIndex];
+      const [px, py] = arcPoint(CITIES[ia], CITIES[ib], localT);
+      ctx.fillStyle = rgba(ACCENT, 0.78);
+      ctx.beginPath();
+      ctx.arc(px, py, 2.4, 0, Math.PI * 2);
+      ctx.fill();
+    }
 
     // anchors
     CITIES.forEach((c) => {
