@@ -1368,6 +1368,30 @@ html.dark .status-pill--winner {
   font-family: var(--font-mono);
 }
 
+.simulation-viz {
+  margin: var(--space-5) 0;
+}
+
+.simulation-viz__frame {
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--hairline));
+  border-radius: 0.5rem 2.6rem 0.5rem 2.6rem;
+  background: var(--paper);
+  overflow: hidden;
+  box-shadow: 0 18px 40px color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.simulation-viz__canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.simulation-viz figcaption {
+  margin-top: var(--space-3);
+  padding-right: var(--space-3);
+  line-height: 1.55;
+}
+
 /* ---------- CV ---------- */
 .cv-section {
   margin-top: var(--space-6);
@@ -2080,6 +2104,10 @@ html.dark .status-pill--winner {
   margin-top: 0;
 }
 
+.teaching-section .research-index__item article {
+  grid-template-columns: 12.5rem minmax(0, 1fr);
+}
+
 .teaching-section .teaching-index__body {
   grid-column: 2;
   grid-row: 1;
@@ -2098,7 +2126,7 @@ html.dark .status-pill--winner {
 
 .teaching-section .teaching-role {
   grid-column: 1;
-  grid-row: 2;
+  grid-row: 1;
   align-self: start;
   font-family: var(--font-display);
   font-size: var(--type-meta);
@@ -2107,9 +2135,9 @@ html.dark .status-pill--winner {
   line-height: 1.4;
   letter-spacing: 0.01em;
   color: color-mix(in srgb, var(--faint) 82%, var(--accent));
-  margin: 0.45rem 0 0;
+  margin: 0;
   padding: 0;
-  max-width: 8.5rem;
+  max-width: 12.5rem;
 }
 
 .teaching-section .research-index__title {
@@ -2176,7 +2204,8 @@ html.dark .status-pill--winner {
 
 .newspaper-open:has(+ h2),
 .newspaper-open:has(+ .field-notes),
-.newspaper-open:has(+ figure) {
+.newspaper-open:has(+ figure),
+.newspaper-open:has(+ .simulation-viz) {
   margin-bottom: var(--space-4);
 }
 
@@ -2301,7 +2330,8 @@ main > article.wide .article-body h2 {
   text-decoration-thickness: 1px;
 }
 
-main > article.wide .field-note figcaption {
+main > article.wide .field-note figcaption,
+main > article.wide .simulation-viz figcaption {
   font-family: var(--font-body);
   font-size: var(--text-sm);
   line-height: 1.55;
