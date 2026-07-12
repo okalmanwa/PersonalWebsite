@@ -2371,6 +2371,9 @@ main > article.wide .article-footer {
   margin-top: var(--space-5);
 }
 
+
+
+
 @media (max-width: 640px) {
   main > article.wide .meta-block {
     padding: var(--space-2);
@@ -2379,4 +2382,13 @@ main > article.wide .article-footer {
   main > article.wide .article-header .page-title {
     font-size: clamp(1.3125rem, 1.2rem + 0.8vw, 1.5rem);
   }
+}
+
+
+.research-index__title a{
+  color: #6a1e1e!important;
+  border-bottom: #6a1e1e;
+  /* font-style: italic; */
+  text-transform:none;
+
 }
