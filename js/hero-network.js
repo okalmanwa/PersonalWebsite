@@ -25,8 +25,6 @@
   const CITIES = [{name:"ITHACA",align:"left",u:0.2875,v:0.2826},{name:"NAIROBI",align:"right",u:0.6023,v:0.5949},{name:"GENEVA",align:"left",u:0.5171,v:0.2557}];
   const ARCS = [[0, 1], [2, 1], [0, 2]];
   const MOUSE_R = 120;
-  const CYCLE = 12;              // seconds for one full tour of the arcs
-  const SEG = CYCLE / ARCS.length;
 
   let W = 0, H = 0, mapX = 0, mapY = 0, mapW = 0, mapH = 0, spacing = 0;
   let mask = null, dprNow = 1;
@@ -86,13 +84,6 @@
   const px = (u) => mapX + u * mapW;
   const py = (v) => mapY + v * mapH;
 
-  function arcPoint(a, b, t) {
-    const ax = px(a.u), ay = py(a.v), bx = px(b.u), by = py(b.v);
-    const cx = (ax + bx) / 2, cy = (ay + by) / 2 - Math.hypot(bx - ax, by - ay) * 0.22;
-    const s = 1 - t;
-    return [s * s * ax + 2 * s * t * cx + t * t * bx, s * s * ay + 2 * s * t * cy + t * t * by];
-  }
-
   function draw(t) {
     ctx.clearRect(0, 0, W, H);
 
@@ -123,17 +114,6 @@
       ctx.stroke();
     });
     ctx.setLineDash([]);
-
-    if (!reduced) {
-      const arcIndex = Math.floor(t / SEG) % ARCS.length;
-      const localT = (t % SEG) / SEG;
-      const [ia, ib] = ARCS[arcIndex];
-      const [px, py] = arcPoint(CITIES[ia], CITIES[ib], localT);
-      ctx.fillStyle = rgba(ACCENT, 0.78);
-      ctx.beginPath();
-      ctx.arc(px, py, 2.4, 0, Math.PI * 2);
-      ctx.fill();
-    }
 
     // anchors
     CITIES.forEach((c) => {
