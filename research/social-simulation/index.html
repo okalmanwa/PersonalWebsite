@@ -109,38 +109,29 @@
             </figcaption>
           </figure> -->
           <h2 id="what-i-do">What I do</h2>
-          <p>
-            My main contribution is the coding framework the study uses to
-            analyze guard messages, built in three stages.
-          </p>
           <ul>
             <li>
-              Used QRMine to find recurring patterns in guard messages across
-              simulation runs, then developed an inductive coding scheme of nine
-              communicative actions, such as confining and threatening, plus
-              each message's dominant tone.
+              Regex sweeps over agent chat and message logs to flag every
+              mention of the simulation's compliance metric across varied
+              phrasings.
             </li>
             <li>
-              Classified every guard message with an LLM, shuffling messages and
-              removing model identities first to reduce bias toward any one
-              model's style.
+              LLM-as-judge passes over the flagged candidates to separate actual
+              score changes from warnings and threats, and to extract the stated
+              reason behind each change.
             </li>
             <li>
-              Checked consistency by having a second LLM independently code a
-              random 15 percent of messages. Agreement was substantial or higher
-              for eight of the nine action types (Cohen's κ from 0.65 to 0.87).
+              Consistency checks that reconstruct each agent's expected score
+              trajectory from the text and reconcile it against the hourly
+              scores the simulation engine actually recorded, surfacing
+              implementation bugs.
             </li>
             <li>
-              Earlier, built audit tooling (regex sweeps and LLM-as-judge
-              checks) that reconciles what agents say with what the simulation
-              engine records, surfacing implementation bugs.
+              Thematic analysis of the extracted reasons behind score changes,
+              categorizing which agent behaviors actually drive the compliance
+              dynamics.
             </li>
           </ul>
-          <p>
-            I am now extending the simulation with a two-by-two experiment that
-            varies whether agents are told that they and their counterparts are
-            human or AI, alongside a baseline with no identity statement.
-          </p>
         </div>
 
         <footer class="article-footer reveal">
